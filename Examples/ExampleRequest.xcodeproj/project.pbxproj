@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC140F5E13F520AC00450DFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC140F5D13F520AC00450DFB /* Cocoa.framework */; };
+		FC140F6813F520AC00450DFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC140F6613F520AC00450DFB /* InfoPlist.strings */; };
+		FC140F6A13F520AC00450DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F6913F520AC00450DFB /* main.m */; };
+		FC140F6E13F520AC00450DFB /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FC140F6C13F520AC00450DFB /* Credits.rtf */; };
+		FC140F7113F520AC00450DFB /* ExampleRequestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F7013F520AC00450DFB /* ExampleRequestAppDelegate.m */; };
+		FC140F7413F520AD00450DFB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC140F7213F520AC00450DFB /* MainMenu.xib */; };
+		FC140F8913F520C400450DFB /* PingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F8813F520C400450DFB /* PingServer.m */; };
+		FC140F9013F5211600450DFB /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F8F13F5211600450DFB /* RequestController.m */; };
+		FC140F9213F5212500450DFB /* RequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC140F9113F5212500450DFB /* RequestController.xib */; };
+		FC140FAF13F522C000450DFB /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC140FAC13F522B800450DFB /* AsyncNetwork.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC140FAB13F522B800450DFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC86F297138BE53100E0F18B;
+			remoteInfo = AsyncNetwork;
+		};
+		FC140FAD13F522B800450DFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC346650138BD6AB007113B9;
+			remoteInfo = AsyncNetwork.iOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FC140F5913F520AC00450DFB /* ExampleRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC140F5D13F520AC00450DFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FC140F6013F520AC00450DFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FC140F6113F520AC00450DFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FC140F6213F520AC00450DFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FC140F6513F520AC00450DFB /* ExampleRequest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExampleRequest-Info.plist"; sourceTree = "<group>"; };
+		FC140F6713F520AC00450DFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FC140F6913F520AC00450DFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC140F6B13F520AC00450DFB /* ExampleRequest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExampleRequest-Prefix.pch"; sourceTree = "<group>"; };
+		FC140F6D13F520AC00450DFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FC140F6F13F520AC00450DFB /* ExampleRequestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleRequestAppDelegate.h; sourceTree = "<group>"; };
+		FC140F7013F520AC00450DFB /* ExampleRequestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleRequestAppDelegate.m; sourceTree = "<group>"; };
+		FC140F7313F520AD00450DFB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FC140F8713F520C400450DFB /* PingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingServer.h; sourceTree = "<group>"; };
+		FC140F8813F520C400450DFB /* PingServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingServer.m; sourceTree = "<group>"; };
+		FC140F8E13F5211600450DFB /* RequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestController.h; sourceTree = "<group>"; };
+		FC140F8F13F5211600450DFB /* RequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController.m; sourceTree = "<group>"; };
+		FC140F9113F5212500450DFB /* RequestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestController.xib; sourceTree = "<group>"; };
+		FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AsyncNetwork.xcodeproj; path = ../AsyncNetwork.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC140F5613F520AC00450DFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC140FAF13F522C000450DFB /* AsyncNetwork.framework in Frameworks */,
+				FC140F5E13F520AC00450DFB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC140F4E13F520AC00450DFB = {
+			isa = PBXGroup;
+			children = (
+				FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */,
+				FC140F6313F520AC00450DFB /* ExampleRequest */,
+				FC140F5C13F520AC00450DFB /* Frameworks */,
+				FC140F5A13F520AC00450DFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC140F5A13F520AC00450DFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC140F5913F520AC00450DFB /* ExampleRequest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC140F5C13F520AC00450DFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC140F5D13F520AC00450DFB /* Cocoa.framework */,
+				FC140F5F13F520AC00450DFB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC140F5F13F520AC00450DFB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC140F6013F520AC00450DFB /* AppKit.framework */,
+				FC140F6113F520AC00450DFB /* CoreData.framework */,
+				FC140F6213F520AC00450DFB /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FC140F6313F520AC00450DFB /* ExampleRequest */ = {
+			isa = PBXGroup;
+			children = (
+				FC140F9113F5212500450DFB /* RequestController.xib */,
+				FC140F8E13F5211600450DFB /* RequestController.h */,
+				FC140F8F13F5211600450DFB /* RequestController.m */,
+				FC140F8713F520C400450DFB /* PingServer.h */,
+				FC140F8813F520C400450DFB /* PingServer.m */,
+				FC140F6F13F520AC00450DFB /* ExampleRequestAppDelegate.h */,
+				FC140F7013F520AC00450DFB /* ExampleRequestAppDelegate.m */,
+				FC140F7213F520AC00450DFB /* MainMenu.xib */,
+				FC140F6413F520AC00450DFB /* Supporting Files */,
+			);
+			path = ExampleRequest;
+			sourceTree = "<group>";
+		};
+		FC140F6413F520AC00450DFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC140F6513F520AC00450DFB /* ExampleRequest-Info.plist */,
+				FC140F6613F520AC00450DFB /* InfoPlist.strings */,
+				FC140F6913F520AC00450DFB /* main.m */,
+				FC140F6B13F520AC00450DFB /* ExampleRequest-Prefix.pch */,
+				FC140F6C13F520AC00450DFB /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC140FA313F522B800450DFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC140FAC13F522B800450DFB /* AsyncNetwork.framework */,
+				FC140FAE13F522B800450DFB /* libAsyncNetwork.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC140F5813F520AC00450DFB /* ExampleRequest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC140F7713F520AD00450DFB /* Build configuration list for PBXNativeTarget "ExampleRequest" */;
+			buildPhases = (
+				FC140F5513F520AC00450DFB /* Sources */,
+				FC140F5613F520AC00450DFB /* Frameworks */,
+				FC140F5713F520AC00450DFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExampleRequest;
+			productName = ExampleRequest;
+			productReference = FC140F5913F520AC00450DFB /* ExampleRequest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC140F5013F520AC00450DFB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = RWTH;
+			};
+			buildConfigurationList = FC140F5313F520AC00450DFB /* Build configuration list for PBXProject "ExampleRequest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FC140F4E13F520AC00450DFB;
+			productRefGroup = FC140F5A13F520AC00450DFB /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FC140FA313F522B800450DFB /* Products */;
+					ProjectRef = FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				FC140F5813F520AC00450DFB /* ExampleRequest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FC140FAC13F522B800450DFB /* AsyncNetwork.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AsyncNetwork.framework;
+			remoteRef = FC140FAB13F522B800450DFB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FC140FAE13F522B800450DFB /* libAsyncNetwork.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAsyncNetwork.a;
+			remoteRef = FC140FAD13F522B800450DFB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC140F5713F520AC00450DFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC140F6813F520AC00450DFB /* InfoPlist.strings in Resources */,
+				FC140F6E13F520AC00450DFB /* Credits.rtf in Resources */,
+				FC140F7413F520AD00450DFB /* MainMenu.xib in Resources */,
+				FC140F9213F5212500450DFB /* RequestController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC140F5513F520AC00450DFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC140F6A13F520AC00450DFB /* main.m in Sources */,
+				FC140F7113F520AC00450DFB /* ExampleRequestAppDelegate.m in Sources */,
+				FC140F8913F520C400450DFB /* PingServer.m in Sources */,
+				FC140F9013F5211600450DFB /* RequestController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC140F6613F520AC00450DFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC140F6713F520AC00450DFB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FC140F6C13F520AC00450DFB /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC140F6D13F520AC00450DFB /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FC140F7213F520AC00450DFB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC140F7313F520AD00450DFB /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC140F7513F520AD00450DFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FC140F7613F520AD00450DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FC140F7813F520AD00450DFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExampleRequest/ExampleRequest-Prefix.pch";
+				INFOPLIST_FILE = "ExampleRequest/ExampleRequest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FC140F7913F520AD00450DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExampleRequest/ExampleRequest-Prefix.pch";
+				INFOPLIST_FILE = "ExampleRequest/ExampleRequest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC140F5313F520AC00450DFB /* Build configuration list for PBXProject "ExampleRequest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC140F7513F520AD00450DFB /* Debug */,
+				FC140F7613F520AD00450DFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC140F7713F520AD00450DFB /* Build configuration list for PBXNativeTarget "ExampleRequest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC140F7813F520AD00450DFB /* Debug */,
+				FC140F7913F520AD00450DFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC140F5013F520AC00450DFB /* Project object */;
+}
