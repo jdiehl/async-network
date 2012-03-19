@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D99D0CD1516B2C900A4045A /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D99D0CC1516B2C900A4045A /* AsyncNetwork.framework */; };
 		FC140F5E13F520AC00450DFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC140F5D13F520AC00450DFB /* Cocoa.framework */; };
 		FC140F6813F520AC00450DFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC140F6613F520AC00450DFB /* InfoPlist.strings */; };
 		FC140F6A13F520AC00450DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F6913F520AC00450DFB /* main.m */; };
@@ -16,27 +17,10 @@
 		FC140F8913F520C400450DFB /* PingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F8813F520C400450DFB /* PingServer.m */; };
 		FC140F9013F5211600450DFB /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F8F13F5211600450DFB /* RequestController.m */; };
 		FC140F9213F5212500450DFB /* RequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC140F9113F5212500450DFB /* RequestController.xib */; };
-		FC140FAF13F522C000450DFB /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC140FAC13F522B800450DFB /* AsyncNetwork.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FC140FAB13F522B800450DFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FC86F297138BE53100E0F18B;
-			remoteInfo = AsyncNetwork;
-		};
-		FC140FAD13F522B800450DFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FC346650138BD6AB007113B9;
-			remoteInfo = AsyncNetwork.iOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		2D99D0CC1516B2C900A4045A /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../../../../../../../../Library/Frameworks/AsyncNetwork.framework; sourceTree = "<group>"; };
 		FC140F5913F520AC00450DFB /* ExampleRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC140F5D13F520AC00450DFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FC140F6013F520AC00450DFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,7 +39,6 @@
 		FC140F8E13F5211600450DFB /* RequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestController.h; sourceTree = "<group>"; };
 		FC140F8F13F5211600450DFB /* RequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController.m; sourceTree = "<group>"; };
 		FC140F9113F5212500450DFB /* RequestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestController.xib; sourceTree = "<group>"; };
-		FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AsyncNetwork.xcodeproj; path = ../AsyncNetwork.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC140FAF13F522C000450DFB /* AsyncNetwork.framework in Frameworks */,
 				FC140F5E13F520AC00450DFB /* Cocoa.framework in Frameworks */,
+				2D99D0CD1516B2C900A4045A /* AsyncNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +57,6 @@
 		FC140F4E13F520AC00450DFB = {
 			isa = PBXGroup;
 			children = (
-				FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */,
 				FC140F6313F520AC00450DFB /* ExampleRequest */,
 				FC140F5C13F520AC00450DFB /* Frameworks */,
 				FC140F5A13F520AC00450DFB /* Products */,
@@ -92,6 +74,7 @@
 		FC140F5C13F520AC00450DFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D99D0CC1516B2C900A4045A /* AsyncNetwork.framework */,
 				FC140F5D13F520AC00450DFB /* Cocoa.framework */,
 				FC140F5F13F520AC00450DFB /* Other Frameworks */,
 			);
@@ -136,15 +119,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FC140FA313F522B800450DFB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FC140FAC13F522B800450DFB /* AsyncNetwork.framework */,
-				FC140FAE13F522B800450DFB /* libAsyncNetwork.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,35 +158,12 @@
 			mainGroup = FC140F4E13F520AC00450DFB;
 			productRefGroup = FC140F5A13F520AC00450DFB /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FC140FA313F522B800450DFB /* Products */;
-					ProjectRef = FC140FA213F522B800450DFB /* AsyncNetwork.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FC140F5813F520AC00450DFB /* ExampleRequest */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FC140FAC13F522B800450DFB /* AsyncNetwork.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AsyncNetwork.framework;
-			remoteRef = FC140FAB13F522B800450DFB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FC140FAE13F522B800450DFB /* libAsyncNetwork.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAsyncNetwork.a;
-			remoteRef = FC140FAD13F522B800450DFB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FC140F5713F520AC00450DFB /* Resources */ = {

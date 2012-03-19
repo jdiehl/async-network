@@ -1,5 +1,6 @@
 Async Network is a framework for socket networking on COCOA or iOS based on [https://github.com/robbiehanson/CocoaAsyncSocket AsyncSocket].
 
+
 # Quick Start
 
 To set up networking, create an `AsyncServer` on the server machine, and `AsyncClients` on all client machines. They will automatically discover and connect to the server if a `serviceName` is provided and the `serviceType` matches for both clients and servers.
@@ -45,9 +46,11 @@ Request based networking can be simplified using an `AsyncRequest`:
         // react to the response here
     }];
 
+
 # Peer 2 Peer Networking
 
 Async Network supports Peer 2 Peer networking by creating an `AsyncServer` and `AsyncClient` on every peer. This way, all peers will automatically connect to each other.
+
 
 # Broadcasting
 
@@ -58,6 +61,17 @@ You may use the `AsyncBroadcaster` to send and listen to broadcast messages on a
     [broadcaster broadcast:myData];
 
 There are working examples included in the source code of Async Network.
+
+
+# Build for iOS
+
+This will build a static library for device and simulator and embed it in a framework structure.
+
+1. Build AsyncNetwork for Archiving (Release Configuration)
+2. Build AsyncNetwork.iOS on Simulator (Debug Configuration)
+3. Build AsyncNetwork.iOS on Device for Archiving (Release Configuration)
+4. Build AsyncNetwork.iOS.finish for Archiving (Release Configuration)
+
 
 # License (MIT)
 
