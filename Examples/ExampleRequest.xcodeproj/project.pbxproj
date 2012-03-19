@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D99D0CD1516B2C900A4045A /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D99D0CC1516B2C900A4045A /* AsyncNetwork.framework */; };
+		2DD4422F1517E66800B5D63D /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD4422E1517E66800B5D63D /* AsyncNetwork.framework */; };
 		FC140F5E13F520AC00450DFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC140F5D13F520AC00450DFB /* Cocoa.framework */; };
 		FC140F6813F520AC00450DFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC140F6613F520AC00450DFB /* InfoPlist.strings */; };
 		FC140F6A13F520AC00450DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC140F6913F520AC00450DFB /* main.m */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D99D0CC1516B2C900A4045A /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../../../../../../../../Library/Frameworks/AsyncNetwork.framework; sourceTree = "<group>"; };
+		2DD4422E1517E66800B5D63D /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = /Library/Frameworks/AsyncNetwork.framework; sourceTree = "<absolute>"; };
 		FC140F5913F520AC00450DFB /* ExampleRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC140F5D13F520AC00450DFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FC140F6013F520AC00450DFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -47,7 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC140F5E13F520AC00450DFB /* Cocoa.framework in Frameworks */,
-				2D99D0CD1516B2C900A4045A /* AsyncNetwork.framework in Frameworks */,
+				2DD4422F1517E66800B5D63D /* AsyncNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 		FC140F5C13F520AC00450DFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D99D0CC1516B2C900A4045A /* AsyncNetwork.framework */,
+				2DD4422E1517E66800B5D63D /* AsyncNetwork.framework */,
 				FC140F5D13F520AC00450DFB /* Cocoa.framework */,
 				FC140F5F13F520AC00450DFB /* Other Frameworks */,
 			);
