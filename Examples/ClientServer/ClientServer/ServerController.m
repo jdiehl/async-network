@@ -90,7 +90,7 @@
 - (void)server:(AsyncServer *)theServer didConnect:(AsyncConnection *)connection;
 {
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"<Client connected>\n"];
+    NSString *string = [NSString stringWithFormat:@"[Client connected]\n"];
 	[self.output insertText:string];
 	
 	// update the status
@@ -105,7 +105,7 @@
 - (void)server:(AsyncServer *)theServer didDisconnect:(AsyncConnection *)connection;
 {
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"<Client disconnected>\n"];
+    NSString *string = [NSString stringWithFormat:@"[Client disconnected]\n"];
 	[self.output insertText:string];
 	
 	// update the status
@@ -122,7 +122,7 @@
 - (void)server:(AsyncServer *)theServer didReceiveObject:(id)object tag:(UInt32)tag fromConnection:(AsyncConnection *)connection;
 {
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"Client: %@\n", object];
+    NSString *string = [NSString stringWithFormat:@">> %@\n", object];
 	[self.output insertText:string];
 }
 

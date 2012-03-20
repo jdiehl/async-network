@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D1D67EC1518F8B90039CE94 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D67EB1518F8B90039CE94 /* Cocoa.framework */; };
+		2D1D67F61518F8B90039CE94 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D67F41518F8B90039CE94 /* InfoPlist.strings */; };
+		2D1D67F81518F8B90039CE94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67F71518F8B90039CE94 /* main.m */; };
+		2D1D67FF1518F8B90039CE94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67FE1518F8B90039CE94 /* AppDelegate.m */; };
+		2D1D68021518F8B90039CE94 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68001518F8B90039CE94 /* MainMenu.xib */; };
+		2D1D68231518F9C80039CE94 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D68221518F9C80039CE94 /* AsyncNetwork.framework */; };
+		2D1D68291518FA920039CE94 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68281518FA920039CE94 /* Icon.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2D1D67E71518F8B90039CE94 /* Broadcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broadcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D1D67EB1518F8B90039CE94 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2D1D67EE1518F8B90039CE94 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		2D1D67EF1518F8B90039CE94 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2D1D67F01518F8B90039CE94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2D1D67F31518F8B90039CE94 /* Broadcaster-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Broadcaster-Info.plist"; sourceTree = "<group>"; };
+		2D1D67F51518F8B90039CE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D1D67F71518F8B90039CE94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2D1D67F91518F8B90039CE94 /* Broadcaster-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Broadcaster-Prefix.pch"; sourceTree = "<group>"; };
+		2D1D67FD1518F8B90039CE94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2D1D67FE1518F8B90039CE94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2D1D68011518F8B90039CE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2D1D68221518F9C80039CE94 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = Library/Frameworks/AsyncNetwork.framework; sourceTree = SDKROOT; };
+		2D1D68281518FA920039CE94 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../../../Resources/Icon.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D1D67E41518F8B90039CE94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D1D68231518F9C80039CE94 /* AsyncNetwork.framework in Frameworks */,
+				2D1D67EC1518F8B90039CE94 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D1D67DC1518F8B90039CE94 = {
+			isa = PBXGroup;
+			children = (
+				2D1D67F11518F8B90039CE94 /* Broadcaster */,
+				2D1D67EA1518F8B90039CE94 /* Frameworks */,
+				2D1D67E81518F8B90039CE94 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2D1D67E81518F8B90039CE94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D67E71518F8B90039CE94 /* Broadcaster.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D1D67EA1518F8B90039CE94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D68221518F9C80039CE94 /* AsyncNetwork.framework */,
+				2D1D67EB1518F8B90039CE94 /* Cocoa.framework */,
+				2D1D67ED1518F8B90039CE94 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D1D67ED1518F8B90039CE94 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D67EE1518F8B90039CE94 /* AppKit.framework */,
+				2D1D67EF1518F8B90039CE94 /* CoreData.framework */,
+				2D1D67F01518F8B90039CE94 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		2D1D67F11518F8B90039CE94 /* Broadcaster */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D67FD1518F8B90039CE94 /* AppDelegate.h */,
+				2D1D67FE1518F8B90039CE94 /* AppDelegate.m */,
+				2D1D68001518F8B90039CE94 /* MainMenu.xib */,
+				2D1D67F21518F8B90039CE94 /* Supporting Files */,
+			);
+			path = Broadcaster;
+			sourceTree = "<group>";
+		};
+		2D1D67F21518F8B90039CE94 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D68281518FA920039CE94 /* Icon.icns */,
+				2D1D67F31518F8B90039CE94 /* Broadcaster-Info.plist */,
+				2D1D67F41518F8B90039CE94 /* InfoPlist.strings */,
+				2D1D67F71518F8B90039CE94 /* main.m */,
+				2D1D67F91518F8B90039CE94 /* Broadcaster-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D1D67E61518F8B90039CE94 /* Broadcaster */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D1D68051518F8B90039CE94 /* Build configuration list for PBXNativeTarget "Broadcaster" */;
+			buildPhases = (
+				2D1D67E31518F8B90039CE94 /* Sources */,
+				2D1D67E41518F8B90039CE94 /* Frameworks */,
+				2D1D67E51518F8B90039CE94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Broadcaster;
+			productName = Broadcaster;
+			productReference = 2D1D67E71518F8B90039CE94 /* Broadcaster.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D1D67DE1518F8B90039CE94 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = RWTH;
+			};
+			buildConfigurationList = 2D1D67E11518F8B90039CE94 /* Build configuration list for PBXProject "Broadcaster" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2D1D67DC1518F8B90039CE94;
+			productRefGroup = 2D1D67E81518F8B90039CE94 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D1D67E61518F8B90039CE94 /* Broadcaster */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D1D67E51518F8B90039CE94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D1D67F61518F8B90039CE94 /* InfoPlist.strings in Resources */,
+				2D1D68021518F8B90039CE94 /* MainMenu.xib in Resources */,
+				2D1D68291518FA920039CE94 /* Icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D1D67E31518F8B90039CE94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D1D67F81518F8B90039CE94 /* main.m in Sources */,
+				2D1D67FF1518F8B90039CE94 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2D1D67F41518F8B90039CE94 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D1D67F51518F8B90039CE94 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2D1D68001518F8B90039CE94 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D1D68011518F8B90039CE94 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2D1D68031518F8B90039CE94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2D1D68041518F8B90039CE94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2D1D68061518F8B90039CE94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Broadcaster/Broadcaster-Prefix.pch";
+				INFOPLIST_FILE = "Broadcaster/Broadcaster-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2D1D68071518F8B90039CE94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Broadcaster/Broadcaster-Prefix.pch";
+				INFOPLIST_FILE = "Broadcaster/Broadcaster-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D1D67E11518F8B90039CE94 /* Build configuration list for PBXProject "Broadcaster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D1D68031518F8B90039CE94 /* Debug */,
+				2D1D68041518F8B90039CE94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D1D68051518F8B90039CE94 /* Build configuration list for PBXNativeTarget "Broadcaster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D1D68061518F8B90039CE94 /* Debug */,
+				2D1D68071518F8B90039CE94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D1D67DE1518F8B90039CE94 /* Project object */;
+}

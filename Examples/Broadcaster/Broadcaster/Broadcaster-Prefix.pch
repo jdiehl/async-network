@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Broadcaster' target in the 'Broadcaster' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
+
+#define kBroadcastPort 50001
