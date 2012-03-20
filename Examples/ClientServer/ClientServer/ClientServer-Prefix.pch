@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'ClientServer' target in the 'ClientServer' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
+
+// the port for new servers (automatic)
+#define kDefaultListenPort 0
+
+// the service type for new servers and clients
+#define kDefaultServiceType @"_ClientServer._tcp"

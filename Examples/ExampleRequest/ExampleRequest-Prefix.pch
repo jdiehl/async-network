@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'ExampleRequest' target in the 'ExampleRequest' project
-//
-
-#ifdef __OBJC__
-	#import <Cocoa/Cocoa.h>
-#endif
-
-#define kPingServerPort 50000
