@@ -31,7 +31,9 @@ To receive messages, assign a delegate to the server and/or client, and
 implement `server:didReceiveObject:`.
 
 ```objc
-// assign and implement the server delegate
+server.delegate = myController;
+
+// in MyController.m
 - (void)server:(AsyncServer *)theServer didReceiveObject:(id)object tag:(uint32)tag {
     // respond to incoming messages here
 }
