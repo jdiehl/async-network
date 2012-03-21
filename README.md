@@ -1,5 +1,5 @@
 Async Network is a framework for socket networking on COCOA or iOS based on
-[https://github.com/robbiehanson/CocoaAsyncSocket AsyncSocket].
+[AsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket).
 
 # Quick Start
 
@@ -8,7 +8,7 @@ Async Network is a framework for socket networking on COCOA or iOS based on
 In client-server networking, clients connect to servers to exchange messages.
 In AsyncNetwork, every client will automatically connect to every discovered
 server with the same service name. Servers are discovered using
-[http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/NetServices/Articles/about.html Bonjour].
+[Bonjour](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/NetServices/Articles/about.html).
 
 In the server process, create an AsyncServer instance, define the Bonjour
 service name and start the server.
@@ -39,7 +39,7 @@ implement `server:didReceiveObject:`.
 
 To send messages, call `sendObject:tag:` on the server and/or client. The
 message object is automatically encoded via
-[https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Protocols/NSCoding_Protocol/Reference/Reference.html NSCoding]
+[NSCoding](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Protocols/NSCoding_Protocol/Reference/Reference.html).
 
 ```objc
 [client sendObject:message tag:0];
