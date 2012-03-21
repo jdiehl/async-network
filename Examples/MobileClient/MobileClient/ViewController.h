@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AsyncNetwork.h"
+#import <AsyncNetwork/AsyncNetwork.h>
 
 @interface ViewController : UIViewController <UITextFieldDelegate, AsyncClientDelegate>
 

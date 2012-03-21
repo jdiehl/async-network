@@ -37,11 +37,6 @@
 {
 	[self.client stop];
 	self.client.delegate = nil;
-	self.client = nil;
-	
-	self.output = nil;
-	self.input = nil;
-	[super dealloc];
 }
 
 #pragma mark - UITextFieldDelegate

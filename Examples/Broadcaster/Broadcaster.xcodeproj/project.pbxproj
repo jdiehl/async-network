@@ -12,9 +12,21 @@
 		2D1D67F81518F8B90039CE94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67F71518F8B90039CE94 /* main.m */; };
 		2D1D67FF1518F8B90039CE94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67FE1518F8B90039CE94 /* AppDelegate.m */; };
 		2D1D68021518F8B90039CE94 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68001518F8B90039CE94 /* MainMenu.xib */; };
-		2D1D68231518F9C80039CE94 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D68221518F9C80039CE94 /* AsyncNetwork.framework */; };
 		2D1D68291518FA920039CE94 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68281518FA920039CE94 /* Icon.icns */; };
+		2D1F1F0D151908B000BF5F57 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1F1F0C151908B000BF5F57 /* AsyncNetwork.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D1F1F0F151908EB00BF5F57 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D1D67E71518F8B90039CE94 /* Broadcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broadcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,8 +41,8 @@
 		2D1D67FD1518F8B90039CE94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D1D67FE1518F8B90039CE94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D1D68011518F8B90039CE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2D1D68221518F9C80039CE94 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = Library/Frameworks/AsyncNetwork.framework; sourceTree = SDKROOT; };
 		2D1D68281518FA920039CE94 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../../../Resources/Icon.icns; sourceTree = "<group>"; };
+		2D1F1F0C151908B000BF5F57 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../../../../../../../Library/Frameworks/AsyncNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D1D68231518F9C80039CE94 /* AsyncNetwork.framework in Frameworks */,
 				2D1D67EC1518F8B90039CE94 /* Cocoa.framework in Frameworks */,
+				2D1F1F0D151908B000BF5F57 /* AsyncNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +78,7 @@
 		2D1D67EA1518F8B90039CE94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D1D68221518F9C80039CE94 /* AsyncNetwork.framework */,
+				2D1F1F0C151908B000BF5F57 /* AsyncNetwork.framework */,
 				2D1D67EB1518F8B90039CE94 /* Cocoa.framework */,
 				2D1D67ED1518F8B90039CE94 /* Other Frameworks */,
 			);
@@ -116,6 +128,8 @@
 				2D1D67E31518F8B90039CE94 /* Sources */,
 				2D1D67E41518F8B90039CE94 /* Frameworks */,
 				2D1D67E51518F8B90039CE94 /* Resources */,
+				2D1F1F0E151908E900BF5F57 /* ShellScript */,
+				2D1F1F0F151908EB00BF5F57 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -164,6 +178,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D1F1F0E151908E900BF5F57 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D1D67E31518F8B90039CE94 /* Sources */ = {
@@ -285,6 +315,7 @@
 				2D1D68071518F8B90039CE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
