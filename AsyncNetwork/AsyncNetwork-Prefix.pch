@@ -12,3 +12,4 @@
 #define SynthesizeGetter(type, name) - (type)name{return _##name;}
 #define DelegateImplements(method) [self.delegate respondsToSelector:@selector(method)]
 #define CallOptionalDelegateMethod(method, call) if (DelegateImplements(method)) [self.delegate call];
+#define CallAndReturnOptionalDelegateMethod(method, call) if (DelegateImplements(method)) return [self.delegate call];

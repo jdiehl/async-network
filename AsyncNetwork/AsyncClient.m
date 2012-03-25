@@ -162,15 +162,16 @@ Synthesize(autoConnect)
 }
 
 // an object was received over this connection
-- (void)connection:(AsyncConnection *)theConnection didReceiveObject:(id)object tag:(UInt32)tag;
+- (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object;
 {
-	CallOptionalDelegateMethod(client:didReceiveObject:tag:fromConnection:, client:self didReceiveObject:object tag:tag fromConnection:theConnection)
+	CallOptionalDelegateMethod(client:didReceiveCommand:object:fromConnection:, client:self didReceiveCommand:command object:object fromConnection:theConnection)
 }
 
-// an object was sent over this connection
-- (void)connection:(AsyncConnection *)theConnection didSendObjectWithTag:(UInt32)tag;
+// a request was received over this connection
+- (id<NSCoding>)connection:(AsyncConnection *)theConnection respondToCommand:(AsyncCommand)command object:(id)object;
 {
-	CallOptionalDelegateMethod(client:didSendObjectWithTag:toConnection:, client:self didSendObjectWithTag:tag toConnection:theConnection)
+	CallAndReturnOptionalDelegateMethod(client:respondToCommand:object:fromConnection:, client:self respondToCommand:command object:object fromConnection:theConnection)
+	return nil;
 }
 
 // the connection reported an error
