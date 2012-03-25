@@ -26,8 +26,13 @@
 #import "AsyncConnection.h"
 #import "AsyncRequest.h"
 
-#define AsyncConnectionHeaderSize 8 // 64 bit
-#define AsyncConnectionHeaderTag -1
+#define AsyncConnectionHeaderSize sizeof(AsyncConnectionHeader)
+const NSUInteger AsyncConnectionHeaderTag = 1;
+const NSUInteger AsyncConnectionBodyTag = 2;
+
+// private functions
+NSData *HeaderToData(AsyncConnectionHeader header);
+AsyncConnectionHeader DataToHeader(NSData *data);
 
 @implementation AsyncConnection
 
@@ -194,45 +199,50 @@
 	return socket != nil && [socket connectedHost] != nil;
 }
 
-
 // Archives and object and sends it through the connection
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
-	// make sure we do not use a restricted tag
-	NSAssert1(tag != AsyncConnectionHeaderTag, @"AsyncConnection: attempted to use a reserved tag: %D", tag);
-	
-	// make sure there is a connection
 	NSAssert(socket != nil, @"AsyncConnection: attempted to send an object without being connected");
 	
+	// prepare the header
+	AsyncConnectionHeader header;
+	header.command = command;
+	
 	// encode data
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
+	NSData *bodyData = nil;
+	if (object) {
+		bodyData = [NSKeyedArchiver archivedDataWithRootObject:object];
+		header.bodyLength = bodyData.length;
+	} else {
+		header.bodyLength = 0;
+	}
 	
-	// encode data length
-    UInt32 header[2];
-	header[0] = CFSwapInt32HostToLittle((UInt32)data.length);
-	header[1] = CFSwapInt32HostToLittle(tag);
+	// store response block
+	if (block) {
+		header.blockTag = ++currentBlockTag;
+		[responseBlocks setObject:[[block copy] autorelease] forKey:[NSNumber numberWithInteger:header.blockTag]];
+	} else {
+		header.blockTag = 0;
+	}
 	
-	NSData *dataLength = [NSData dataWithBytes:header length:AsyncConnectionHeaderSize];
+	// send the header
+	NSData *headerData = [NSData dataWithBytes:&header length:AsyncConnectionHeaderSize];
+	[socket writeData:headerData withTimeout:timeout tag:AsyncConnectionHeaderTag];
 	
-	// send the data length
-	[socket writeData:dataLength withTimeout:timeout tag:AsyncConnectionHeaderTag];
-	
-	// send data to socket
-	[socket writeData:data withTimeout:timeout tag:tag];
+	// send the body
+	if (header.bodyLength > 0) [socket writeData:bodyData withTimeout:timeout tag:AsyncConnectionBodyTag];
 }
 
-// send an object with response block
-- (void)sendObject:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+// send command and object without response block
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
 {
-    // get the key for the block
-    if(++currentBlockTag == 0 || currentBlockTag == AsyncConnectionHeaderTag) currentBlockTag = 1000000;
-    NSNumber *key = [NSNumber numberWithInteger:currentBlockTag];
-    
-    // store the block
-    [responseBlocks setObject:[[block copy] autorelease] forKey:key];
-    
-    // send the object
-    [self sendObject:object tag:currentBlockTag];
+	[self sendCommand:command object:object responseBlock:nil];
+}
+
+// send object with command or response block
+- (void)sendObject:(id<NSCoding>)object;
+{
+	[self sendCommand:0 object:object responseBlock:nil];
 }
 
 // return the connected host
@@ -315,60 +325,73 @@
  **/
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
 {
-	UInt32 header[2];
     id object;
 	switch(tag) {
 			
-		// we have received the length of an object
-		// start reading the object
+		// store the header and load the body (or next header)
 		case AsyncConnectionHeaderTag:
-            memcpy(header, data.bytes, AsyncConnectionHeaderSize);
-			UInt32 length = CFSwapInt32LittleToHost(header[0]);
-			UInt32 dataTag = CFSwapInt32LittleToHost(header[1]);
-			[socket readDataToLength:length withTimeout:timeout tag:dataTag];
+			lastHeader = DataToHeader(data);
+			if (lastHeader.bodyLength > 0) {
+				[socket readDataToLength:lastHeader.bodyLength withTimeout:timeout tag:AsyncConnectionBodyTag];
+			} else {
+                if([self.delegate respondsToSelector:@selector(connection:didReceiveCommand:object:)])
+                    [self.delegate connection:self didReceiveCommand:lastHeader.command object:nil];
+				[socket readDataToLength:AsyncConnectionHeaderSize withTimeout:timeout tag:AsyncConnectionHeaderTag];
+			}
 			break;
 
 		// we have received the object data
 		// decode, pass to delegate, and read the next header
-		default:
+		case AsyncConnectionBodyTag:
             object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             
             // fire a response block if present
-            NSNumber *key = [NSNumber numberWithInteger:tag];
-            AsyncNetworkResponseBlock block = [responseBlocks objectForKey:key];
-            if(block) {
-                [[block retain] autorelease];
-                [responseBlocks removeObjectForKey:key];
-                block(object, nil);
-            }
+			if (lastHeader.blockTag > 0) {
+				NSNumber *key = [NSNumber numberWithInteger:lastHeader.blockTag];
+				AsyncNetworkResponseBlock block = [responseBlocks objectForKey:key];
+				[[block retain] autorelease];
+				[responseBlocks removeObjectForKey:key];
+				block(object, nil);
+			}
             
             // otherwise: inform delegate
             else {
-                if([self.delegate respondsToSelector:@selector(connection:didReceiveObject:tag:)])
-                    [self.delegate connection:self didReceiveObject:object tag:(UInt32)tag];
-
+                if([self.delegate respondsToSelector:@selector(connection:didReceiveCommand:object:)])
+                    [self.delegate connection:self didReceiveCommand:lastHeader.command object:object];
             }
             
             // read the next packet
 			[socket readDataToLength:AsyncConnectionHeaderSize withTimeout:timeout tag:AsyncConnectionHeaderTag];
 			break;
-	}
-}
 
-/**
- Called when a socket has completed writing the requested data. Not called if there is an error.
- **/
-- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag;
-{
-	// we have written an object
-	if(tag != AsyncConnectionHeaderTag) {
-		
-		// inform delegate that the object was sent
-        if([self.delegate respondsToSelector:@selector(connection:didSendObjectWithTag:)])
-            [self.delegate connection:self didSendObjectWithTag:(UInt32)tag];
-		
+		// unknown tag
+		default:
+			NSLog(@"AsyncConnection: ignoring unknown tag: %ld", tag);
 	}
 }
 
 
 @end
+
+// convert a header to data
+NSData *HeaderToData(AsyncConnectionHeader header)
+{
+	UInt32 *encodedHeader = malloc(sizeof(AsyncConnectionHeader));
+	encodedHeader[0] = CFSwapInt32LittleToHost(header.command);
+	encodedHeader[1] = CFSwapInt32LittleToHost(header.blockTag);
+	encodedHeader[2] = CFSwapInt32LittleToHost(header.bodyLength);
+	return [NSData dataWithBytesNoCopy:encodedHeader length:sizeof(header) freeWhenDone:YES];
+}
+
+// convert raw data to a header
+AsyncConnectionHeader DataToHeader(NSData *data)
+{
+	assert(data.length == sizeof(AsyncConnectionHeader));
+	
+	const UInt32 *encodedHeader = (const UInt32 *)data.bytes;
+	AsyncConnectionHeader header;
+	header.command = CFSwapInt32LittleToHost(encodedHeader[0]);
+	header.blockTag = CFSwapInt32LittleToHost(encodedHeader[1]);
+	header.bodyLength = CFSwapInt32LittleToHost(encodedHeader[2]);
+	return header;
+}

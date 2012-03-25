@@ -27,6 +27,12 @@
 #import "AsyncConnectionDelegate.h"
 #import "AsyncNetworkConstants.h"
 
+typedef struct {
+	UInt32 command;
+	UInt32 blockTag;
+	UInt32 bodyLength;
+} AsyncConnectionHeader;
+
 /**
  @brief Handles a single connection to a target host.
  @details 
@@ -41,6 +47,7 @@
 	NSUInteger port;
 	AsyncSocket *socket;
 	NSTimeInterval timeout;
+	AsyncConnectionHeader lastHeader;
     UInt32 currentBlockTag;
     NSMutableDictionary *responseBlocks;
 	id<AsyncConnectionDelegate> delegate;
@@ -73,7 +80,6 @@
  @todo This should be changed to a delegate call with a useful fallback (separate network thread) - currently this just uses the main run loop
  */
 + (NSRunLoop *)networkRunLoop;
-
 
 /**
  @brief Create a new connection with an existing socket
@@ -150,36 +156,14 @@
 
 /**
  @brief Send and object to the target host.
- 
- -# The object is encoded using NSCoding
- -# The data length (32bit int) is sent to the target host with tag MAXINT
- -# The object data is sent to the target host with the given tag.
- 
- Tags are used to identify coherent transactions. The other end receives the tag alongside the data and can respond
- with the same or a different tag. You may use any positive number as a tag except for MAXINT (-1).
  @throw Assertion Socket was not created
- @throw Assertion Reserved tag was used
- @param object The object to be sent
- @param tag The transaction tag
+ @param command tag (optional)
+ @param object to be sent (optional)
+ @param block to call after receiving a response (optional)
  */
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
-
-/**
- @brief Send and object to the target host and await a response.
- 
- The object is send with an automatically determined tag (above 1000000) as in sendObject:tag:. Once the target responds
- with the same tag, the given block is triggered with the response.
- 
- There are two things to note:
- - Make sure that the target responds with the same tag or the block will never be triggered and released
- - If you want to mix both sending methods, do not use tags above 1000000 for regular object sending.
- 
- @see sendObject:tag:
- @throw Assertion Socket was not created
- @param object The object to be sent
- @param block The block that will be triggered once a response was received
- */
-- (void)sendObject:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendObject:(id<NSCoding>)object;
 
 
 @end

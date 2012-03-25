@@ -31,17 +31,10 @@
 /**
  @brief The AsyncConnection has received an object from its target host.
  @param theConnection The AsyncConnection object that received an object
+ @param command tag
  @param object The object that was received
- @param tag The tag can be used to identify a coherent transaction
  */
-- (void)connection:(AsyncConnection *)theConnection didReceiveObject:(id)object tag:(UInt32)tag;
-
-/**
- @brief The AsyncConnection did send an object to its target host.
- @param theConnection The AsyncConnection object that sent the object
- @param tag The tag that was used when sending the object
- */
-- (void)connection:(AsyncConnection *)theConnection didSendObjectWithTag:(UInt32)tag;
+- (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(UInt32)command object:(id)object;
 
 /**
  @brief The AsyncConnection encountered an error.

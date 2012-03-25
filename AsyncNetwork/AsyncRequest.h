@@ -46,11 +46,12 @@
 	NSTimeInterval timeout;
 	
 	// body
-	NSObject<NSCoding> *body;
+	UInt32 command;
+	NSObject<NSCoding> *object;
+	AsyncNetworkResponseBlock responseBlock;
 	
 	// request firing
 	AsyncConnection *connection;
-	AsyncNetworkResponseBlock completionBlock;
 }
 
 /// The target host
@@ -65,22 +66,28 @@
 /// The request timeout (default: 0)
 @property(assign) NSTimeInterval timeout;
 
-/// The request body that will be automatically sent to the host once a connection is established
-@property(retain) NSObject<NSCoding> *body;
+/// The command
+@property(assign) UInt32 command;
+
+/// The object
+@property(retain) NSObject<NSCoding> *object;
+
+/// The response block
+@property(copy) AsyncNetworkResponseBlock responseBlock;
 
 /**
  @brief Create and fire a request to a Bonjour net service
  @see initWithNetService:
  @see fireWithCompletionBlock:
  */
-+ (id)fireRequestWithNetService:(NSNetService *)netService completionBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 
 /**
  @brief Create and fire a request to a host and port
  @see initWithHost:port:
  @see fireWithCompletionBlock:
  */
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port completionBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 
 /**
  @brief Create a request to a Bonjour net service
@@ -117,6 +124,6 @@
  
  @param block The block to be triggered upon receiving a response
  */
-- (void)fireWithCompletionBlock:(AsyncNetworkResponseBlock)block;
+- (void)fire;
 
 @end

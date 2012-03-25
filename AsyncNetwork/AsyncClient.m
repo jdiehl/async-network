@@ -66,11 +66,11 @@
 }
 
 // send object to all servers
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block:(UInt32)tag;
 {
 	for(AsyncConnection *connection in connections) {
 		if(![connection connected]) continue;
-		[connection sendObject:object tag:tag];
+		[connection sendCommand:command object:object:object responseBlock:block];
 	}
 }
 
