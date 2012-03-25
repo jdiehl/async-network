@@ -49,7 +49,7 @@
 @property (readonly) NSNetService *netService;
 @property (readonly) NSMutableSet *connections;
 
-@property (weak) id<AsyncServerDelegate> delegate;
+@property (unsafe_unretained) id<AsyncServerDelegate> delegate;
 @property (strong) NSString *serviceType;
 @property (strong) NSString *serviceDomain;
 @property (strong, nonatomic) NSString *serviceName;

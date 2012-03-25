@@ -46,7 +46,7 @@
 @property (readonly) AsyncUdpSocket *listenSocket;
 @property (readonly) AsyncUdpSocket *broadcastSocket;
 
-@property (weak) id<AsyncBroadcasterDelegate> delegate;
+@property (unsafe_unretained) id<AsyncBroadcasterDelegate> delegate;
 @property (assign) NSTimeInterval timeout;      // timeout for sending broadcasts, 0 = disabled
 @property (strong, nonatomic) NSString *subnet; // default: 255.255.255.255
 @property (assign) NSUInteger port;             // must be set to a number > 0

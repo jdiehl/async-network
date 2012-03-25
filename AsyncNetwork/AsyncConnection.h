@@ -59,7 +59,7 @@ typedef struct {
 @property (readonly) AsyncSocket *socket;
 @property (readonly) BOOL connected;
 
-@property (weak) id<AsyncConnectionDelegate> delegate;
+@property (unsafe_unretained) id<AsyncConnectionDelegate> delegate;
 @property (readonly) NSNetService *netService; // the target net service (host & port are ignored if set)
 @property (readonly) NSString *host;           // the target host
 @property (readonly) NSUInteger port;          // the target port

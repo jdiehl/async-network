@@ -48,7 +48,7 @@
 @property (readonly) NSMutableSet *services;    // the discovered services, observable, do not change!
 @property (readonly) NSMutableSet *connections; // the discovered connections, observable, do not change!
 
-@property (weak) id<AsyncClientDelegate> delegate;
+@property (unsafe_unretained) id<AsyncClientDelegate> delegate;
 @property (strong) NSString *serviceType;   // Bonjour service type
 @property (strong) NSString *serviceDomain; // Bonjour service domain
 @property (assign) BOOL autoConnect;        // should the client automatically connect to discovered servers?
