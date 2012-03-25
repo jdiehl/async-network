@@ -27,7 +27,32 @@
 #include <arpa/inet.h>
 #include <ifaddrs.h>
 
-#import "AsyncNetworkFunctions.h"
+// The local loopback address
+NSString *AsyncNetworkLocalHost = @"127.0.0.1";
+
+// Default net service type for the AsyncServer
+NSString *AsyncNetworkDefaultServiceType = @"_AsyncNetwork._tcp";
+
+// Default net service domain for the AsyncServer
+NSString *AsyncNetworkDefaultServiceDomain = @"local.";
+
+/// Default connection timeout for the AsyncConnection
+const NSTimeInterval AsyncNetworkDefaultConnectionTimeout = -1.0;
+
+/// Default net service resolve timeout for the AsyncConnection
+const NSTimeInterval AsyncNetworkDefaultResolveTimeout = -1.0;
+
+// Default broadcasting address for the AsyncBroadcaster
+NSString *AsyncNetworkBroadcastDefaultSubnet = @"255.255.255.255";
+
+/// Default broadcasting timeout for the AsyncBroadcaster
+const NSTimeInterval AsyncNetworkBroadcastDefaultTimeout = -1.0;
+
+/// Default timeout for the AsyncRequest
+const NSTimeInterval AsyncRequestDefaultTimeout = -1.0;
+
+
+#pragma mark - Public Functions
 
 // return the local ip addresses
 NSArray *AsyncNetworkGetLocalIPAddresses(void)
@@ -70,7 +95,7 @@ BOOL AsyncNetworkIPAddressIsLocal(NSString *address)
 {
 	static NSArray *localIPAddresses = nil;
 	if(!localIPAddresses) {
-		localIPAddresses = [AsyncNetworkGetLocalIPAddresses() retain];
+		localIPAddresses = AsyncNetworkGetLocalIPAddresses();
 	}
 	return [localIPAddresses containsObject:address];
 }

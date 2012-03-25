@@ -24,76 +24,35 @@
 
 #import <Foundation/Foundation.h>
 #import "AsyncUdpSocket.h"
-#import "AsyncBroadcasterDelegate.h"
 
-/**
- @brief A broadcaster can send and receive broadcasts to the local network.
- @details 
- @author Jonathan Diehl
- @date 01.04.11
- */
-@interface AsyncBroadcaster : NSObject <AsyncUdpSocketDelegate> {
-	
-@private
-	NSTimeInterval timeout;
-	NSString *subnet;
-    NSUInteger port;
-	
-    AsyncUdpSocket *listenSocket;
-	AsyncUdpSocket *broadcastSocket;
-	
-    id<AsyncBroadcasterDelegate> delegate;
-	
-	BOOL ignoreLocalBroadcasts;
-}
+@class AsyncBroadcaster;
 
-/// The broadcast timeout (default: 0 = disabled).
-@property(assign) NSTimeInterval timeout;
+/// AsyncBroadcaster Delegate Protocol.
+@protocol AsyncBroadcasterDelegate <NSObject>
+@optional
 
-/// The subnet address string to broadcast to (default: 255.255.255.255).
-@property(nonatomic, retain) NSString *subnet;
+#pragma mark - AsyncBroadcasterDelegate
 
-/// The broadcast port (default: 0 = automatic).
-@property(assign) NSUInteger port;
+- (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didReceiveData:(NSData *)data fromHost:(NSString *)host;
+- (void)broadcasterDidSendData:(AsyncBroadcaster *)theBroadcaster;
+- (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didFailWithError:(NSError *)error;
 
-/// The local broadcast host (localhost).
-@property(readonly) NSString *host;
+@end
 
-/// Configure whether local broadcasts are ignored (default: YES).
-@property(assign) BOOL ignoreLocalBroadcasts;
 
-/// The delegate.
-@property(assign) id<AsyncBroadcasterDelegate> delegate;
+/// A broadcaster can send and receive broadcasts to the local network.
+@interface AsyncBroadcaster : NSObject <AsyncUdpSocketDelegate>
 
-/**
- @brief Directly broadcast the given data on the given port.
- 
- This is the one method call to sending out broadcasts to the default subnet.
- 
- @param data the data to be sent
- @param port the port to send the data from (0 for automatic)
- */
-+ (void)broadcast:(NSData *)data onPort:(NSUInteger)port;
+@property (readonly) AsyncUdpSocket *listenSocket;
+@property (readonly) AsyncUdpSocket *broadcastSocket;
 
-/**
- @brief Start the broadcaster.
- 
- -= Set up the listening socket
- -= Set up the broadcasting socket
- */
+@property (weak) id<AsyncBroadcasterDelegate> delegate;
+@property (assign) NSTimeInterval timeout;      // timeout for sending broadcasts, 0 = disabled
+@property (strong, nonatomic) NSString *subnet; // default: 255.255.255.255
+@property (assign) NSUInteger port;             // must be set to a number > 0
+
 - (void)start;
-
-/**
- @brief Stop the broadcaster and tear down all sockets
- */
 - (void)stop;
-
-/**
- @brief Send a broadcast
- 
- @param data data to be broadcasted
- @throw Assertion Broadcasting socket not set up
- */
 - (void)broadcast:(NSData *)data;
 
 @end

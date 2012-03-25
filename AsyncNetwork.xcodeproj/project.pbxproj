@@ -28,8 +28,7 @@
 		2D1F1F2B15190BE500BF5F57 /* AsyncBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467E61518015D00101EAB /* AsyncBroadcaster.m */; };
 		2D1F1F2C15190BE500BF5F57 /* AsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467E91518015D00101EAB /* AsyncClient.m */; };
 		2D1F1F2E15190BE500BF5F57 /* AsyncConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467EC1518015D00101EAB /* AsyncConnection.m */; };
-		2D1F1F3215190BE500BF5F57 /* AsyncNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F01518015D00101EAB /* AsyncNetworkConstants.m */; };
-		2D1F1F3415190BE500BF5F57 /* AsyncNetworkFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkFunctions.m */; };
+		2D1F1F3415190BE500BF5F57 /* AsyncNetworkHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */; };
 		2D1F1F3615190BE500BF5F57 /* AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F41518015D00101EAB /* AsyncRequest.m */; };
 		2D1F1F3815190BE500BF5F57 /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
 		2D1F1F3A15190BE800BF5F57 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A95151801DC00101EAB /* AsyncSocket.m */; };
@@ -37,41 +36,30 @@
 		2D1F1F57151943F800BF5F57 /* AsyncSocket.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D246A94151801DC00101EAB /* AsyncSocket.h */; };
 		2D1F1F58151943F800BF5F57 /* AsyncUdpSocket.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D246A96151801DC00101EAB /* AsyncUdpSocket.h */; };
 		2D1F1F59151943F800BF5F57 /* AsyncBroadcaster.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E51518015D00101EAB /* AsyncBroadcaster.h */; };
-		2D1F1F5A151943F800BF5F57 /* AsyncBroadcasterDelegate.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E71518015D00101EAB /* AsyncBroadcasterDelegate.h */; };
 		2D1F1F5B151943F800BF5F57 /* AsyncClient.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E81518015D00101EAB /* AsyncClient.h */; };
-		2D1F1F5C151943F800BF5F57 /* AsyncClientDelegate.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EA1518015D00101EAB /* AsyncClientDelegate.h */; };
 		2D1F1F5D151943F800BF5F57 /* AsyncConnection.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EB1518015D00101EAB /* AsyncConnection.h */; };
-		2D1F1F5E151943F800BF5F57 /* AsyncConnectionDelegate.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467ED1518015D00101EAB /* AsyncConnectionDelegate.h */; };
 		2D1F1F5F151943F800BF5F57 /* AsyncNetwork.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EE1518015D00101EAB /* AsyncNetwork.h */; };
-		2D1F1F60151943F800BF5F57 /* AsyncNetworkConstants.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EF1518015D00101EAB /* AsyncNetworkConstants.h */; };
-		2D1F1F61151943F800BF5F57 /* AsyncNetworkFunctions.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F11518015D00101EAB /* AsyncNetworkFunctions.h */; };
+		2D1F1F61151943F800BF5F57 /* AsyncNetworkHelpers.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F11518015D00101EAB /* AsyncNetworkHelpers.h */; };
 		2D1F1F62151943F800BF5F57 /* AsyncRequest.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F31518015D00101EAB /* AsyncRequest.h */; };
 		2D1F1F63151943F800BF5F57 /* AsyncServer.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F51518015D00101EAB /* AsyncServer.h */; };
-		2D1F1F64151943F800BF5F57 /* AsyncServerDelegate.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F71518015D00101EAB /* AsyncServerDelegate.h */; };
 		2D2467CA151800AB00101EAB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2467C9151800AB00101EAB /* Cocoa.framework */; };
 		2D2467F81518015D00101EAB /* AsyncBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E51518015D00101EAB /* AsyncBroadcaster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2467F91518015D00101EAB /* AsyncBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467E61518015D00101EAB /* AsyncBroadcaster.m */; };
-		2D2467FA1518015D00101EAB /* AsyncBroadcasterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E71518015D00101EAB /* AsyncBroadcasterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2467FB1518015D00101EAB /* AsyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E81518015D00101EAB /* AsyncClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2467FC1518015D00101EAB /* AsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467E91518015D00101EAB /* AsyncClient.m */; };
-		2D2467FD1518015D00101EAB /* AsyncClientDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EA1518015D00101EAB /* AsyncClientDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2467FE1518015D00101EAB /* AsyncConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EB1518015D00101EAB /* AsyncConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2467FF1518015D00101EAB /* AsyncConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467EC1518015D00101EAB /* AsyncConnection.m */; };
-		2D2468001518015D00101EAB /* AsyncConnectionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467ED1518015D00101EAB /* AsyncConnectionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2468011518015D00101EAB /* AsyncNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EE1518015D00101EAB /* AsyncNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D2468021518015D00101EAB /* AsyncNetworkConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EF1518015D00101EAB /* AsyncNetworkConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D2468031518015D00101EAB /* AsyncNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F01518015D00101EAB /* AsyncNetworkConstants.m */; };
-		2D2468041518015D00101EAB /* AsyncNetworkFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F11518015D00101EAB /* AsyncNetworkFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D2468051518015D00101EAB /* AsyncNetworkFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkFunctions.m */; };
+		2D2468041518015D00101EAB /* AsyncNetworkHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F11518015D00101EAB /* AsyncNetworkHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D2468051518015D00101EAB /* AsyncNetworkHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */; };
 		2D2468061518015D00101EAB /* AsyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F31518015D00101EAB /* AsyncRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2468071518015D00101EAB /* AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F41518015D00101EAB /* AsyncRequest.m */; };
 		2D2468081518015D00101EAB /* AsyncServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F51518015D00101EAB /* AsyncServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2468091518015D00101EAB /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
-		2D24680A1518015D00101EAB /* AsyncServerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F71518015D00101EAB /* AsyncServerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D246AD2151801DC00101EAB /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D246A94151801DC00101EAB /* AsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D246AD3151801DC00101EAB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A95151801DC00101EAB /* AsyncSocket.m */; };
+		2D246AD3151801DC00101EAB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A95151801DC00101EAB /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D246AD4151801DC00101EAB /* AsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D246A96151801DC00101EAB /* AsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D246AD5151801DC00101EAB /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A97151801DC00101EAB /* AsyncUdpSocket.m */; };
+		2D246AD5151801DC00101EAB /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A97151801DC00101EAB /* AsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,17 +82,12 @@
 				2D1F1F57151943F800BF5F57 /* AsyncSocket.h in Copy Headers */,
 				2D1F1F58151943F800BF5F57 /* AsyncUdpSocket.h in Copy Headers */,
 				2D1F1F59151943F800BF5F57 /* AsyncBroadcaster.h in Copy Headers */,
-				2D1F1F5A151943F800BF5F57 /* AsyncBroadcasterDelegate.h in Copy Headers */,
 				2D1F1F5B151943F800BF5F57 /* AsyncClient.h in Copy Headers */,
-				2D1F1F5C151943F800BF5F57 /* AsyncClientDelegate.h in Copy Headers */,
 				2D1F1F5D151943F800BF5F57 /* AsyncConnection.h in Copy Headers */,
-				2D1F1F5E151943F800BF5F57 /* AsyncConnectionDelegate.h in Copy Headers */,
 				2D1F1F5F151943F800BF5F57 /* AsyncNetwork.h in Copy Headers */,
-				2D1F1F60151943F800BF5F57 /* AsyncNetworkConstants.h in Copy Headers */,
-				2D1F1F61151943F800BF5F57 /* AsyncNetworkFunctions.h in Copy Headers */,
+				2D1F1F61151943F800BF5F57 /* AsyncNetworkHelpers.h in Copy Headers */,
 				2D1F1F62151943F800BF5F57 /* AsyncRequest.h in Copy Headers */,
 				2D1F1F63151943F800BF5F57 /* AsyncServer.h in Copy Headers */,
-				2D1F1F64151943F800BF5F57 /* AsyncServerDelegate.h in Copy Headers */,
 			);
 			name = "Copy Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,23 +115,17 @@
 		2D2467D5151800AB00101EAB /* AsyncNetwork-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsyncNetwork-Prefix.pch"; sourceTree = "<group>"; };
 		2D2467E51518015D00101EAB /* AsyncBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncBroadcaster.h; sourceTree = "<group>"; };
 		2D2467E61518015D00101EAB /* AsyncBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncBroadcaster.m; sourceTree = "<group>"; };
-		2D2467E71518015D00101EAB /* AsyncBroadcasterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncBroadcasterDelegate.h; sourceTree = "<group>"; };
 		2D2467E81518015D00101EAB /* AsyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncClient.h; sourceTree = "<group>"; };
 		2D2467E91518015D00101EAB /* AsyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncClient.m; sourceTree = "<group>"; };
-		2D2467EA1518015D00101EAB /* AsyncClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncClientDelegate.h; sourceTree = "<group>"; };
 		2D2467EB1518015D00101EAB /* AsyncConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncConnection.h; sourceTree = "<group>"; };
 		2D2467EC1518015D00101EAB /* AsyncConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncConnection.m; sourceTree = "<group>"; };
-		2D2467ED1518015D00101EAB /* AsyncConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncConnectionDelegate.h; sourceTree = "<group>"; };
 		2D2467EE1518015D00101EAB /* AsyncNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncNetwork.h; sourceTree = "<group>"; };
-		2D2467EF1518015D00101EAB /* AsyncNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncNetworkConstants.h; sourceTree = "<group>"; };
-		2D2467F01518015D00101EAB /* AsyncNetworkConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncNetworkConstants.m; sourceTree = "<group>"; };
-		2D2467F11518015D00101EAB /* AsyncNetworkFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncNetworkFunctions.h; sourceTree = "<group>"; };
-		2D2467F21518015D00101EAB /* AsyncNetworkFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncNetworkFunctions.m; sourceTree = "<group>"; };
+		2D2467F11518015D00101EAB /* AsyncNetworkHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncNetworkHelpers.h; sourceTree = "<group>"; };
+		2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncNetworkHelpers.m; sourceTree = "<group>"; };
 		2D2467F31518015D00101EAB /* AsyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncRequest.h; sourceTree = "<group>"; };
 		2D2467F41518015D00101EAB /* AsyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncRequest.m; sourceTree = "<group>"; };
 		2D2467F51518015D00101EAB /* AsyncServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncServer.h; sourceTree = "<group>"; };
 		2D2467F61518015D00101EAB /* AsyncServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncServer.m; sourceTree = "<group>"; };
-		2D2467F71518015D00101EAB /* AsyncServerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncServerDelegate.h; sourceTree = "<group>"; };
 		2D246A94151801DC00101EAB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		2D246A95151801DC00101EAB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		2D246A96151801DC00101EAB /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -210,23 +187,17 @@
 			children = (
 				2D2467E51518015D00101EAB /* AsyncBroadcaster.h */,
 				2D2467E61518015D00101EAB /* AsyncBroadcaster.m */,
-				2D2467E71518015D00101EAB /* AsyncBroadcasterDelegate.h */,
 				2D2467E81518015D00101EAB /* AsyncClient.h */,
 				2D2467E91518015D00101EAB /* AsyncClient.m */,
-				2D2467EA1518015D00101EAB /* AsyncClientDelegate.h */,
 				2D2467EB1518015D00101EAB /* AsyncConnection.h */,
 				2D2467EC1518015D00101EAB /* AsyncConnection.m */,
-				2D2467ED1518015D00101EAB /* AsyncConnectionDelegate.h */,
 				2D2467EE1518015D00101EAB /* AsyncNetwork.h */,
-				2D2467EF1518015D00101EAB /* AsyncNetworkConstants.h */,
-				2D2467F01518015D00101EAB /* AsyncNetworkConstants.m */,
-				2D2467F11518015D00101EAB /* AsyncNetworkFunctions.h */,
-				2D2467F21518015D00101EAB /* AsyncNetworkFunctions.m */,
+				2D2467F11518015D00101EAB /* AsyncNetworkHelpers.h */,
+				2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */,
 				2D2467F31518015D00101EAB /* AsyncRequest.h */,
 				2D2467F41518015D00101EAB /* AsyncRequest.m */,
 				2D2467F51518015D00101EAB /* AsyncServer.h */,
 				2D2467F61518015D00101EAB /* AsyncServer.m */,
-				2D2467F71518015D00101EAB /* AsyncServerDelegate.h */,
 				2D2467D0151800AB00101EAB /* Supporting Files */,
 			);
 			path = AsyncNetwork;
@@ -270,17 +241,12 @@
 				2D246AD2151801DC00101EAB /* AsyncSocket.h in Headers */,
 				2D246AD4151801DC00101EAB /* AsyncUdpSocket.h in Headers */,
 				2D2467F81518015D00101EAB /* AsyncBroadcaster.h in Headers */,
-				2D2467FA1518015D00101EAB /* AsyncBroadcasterDelegate.h in Headers */,
 				2D2467FB1518015D00101EAB /* AsyncClient.h in Headers */,
-				2D2467FD1518015D00101EAB /* AsyncClientDelegate.h in Headers */,
 				2D2467FE1518015D00101EAB /* AsyncConnection.h in Headers */,
-				2D2468001518015D00101EAB /* AsyncConnectionDelegate.h in Headers */,
 				2D2468011518015D00101EAB /* AsyncNetwork.h in Headers */,
-				2D2468021518015D00101EAB /* AsyncNetworkConstants.h in Headers */,
-				2D2468041518015D00101EAB /* AsyncNetworkFunctions.h in Headers */,
+				2D2468041518015D00101EAB /* AsyncNetworkHelpers.h in Headers */,
 				2D2468061518015D00101EAB /* AsyncRequest.h in Headers */,
 				2D2468081518015D00101EAB /* AsyncServer.h in Headers */,
-				2D24680A1518015D00101EAB /* AsyncServerDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,8 +353,7 @@
 				2D1F1F2B15190BE500BF5F57 /* AsyncBroadcaster.m in Sources */,
 				2D1F1F2C15190BE500BF5F57 /* AsyncClient.m in Sources */,
 				2D1F1F2E15190BE500BF5F57 /* AsyncConnection.m in Sources */,
-				2D1F1F3215190BE500BF5F57 /* AsyncNetworkConstants.m in Sources */,
-				2D1F1F3415190BE500BF5F57 /* AsyncNetworkFunctions.m in Sources */,
+				2D1F1F3415190BE500BF5F57 /* AsyncNetworkHelpers.m in Sources */,
 				2D1F1F3615190BE500BF5F57 /* AsyncRequest.m in Sources */,
 				2D1F1F3815190BE500BF5F57 /* AsyncServer.m in Sources */,
 				2D1F1F3A15190BE800BF5F57 /* AsyncSocket.m in Sources */,
@@ -403,8 +368,7 @@
 				2D2467F91518015D00101EAB /* AsyncBroadcaster.m in Sources */,
 				2D2467FC1518015D00101EAB /* AsyncClient.m in Sources */,
 				2D2467FF1518015D00101EAB /* AsyncConnection.m in Sources */,
-				2D2468031518015D00101EAB /* AsyncNetworkConstants.m in Sources */,
-				2D2468051518015D00101EAB /* AsyncNetworkFunctions.m in Sources */,
+				2D2468051518015D00101EAB /* AsyncNetworkHelpers.m in Sources */,
 				2D2468071518015D00101EAB /* AsyncRequest.m in Sources */,
 				2D2468091518015D00101EAB /* AsyncServer.m in Sources */,
 				2D246AD3151801DC00101EAB /* AsyncSocket.m in Sources */,
@@ -503,6 +467,7 @@
 		2D2467DC151800AB00101EAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -519,7 +484,8 @@
 		2D2467DD151800AB00101EAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;

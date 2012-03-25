@@ -5,3 +5,10 @@
 #ifdef __OBJC__
 	#import <Foundation/Foundation.h>
 #endif
+
+#import "AsyncNetworkHelpers.h"
+
+#define Synthesize(name) @synthesize name = _##name;
+#define SynthesizeGetter(type, name) - (type)name{return _##name;}
+#define DelegateImplements(method) [self.delegate respondsToSelector:@selector(method)]
+#define CallOptionalDelegateMethod(method, call) if (DelegateImplements(method)) [self.delegate call];

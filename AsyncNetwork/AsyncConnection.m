@@ -22,7 +22,6 @@
  * https://github.com/jdiehl/async-network
  */
 
-#import "AsyncNetworkConstants.h"
 #import "AsyncConnection.h"
 #import "AsyncRequest.h"
 
@@ -31,13 +30,13 @@
 
 @implementation AsyncConnection
 
-@synthesize netService;
-@synthesize host, port;
-@synthesize timeout;
-@synthesize delegate;
-@synthesize socket;
+Synthesize(socket)
+Synthesize(delegate)
+Synthesize(timeout)
+Synthesize(netService)
+Synthesize(host)
+Synthesize(port)
 
-#pragma mark class methods
 
 // Create and return the run loop used for all network operations
 + (NSRunLoop *)networkRunLoop;
@@ -48,75 +47,68 @@
 // create a new connection with a netservice
 + (id)connectionWithNetService:(NSNetService *)netService;
 {
-	return [[[self alloc] initWithNetService:netService] autorelease];
+	return [[self alloc] initWithNetService:netService];
 }
 
 // create a new connection with a socket
 + (id)connectionWithSocket:(AsyncSocket *)socket;
 {
-	return [[[self alloc] initWithSocket:socket] autorelease];
+	return [[self alloc] initWithSocket:socket];
 }
 
 // create a new connection with host and port
 + (id)connectionWithHost:(NSString *)theHost port:(NSUInteger)thePort;
 {
-	return [[[self alloc] initWithHost:theHost port:thePort] autorelease];
+	return [[self alloc] initWithHost:theHost port:thePort];
 }
 
 
 #pragma mark init & clean up
 
-// Init a connection with a netservice
-- (id)initWithNetService:(NSNetService *)theNetService;
+// Init
+- (id)init
 {
-	self = [super init];
+    self = [super init];
+    if (self) {
+		self.timeout = AsyncNetworkDefaultConnectionTimeout;
+        _responseBlocks = [NSMutableDictionary new];
+        _currentBlockTag = 0;
+    }
+    return self;
+}
+
+// Init a connection with a netservice
+- (id)initWithNetService:(NSNetService *)netService;
+{
+	self = [self init];
 	if (self) {
-		timeout = AsyncNetworkDefaultConnectionTimeout;
-		netService = [theNetService retain];
-        responseBlocks = [NSMutableDictionary new];
-        currentBlockTag = 1000000;
-		
-		// read port and host (host may be nil if the net service is not yet resolved
-		host = [[netService hostName] retain];
-		port = [netService port];
+		_netService = netService;
+		_host = self.netService.hostName;
+		_port = self.netService.port;
 	}
 	return self;
 }
 
 // Init a connection with a socket
-- (id)initWithSocket:(AsyncSocket *)theSocket;
+- (id)initWithSocket:(AsyncSocket *)socket;
 {
-	self = [super init];
+	self = [self init];
 	if (self) {
-		socket = [theSocket retain];
-		socket.delegate = self;
-		timeout = AsyncNetworkDefaultConnectionTimeout;
-        responseBlocks = [NSMutableDictionary new];
-        currentBlockTag = 1;
-		
-		// read port and host
-		port = socket.connectedPort;
-		host = [socket.connectedHost retain];
+		_socket = socket;
+		self.socket.delegate = self;
+		_port = self.socket.connectedPort;
+		_host = self.socket.connectedHost;
 	}
 	return self;
 }
 
 // Init a connection with to a host and port
-- (id)initWithHost:(NSString *)theHost port:(NSUInteger)thePort;
+- (id)initWithHost:(NSString *)host port:(NSUInteger)port;
 {
-	return [self initWithHost:theHost port:thePort timeout:AsyncNetworkDefaultConnectionTimeout];
-}
-
-// Init a connection with to a host and port
-- (id)initWithHost:(NSString *)theHost port:(NSUInteger)thePort timeout:(NSTimeInterval)theTimeout;
-{
-	self = [super init];
+	self = [self init];
 	if (self) {
-		host = [theHost retain];
-		port = thePort;
-		timeout = theTimeout;
-        responseBlocks = [NSMutableDictionary new];
-        currentBlockTag = 1;
+		_host = host;
+		_port = port;
 	}
 	return self;
 }
@@ -125,59 +117,44 @@
 - (void)dealloc
 {
 	// stop an active net service resolve
-	if(netService.delegate == self) {
-		netService.delegate = nil;
-		[netService stop];
+	if (self.netService.delegate == self) {
+		self.netService.delegate = nil;
+		[self.netService stop];
 	}
-	[netService release];
-	delegate = nil;
-	socket.delegate = nil;
-	[socket release];
-	[host release];
-	[responseBlocks release];
-	[super dealloc];
+	self.socket.delegate = nil;
 }
 
 // debug description
 - (NSString *)description;
 {
-	return [NSString stringWithFormat:@"<%s host=%@ port=%d responseBlocks=%d>", object_getClassName(self), host, port, responseBlocks.count];
+	return [NSString stringWithFormat:@"<%s host=%@ port=%d requests=%d>", object_getClassName(self), self.host, self.port, _responseBlocks.count];
 }
 
 
-#pragma mark control actions
+#pragma mark - Control Methods
 
 // Start the connection by creating a socket to connect to the host and port indicated in the request
 - (void)start;
 {
-	if(socket) return;
-	NSError *error;
+	if (self.socket) return;
 	
 	// resolve the net service if necessary
-	if(netService && !host) {
-		
-		// this will trigger start again once the net service was resolved
-		netService.delegate = self;
-		[netService resolveWithTimeout:timeout];
+	// this will trigger start again once the net service was resolved
+	if (self.netService && !self.host) {
+		self.netService.delegate = self;
+		[self.netService resolveWithTimeout:self.timeout];
 		return;
 	}
 	
 	// create the socket
-	socket = [AsyncSocket new];
-	socket.delegate = self;
+	_socket = [AsyncSocket new];
+	self.socket.delegate = self;
 	
 	// connect to host and port
-	if(![socket connectToHost:host onPort:port withTimeout:timeout error:&error]) {
-		
-		// clean up
-		socket.delegate = nil;
-		[socket release];
-		socket = nil;
-		
-		// inform delegate
-        if([self.delegate respondsToSelector:@selector(connection:didFailWithError:)])
-            [self.delegate connection:self didFailWithError:error];
-		
+	NSError *error;
+	if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&error]) {
+		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+		_socket = nil;
 		return;
 	}
 }
@@ -185,15 +162,15 @@
 // Cancel an active connection
 - (void)cancel;
 {
-	[socket disconnect];
+	[self.socket disconnect];
+	_socket = nil;
 }
 
 // are we connected?
 - (BOOL)connected;
 {
-	return socket != nil && [socket connectedHost] != nil;
+	return (self.socket.connectedHost != nil);
 }
-
 
 // Archives and object and sends it through the connection
 - (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
@@ -202,7 +179,7 @@
 	NSAssert1(tag != AsyncConnectionHeaderTag, @"AsyncConnection: attempted to use a reserved tag: %D", tag);
 	
 	// make sure there is a connection
-	NSAssert(socket != nil, @"AsyncConnection: attempted to send an object without being connected");
+	NSAssert(self.socket != nil, @"AsyncConnection: attempted to send an object without being connected");
 	
 	// encode data
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
@@ -215,46 +192,46 @@
 	NSData *dataLength = [NSData dataWithBytes:header length:AsyncConnectionHeaderSize];
 	
 	// send the data length
-	[socket writeData:dataLength withTimeout:timeout tag:AsyncConnectionHeaderTag];
+	[self.socket writeData:dataLength withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	
 	// send data to socket
-	[socket writeData:data withTimeout:timeout tag:tag];
+	[self.socket writeData:data withTimeout:self.timeout tag:tag];
 }
 
 // send an object with response block
 - (void)sendObject:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
     // get the key for the block
-    if(++currentBlockTag == 0 || currentBlockTag == AsyncConnectionHeaderTag) currentBlockTag = 1000000;
-    NSNumber *key = [NSNumber numberWithInteger:currentBlockTag];
+    if(++_currentBlockTag == 0 || _currentBlockTag == AsyncConnectionHeaderTag) _currentBlockTag = 1000000;
+    NSNumber *key = [NSNumber numberWithInteger:_currentBlockTag];
     
     // store the block
-    [responseBlocks setObject:[[block copy] autorelease] forKey:key];
+    [_responseBlocks setObject:[block copy] forKey:key];
     
     // send the object
-    [self sendObject:object tag:currentBlockTag];
+    [self sendObject:object tag:_currentBlockTag];
 }
 
 // return the connected host
 - (NSString *)connectedHost;
 {
-	return [socket connectedHost];
+	return [self.socket connectedHost];
 }
 
 
-#pragma mark NSNetServiceDelegate
+#pragma mark - NSNetServiceDelegate
 
 // net service did resolve
 - (void)netServiceDidResolveAddress:(NSNetService *)sender;
 {
-	host = [netService.hostName retain];
-	port = netService.port;
-	netService.delegate = nil;
+	_host = self.netService.hostName;
+	_port = self.netService.port;
+	self.netService.delegate = nil;
 	[self start];
 }
 
 
-#pragma mark AsycnSocketDelegate
+#pragma mark - AsycnSocketDelegate
 
 /**
  Called when a socket connects and is ready for reading and writing.
@@ -263,11 +240,10 @@
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port;
 {
 	// start reading length data
-	[socket readDataToLength:AsyncConnectionHeaderSize withTimeout:timeout tag:AsyncConnectionHeaderTag];
+	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	
 	// inform delegate that we are connected
-    if([self.delegate respondsToSelector:@selector(connectionDidConnect:)])
-        [self.delegate connectionDidConnect:self];
+	CallOptionalDelegateMethod(connectionDidConnect:, connectionDidConnect:self)
 }
 
 /**
@@ -280,8 +256,7 @@
 {
 	// inform delegate of the error
 	if(error) {
-        if([self.delegate respondsToSelector:@selector(connection:didFailWithError:)])
-            [self.delegate connection:self didFailWithError:error];
+		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
     }
 }
 
@@ -294,9 +269,7 @@
  **/
 - (void)onSocketDidDisconnect:(AsyncSocket *)sock;
 {
-	// inform the delegate that we are disconnected
-    if([self.delegate respondsToSelector:@selector(connectionDidDisconnect:)])
-        [self.delegate connectionDidDisconnect:self];
+	CallOptionalDelegateMethod(connectionDidDisconnect:, connectionDidDisconnect:self)
 }
 
 /**
@@ -305,7 +278,6 @@
  **/
 - (NSRunLoop *)onSocket:(AsyncSocket *)sock wantsRunLoopForNewSocket:(AsyncSocket *)newSocket;
 {
-	// get the network run loop the class method
     return [[self class] networkRunLoop];
 }
 
@@ -325,7 +297,7 @@
             memcpy(header, data.bytes, AsyncConnectionHeaderSize);
 			UInt32 length = CFSwapInt32LittleToHost(header[0]);
 			UInt32 dataTag = CFSwapInt32LittleToHost(header[1]);
-			[socket readDataToLength:length withTimeout:timeout tag:dataTag];
+			[self.socket readDataToLength:length withTimeout:self.timeout tag:dataTag];
 			break;
 
 		// we have received the object data
@@ -335,10 +307,9 @@
             
             // fire a response block if present
             NSNumber *key = [NSNumber numberWithInteger:tag];
-            AsyncNetworkResponseBlock block = [responseBlocks objectForKey:key];
+            AsyncNetworkResponseBlock block = [_responseBlocks objectForKey:key];
             if(block) {
-                [[block retain] autorelease];
-                [responseBlocks removeObjectForKey:key];
+                [_responseBlocks removeObjectForKey:key];
                 block(object, nil);
             }
             
@@ -350,7 +321,7 @@
             }
             
             // read the next packet
-			[socket readDataToLength:AsyncConnectionHeaderSize withTimeout:timeout tag:AsyncConnectionHeaderTag];
+			[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 			break;
 	}
 }
@@ -362,11 +333,7 @@
 {
 	// we have written an object
 	if(tag != AsyncConnectionHeaderTag) {
-		
-		// inform delegate that the object was sent
-        if([self.delegate respondsToSelector:@selector(connection:didSendObjectWithTag:)])
-            [self.delegate connection:self didSendObjectWithTag:(UInt32)tag];
-		
+		CallOptionalDelegateMethod(connection:didSendObjectWithTag:, connection:self didSendObjectWithTag:(UInt32)tag)
 	}
 }
 

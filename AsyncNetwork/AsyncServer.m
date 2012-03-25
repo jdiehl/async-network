@@ -24,7 +24,6 @@
 
 #import "AsyncServer.h"
 #import "AsyncSocket.h"
-#import "AsyncNetworkConstants.h"
 #import "AsyncConnection.h"
 
 
@@ -37,176 +36,169 @@
 
 @implementation AsyncServer
 
-@synthesize port;
-@synthesize serviceType, serviceDomain, serviceName;
-@synthesize disconnectClientsAfterSend;
-@synthesize delegate;
+Synthesize(listenSocket)
+Synthesize(netService)
+Synthesize(connections)
+Synthesize(delegate)
+Synthesize(serviceType)
+Synthesize(serviceDomain)
+Synthesize(serviceName)
+Synthesize(port)
+Synthesize(autoDisconnect)
+
+// init
+- (id)init
+{
+	self = [super init];
+	if (self != nil) {
+		_connections = [NSMutableSet new];
+		self.serviceType = AsyncNetworkDefaultServiceType;
+		self.serviceDomain = AsyncNetworkDefaultServiceDomain;
+	}
+	return self;
+}
+
+// clean up
+- (void)dealloc
+{
+	[self stop];
+}
+
+// debug description
+- (NSString *)description;
+{
+	NSMutableString *string = [NSMutableString stringWithFormat:@"<%s serviceType=%@ serviceName=%@ port=%d>", object_getClassName(self), self.serviceType, self.serviceName, self.port];
+	for(AsyncConnection *connection in self.connections) {
+		[string appendFormat:@"\n\t%@", connection.description];
+	}
+	[string appendFormat:@"\n</%s>", object_getClassName(self)];
+	return string;
+}
+
+
+#pragma mark - Control Methods
 
 // start the async server
 - (void)start;
 {
-	// set up the listen socket
     [self setupListenSocket];
-    
-    // set up the net service
     [self setupNetService];
 }
 
 // stop the async server
 - (void)stop;
 {
-	// close netservice if serviceName is present
-    if(netService != nil)
-	{
-		netService.delegate = nil;
-        [netService stop];
-        [netService release];
-        netService = nil;
+	// cancel net service resolve
+    if (self.netService) {
+        [self.netService stop];
+        _netService = nil;
     }
-	
     
 	// close listening socket
-    if(listenSocket != nil)
-	{
-		listenSocket.delegate = nil;
-        [listenSocket disconnect];
-		[listenSocket release];
-        listenSocket = nil;
+    if (self.listenSocket) {
+        [self.listenSocket disconnect];
+        _listenSocket = nil;
     }
     
     // close open connections
-	for(AsyncConnection *connection in connections) {
-		connection.delegate = nil;
+	for (AsyncConnection *connection in self.connections) {
 		[connection cancel];
 	}
-	[connections removeAllObjects];
+	[self.connections removeAllObjects];
 }
 
 - (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
 {
-	for(AsyncConnection *connection in connections) {
-		if(![connection connected]) continue;
+	for (AsyncConnection *connection in self.connections) {
+		if (![connection connected]) continue;
 		[connection sendObject:object tag:tag];
 	}
 }
 
-// report connections
-- (NSSet *)connections;
-{
-    return [NSSet setWithSet:connections];
-}
 
-
-#pragma mark accessors
+#pragma mark - Custom Accessors
 
 // setting the service name restarts the net service
-- (void)setServiceName:(NSString *)theServiceName;
+- (void)setServiceName:(NSString *)serviceName;
 {
-	if(![serviceName isEqualToString:theServiceName]) {
-		[serviceName release];
-		serviceName = [theServiceName retain];
-		
-		// restart net service
-		if(netService) {
-			netService.delegate = nil;
-			[netService stop];
-			[netService release];
-			netService = nil;
-			
+	if(![self.serviceName isEqualToString:serviceName]) {
+		_serviceName = serviceName;
+		if(self.netService) {
+			[self.netService stop];
+			_netService = nil;
 			[self setupNetService];
 		}
 	}
 }
 
 
-#pragma mark private methods
+#pragma mark - Private Methods
 
 // set up the listening socket
 - (void)setupListenSocket;
 {
-	// do nothing if the socket is already set up
-	if(listenSocket) return;
+	if(self.listenSocket) return;
 	
-	// create async socket
-	listenSocket = [[AsyncSocket alloc] initWithDelegate:self];
-	
-	// start listening on port
-	NSError *error = nil;
-	[listenSocket acceptOnPort:port error:&error];
-	if(error) {
-        if([self.delegate respondsToSelector:@selector(server:didFailWithError:)])
-            [self.delegate server:self didFailWithError:error];
+	// set up listening socket
+	_listenSocket = [[AsyncSocket alloc] initWithDelegate:self];
+	NSError *error;
+	if (![self.listenSocket acceptOnPort:self.port error:&error]) {
+		CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);
+		_listenSocket = nil;
+		return;
 	}
 	
-	// update port
-	port = [listenSocket localPort];
+	// update port from socket
+	_port = [self.listenSocket localPort];
 }
 
 // set up the net service
 - (void)setupNetService;
 {
-    // do nothing if we do not have a service name
-    if(!self.serviceName) return;
-    
-    // do nothing if we already have a net service
-    if(netService) return;
+    if(!self.serviceName || self.netService) return;
 	
     // create and publish net service
-	netService = [[NSNetService alloc] initWithDomain:self.serviceDomain type:self.serviceType name:self.serviceName port:(int)port];
-    netService.delegate = self;
-    [netService publish];
+	_netService = [[NSNetService alloc] initWithDomain:self.serviceDomain type:self.serviceType name:self.serviceName port:self.port];
+    self.netService.delegate = self;
+    [self.netService publish];
 }
 
 
-#pragma mark AsyncConnectionDelegate
+#pragma mark - AsyncConnectionDelegate
 
 // the connection was successfully connected
 - (void)connectionDidConnect:(AsyncConnection *)theConnection;
 {
-	// inform delegate
-    if([self.delegate respondsToSelector:@selector(server:didConnect:)])
-        [self.delegate server:self didConnect:theConnection];
+	CallOptionalDelegateMethod(server:didConnect:, server:self didConnect:theConnection)
 }
 
 // the connection was disconnected
 - (void)connectionDidDisconnect:(AsyncConnection *)theConnection;
 {
-	[[theConnection retain] autorelease];
-	
-	// remove from our active connections
-	[connections removeObject:theConnection];
-	
-	// inform delegate
-    if([self.delegate respondsToSelector:@selector(server:didDisconnect:)])
-        [delegate server:self didDisconnect:theConnection];
+	[self.connections removeObject:theConnection];
+	CallOptionalDelegateMethod(server:didDisconnect:, server:self didDisconnect:theConnection)
 }
 
 // an object was received over this connection
 - (void)connection:(AsyncConnection *)theConnection didReceiveObject:(id)object tag:(UInt32)tag;
 {
-	// inform delegate
-    if([self.delegate respondsToSelector:@selector(server:didReceiveObject:tag:fromConnection:)])
-        [self.delegate server:self didReceiveObject:object tag:tag fromConnection:theConnection];
+	CallOptionalDelegateMethod(server:didReceiveObject:tag:fromConnection:, server:self didReceiveObject:object tag:tag fromConnection:theConnection)
 }
 
 // an object was sent over this connection
 - (void)connection:(AsyncConnection *)theConnection didSendObjectWithTag:(UInt32)tag;
 {
-	// inform delegate
-    if([self.delegate respondsToSelector:@selector(server:didSendObjectWithTag:toConnection:)])
-        [self.delegate server:self didSendObjectWithTag:tag toConnection:theConnection];
+	CallOptionalDelegateMethod(server:didSendObjectWithTag:toConnection:, server:self didSendObjectWithTag:tag toConnection:theConnection)
 }
 
 // the connection reported an error
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 {
-	// inform delegate
-    if([self.delegate respondsToSelector:@selector(server:didFailWithError:)])
-        [self.delegate server:self didFailWithError:error];
+	CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error)
 }
 
 
-#pragma mark AsyncSocketDelegate
+#pragma mark - AsyncSocketDelegate
 
 /**
  Called when a socket accepts a connection.  Another socket is spawned to handle it. The new socket will have
@@ -214,12 +206,9 @@
  **/
 - (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket;
 {
-	// create a new connection with the socket
 	AsyncConnection *connection = [AsyncConnection connectionWithSocket:newSocket];
 	connection.delegate = self;
-	
-	// remember the connection
-	[connections addObject:connection];
+	[self.connections addObject:connection];
 }
 
 /**
@@ -234,59 +223,11 @@
 
 #pragma mark NSNetServiceDelegate
 
-// not published
+// net service was not published
 - (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict;
 {
-	// inform the delegate
 	NSError *error = [NSError errorWithDomain:@"NSNetService" code:-1 userInfo:errorDict];
-	[self.delegate server:self didFailWithError:error];
-}
-
-
-#pragma mark memory management
-
-// init
-- (id)init
-{
-	self = [super init];
-	if (self != nil) {
-		
-		// create connections set
-		connections = [NSMutableSet new];
-		
-		// net service defaults
-		self.serviceType = AsyncNetworkDefaultServiceType;
-		self.serviceDomain = AsyncNetworkDefaultServiceDomain;
-	}
-	return self;
-}
-
-// clean up
-- (void)dealloc
-{
-	// stop should clean up all connections, the netservice, and the listening socket
-	[self stop];
-	
-	// clean up connection handler
-	[connections release];
-	
-	// clean up properties
-	[serviceType release];
-	[serviceDomain release];
-	[serviceName release];
-	
-	[super dealloc];
-}
-
-// debug description
-- (NSString *)description;
-{
-	NSMutableString *string = [NSMutableString stringWithFormat:@"<%s serviceType=%@ serviceName=%@ port=%d>", object_getClassName(self), serviceType, serviceName, port];
-	for(AsyncConnection *connection in connections) {
-		[string appendFormat:@"\n\t%@", connection.description];
-	}
-	[string appendFormat:@"\n</%s>", object_getClassName(self)];
-	return string;
+	CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error)
 }
 
 
