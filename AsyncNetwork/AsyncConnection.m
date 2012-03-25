@@ -213,6 +213,7 @@ Synthesize(port)
 	
 	// prepare the header
 	AsyncConnectionHeader header;
+	header.type = type;
 	header.command = command;
 	
 	// encode data
