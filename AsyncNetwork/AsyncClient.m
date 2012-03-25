@@ -52,13 +52,7 @@ Synthesize(autoConnect)
 // clean up
 - (void)dealloc;
 {
-	// stop should clean up the net service browser and all open connections
 	[self stop];
-	
-	// clean up
-	
-	// clean up properties
-	
 }
 
 // debug description
@@ -104,13 +98,25 @@ Synthesize(autoConnect)
 }
 
 // send object to all servers
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	AsyncConnection *connection;
 	for (connection in self.connections) {
 		if(![connection connected]) continue;
-		[connection sendObject:object tag:tag];
+		[connection sendCommand:command object:object responseBlock:block];
 	}
+}
+
+// send command and object without response block
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+{
+	[self sendCommand:command object:object responseBlock:nil];
+}
+
+// send object with command or response block
+- (void)sendObject:(id<NSCoding>)object;
+{
+	[self sendCommand:0 object:object responseBlock:nil];
 }
 
 

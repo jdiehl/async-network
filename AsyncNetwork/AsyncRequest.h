@@ -35,23 +35,20 @@
 
 @property (readonly) AsyncConnection *connection;
 
-@property (readonly) NSNetService *netService; // target net service (host & port are ignored if set)
-@property (readonly) NSString *host;           // target host
-@property (readonly) NSUInteger port;          // target port
 @property (assign) NSTimeInterval timeout;     // connection timeout
+@property (assign) AsyncCommand command;       // the command
 @property (strong) NSObject<NSCoding> *object; // connection object
 @property (copy) AsyncNetworkResponseBlock responseBlock; // connection response block
 
 
 + (NSMutableSet *)activeRequests;
 
-+ (id)fireRequestWithNetService:(NSNetService *)netService object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 + (id)requestWithNetService:(NSNetService *)netService;
 + (id)requestWithHost:(NSString *)theHost port:(NSUInteger)thePort;
 - (id)initWithNetService:(NSNetService *)netService;
 - (id)initWithHost:(NSString *)host port:(NSUInteger)port;
-
 - (void)fire;
 
 @end

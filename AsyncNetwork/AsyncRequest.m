@@ -27,10 +27,8 @@
 @implementation AsyncRequest
 
 Synthesize(connection)
-Synthesize(netService)
-Synthesize(host)
-Synthesize(port)
 Synthesize(timeout)
+Synthesize(command)
 Synthesize(object)
 Synthesize(responseBlock)
 
@@ -47,9 +45,10 @@ Synthesize(responseBlock)
 # pragma mark - Constructors
 
 // fire a net service request to the given port and call the completion block afterwards
-+ (id)fireRequestWithNetService:(NSNetService *)netService object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	AsyncRequest *request = [self requestWithNetService:netService];
+	request.command = command;
 	request.object = object;
 	request.responseBlock = block;
 	[request fire];
@@ -57,7 +56,7 @@ Synthesize(responseBlock)
 }
 
 // fire a request to the given host and port and call the completion block afterwards
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	AsyncRequest *request = [self requestWithHost:host port:port];
 	request.object = object;
@@ -94,7 +93,7 @@ Synthesize(responseBlock)
 {
     self = [self init];
     if (self) {
-		_netService = netService;
+		_connection = [[AsyncConnection alloc] initWithNetService:netService];
     }
     return self;
 }
@@ -104,8 +103,7 @@ Synthesize(responseBlock)
 {
     self = [self init];
     if (self) {
-        _host = host;
-		_port = port;
+		_connection = [[AsyncConnection alloc] initWithHost:host port:port];
     }
     return self;
 }
@@ -113,7 +111,7 @@ Synthesize(responseBlock)
 // debug description
 - (NSString *)description;
 {
-	return [NSString stringWithFormat:@"<%s host=%@ port=%d>", object_getClassName(self), self.host, self.port, object_getClassName(self)];
+	return [NSString stringWithFormat:@"<%s host=%@ port=%d>", object_getClassName(self), self.connection.host, self.connection.port, object_getClassName(self)];
 }
 
 
@@ -122,16 +120,9 @@ Synthesize(responseBlock)
 // fire the request and close the connection and call the completion block afterwards
 - (void)fire;
 {
-	if(self.netService) {
-		_connection = [[AsyncConnection alloc] initWithNetService:self.netService];
-	} else {
-		_connection = [[AsyncConnection alloc] initWithHost:self.host port:self.port];
-		[self.connection start];
-	}
-	self.connection.delegate = self;
-	
-	// the request retains itself as long as the connection is active
 	[[[self class] activeRequests] addObject:self];
+	self.connection.delegate = self;
+	[self.connection start];
 }
 
 
@@ -140,8 +131,11 @@ Synthesize(responseBlock)
 // a new client has connected to the server
 - (void)connectionDidConnect:(AsyncConnection *)theConnection;
 {
-	if(self.object) {
-		[self.connection sendObject:self.object tag:0];
+	if (self.command || self.object || self.responseBlock) {
+		[self.connection sendCommand:self.command object:self.object responseBlock:^(id response, NSError *error) {
+			[self.connection cancel];
+			if (self.responseBlock) self.responseBlock(response, error);
+		}];
 	}
 }
 
@@ -151,20 +145,11 @@ Synthesize(responseBlock)
 	[[[self class] activeRequests] removeObject:self];
 }
 
-// the server received an object from a client
-- (void)connection:(AsyncConnection *)theConnection didReceiveObject:(id)object tag:(UInt32)tag;
-{
-	if (self.responseBlock) self.responseBlock(object, nil);
-	[self.connection cancel];
-	_connection = nil;
-}
-
 // a client failed with an error
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 {
 	if (self.responseBlock) self.responseBlock(nil, error);
 	[self.connection cancel];
-	_connection = nil;
 }
 
 

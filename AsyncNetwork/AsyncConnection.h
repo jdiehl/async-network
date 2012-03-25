@@ -25,7 +25,15 @@
 #import <Foundation/Foundation.h>
 #import "AsyncSocket.h"
 
-@class AsyncConnection;
+@class  AsyncConnection;
+
+typedef UInt32 AsyncCommand;
+typedef struct {
+	UInt16 type;
+	AsyncCommand command;
+	UInt32 blockTag;
+	UInt32 bodyLength;
+} AsyncConnectionHeader;
 
 /// AsyncConnection delegate protocol
 @protocol AsyncConnectionDelegate <NSObject>
@@ -34,8 +42,8 @@
 #pragma mark - AsyncConnectionDelegate
 - (void)connectionDidConnect:(AsyncConnection *)theConnection;
 - (void)connectionDidDisconnect:(AsyncConnection *)theConnection;
-- (void)connection:(AsyncConnection *)theConnection didReceiveObject:(id)object tag:(UInt32)tag;
-- (void)connection:(AsyncConnection *)theConnection didSendObjectWithTag:(UInt32)tag;
+- (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object;
+- (id<NSCoding>)connection:(AsyncConnection *)theConnection respondToCommand:(AsyncCommand)command object:(id)object;
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 
 @end
@@ -43,6 +51,7 @@
 /// The AsyncConnection handles a single socket connection to the target host or net service
 @interface AsyncConnection : NSObject <AsyncSocketDelegate, NSNetServiceDelegate> {
 	@private
+	AsyncConnectionHeader _lastHeader;
     UInt32 _currentBlockTag;
     NSMutableDictionary *_responseBlocks;
 }
@@ -57,6 +66,7 @@
 @property (assign) NSTimeInterval timeout;     // connection timeout
 
 + (NSRunLoop *)networkRunLoop;
+
 + (id)connectionWithSocket:(AsyncSocket *)socket;
 + (id)connectionWithNetService:(NSNetService *)netService;
 + (id)connectionWithHost:(NSString *)host port:(NSUInteger)port;
@@ -67,7 +77,9 @@
 
 - (void)start;
 - (void)cancel;
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
-- (void)sendObject:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendObject:(id<NSCoding>)object;
 
 @end

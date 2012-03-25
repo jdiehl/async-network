@@ -58,6 +58,9 @@
 
 - (void)start;
 - (void)stop;
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
+
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendObject:(id<NSCoding>)object;
 
 @end
