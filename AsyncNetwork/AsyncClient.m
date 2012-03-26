@@ -95,6 +95,7 @@ Synthesize(autoConnect)
 		[connection cancel];
 	}
 	[self.connections removeAllObjects];
+	[self.services removeAllObjects];
 }
 
 // send object to all servers
