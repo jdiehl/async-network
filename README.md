@@ -82,7 +82,7 @@ To send a request call `sendObject:responseHandler:` on a client and provide a
 block that is called with the server's response to the request.
 
 ```objc
-[client sendCommand"command object:message responseHandler:^(id response, NSError *error) {
+[client sendCommand:command object:message responseHandler:^(id response, NSError *error) {
     // react to the response here
 }];
 ```
@@ -91,7 +91,7 @@ On the server, you must implement the delegate method
 `server:respondToCommand:object:`:
 
 ```objc
-- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:command object:message {
+- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:(AsyncCommand)command object:(id)object {
     // return an appropriate response
 }
 ```
