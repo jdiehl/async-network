@@ -33,7 +33,7 @@
 
 #pragma mark - AsyncBroadcasterDelegate
 
-- (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didReceiveData:(NSData *)data fromAddress:(NSData *)address;
+- (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didReceiveData:(NSData *)data fromHost:(NSString *)host;
 - (void)broadcasterDidSendData:(AsyncBroadcaster *)theBroadcaster;
 - (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didFailWithError:(NSError *)error;
 
