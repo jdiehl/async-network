@@ -100,6 +100,7 @@ Synthesize(autoDisconnect)
     
     // close open connections
 	for (AsyncConnection *connection in self.connections) {
+		connection.delegate = nil;
 		[connection cancel];
 	}
 	[self.connections removeAllObjects];

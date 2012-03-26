@@ -92,6 +92,7 @@ Synthesize(autoConnect)
 	// cancel all open connections
 	AsyncConnection *connection;
 	for (connection in self.connections) {
+		connection.delegate = nil;
 		[connection cancel];
 	}
 	[self.connections removeAllObjects];
