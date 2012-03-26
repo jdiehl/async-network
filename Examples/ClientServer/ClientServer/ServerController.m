@@ -111,8 +111,7 @@
 
 - (void)server:(AsyncServer *)theServer didFailWithError:(NSError *)error;
 {
-	// just display the error
-    [self.window presentError:error];
+	[self.output insertText:[NSString stringWithFormat:@"[error] %@\n", error.localizedDescription]];
 }
 
 

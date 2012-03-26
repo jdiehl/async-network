@@ -115,8 +115,7 @@
 
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;
 {
-	// just present the error
-	[self.window presentError:error];
+	[self.output insertText:[NSString stringWithFormat:@"[error] %@\n", error.localizedDescription]];
 }
 
 
