@@ -112,6 +112,9 @@ Synthesize(port)
 		self.socket.delegate = self;
 		_port = self.socket.connectedPort;
 		_host = self.socket.connectedHost;
+		
+		// we are already connected -> start receiving
+		[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	}
 	return self;
 }

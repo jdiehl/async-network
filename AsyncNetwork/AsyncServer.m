@@ -177,12 +177,6 @@ Synthesize(autoDisconnect)
 
 #pragma mark - AsyncConnectionDelegate
 
-// the connection was successfully connected
-- (void)connectionDidConnect:(AsyncConnection *)theConnection;
-{
-	CallOptionalDelegateMethod(server:didConnect:, server:self didConnect:theConnection)
-}
-
 // the connection was disconnected
 - (void)connectionDidDisconnect:(AsyncConnection *)theConnection;
 {
@@ -227,6 +221,7 @@ Synthesize(autoDisconnect)
 	AsyncConnection *connection = [AsyncConnection connectionWithSocket:newSocket];
 	connection.delegate = self;
 	[self.connections addObject:connection];
+	CallOptionalDelegateMethod(server:didConnect:, server:self didConnect:connection)
 }
 
 
