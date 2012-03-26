@@ -98,7 +98,7 @@ Synthesize(autoConnect)
 }
 
 // send object to all servers
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	AsyncConnection *connection;
 	for (connection in self.connections) {
@@ -108,7 +108,7 @@ Synthesize(autoConnect)
 }
 
 // send command and object without response block
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object;
 {
 	[self sendCommand:command object:object responseBlock:nil];
 }

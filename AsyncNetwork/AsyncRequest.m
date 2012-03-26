@@ -45,7 +45,7 @@ Synthesize(responseBlock)
 # pragma mark - Constructors
 
 // fire a net service request to the given port and call the completion block afterwards
-+ (id)fireRequestWithNetService:(NSNetService *)netService command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	AsyncRequest *request = [self requestWithNetService:netService];
 	request.command = command;
@@ -56,7 +56,7 @@ Synthesize(responseBlock)
 }
 
 // fire a request to the given host and port and call the completion block afterwards
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	AsyncRequest *request = [self requestWithHost:host port:port];
 	request.object = object;

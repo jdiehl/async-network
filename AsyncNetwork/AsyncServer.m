@@ -108,7 +108,7 @@ Synthesize(autoDisconnect)
 }
 
 // send command and object with response block
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
 	for (AsyncConnection *connection in self.connections) {
 		if (![connection connected]) continue;
@@ -117,7 +117,7 @@ Synthesize(autoDisconnect)
 }
 
 // send command and object without response block
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object;
 {
 	[self sendCommand:command object:object responseBlock:nil];
 }

@@ -78,8 +78,8 @@ typedef struct {
 - (void)start;
 - (void)cancel;
 
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object;
 - (void)sendObject:(id<NSCoding>)object;
 
 @end

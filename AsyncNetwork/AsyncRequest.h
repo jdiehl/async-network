@@ -43,8 +43,8 @@
 
 + (NSMutableSet *)activeRequests;
 
-+ (id)fireRequestWithNetService:(NSNetService *)netService command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(UInt32)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
 + (id)requestWithNetService:(NSNetService *)netService;
 + (id)requestWithHost:(NSString *)theHost port:(NSUInteger)thePort;
 - (id)initWithNetService:(NSNetService *)netService;
