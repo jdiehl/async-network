@@ -28,24 +28,26 @@ AsyncClient *client [AsyncClient new];
 ```
 
 To receive messages, assign a delegate to the server and/or client, and
-implement `server:didReceiveObject:`.
+implement `server:didReceiveCommand:object:`.
 
 ```objc
 server.delegate = myController;
 
 // in MyController.m
-- (void)server:(AsyncServer *)theServer didReceiveObject:(id)object tag:(uint32)tag {
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object {
     // respond to incoming messages here
 }
 ````
 
-To send messages, call `sendObject:tag:` on the server and/or client. The
+To send messages, call `sendCommand:object:` on the server and/or client. The
 message object is automatically encoded via
 [NSCoding](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Protocols/NSCoding_Protocol/Reference/Reference.html).
 
 ```objc
-[client sendObject:message tag:0];
+[client sendCommand:command object:message];
 ```
+
+Command is a 32bit number that can be used to identify the type of message being sent.
 
 ### Peer-To-Peer Networking
 
@@ -80,9 +82,18 @@ To send a request call `sendObject:responseHandler:` on a client and provide a
 block that is called with the server's response to the request.
 
 ```objc
-[client sendObject:message responseHandler:^(id response, NSError *error) {
+[client sendCommand"command object:message responseHandler:^(id response, NSError *error) {
     // react to the response here
 }];
+```
+
+On the server, you must implement the delegate method
+`server:respondToCommand:object:`:
+
+```objc
+- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:command object:message {
+    // return an appropriate response
+}
 ```
 
 If you do not want to keep your connections alive longer than necessary, you
@@ -90,9 +101,7 @@ should use `AsyncRequest` instead of `AsyncClient`. `AsyncRequest` will connect
 to a server, send a request, wait for the response, and disconnect in one call.
 
 ```objc
-AsyncRequest *request = [AsyncRequest requestWithHost:@"192.168.0.1" port:12345];
-request.body = myRequestObject;
-[request fireWithCompletionBlock:^(id response, NSError *error) {
+[AsyncRequest fireRequestWithHost:@"192.168.0.1" port:12345 command:0 object:message responseBlock:^(id response, NSError *error) {
     // react to the response here
 }];
 ```
