@@ -12,12 +12,12 @@
 		2D1D679A1518D63C0039CE94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67991518D63C0039CE94 /* main.m */; };
 		2D1D67A11518D63C0039CE94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67A01518D63C0039CE94 /* AppDelegate.m */; };
 		2D1D67A41518D63C0039CE94 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D67A21518D63C0039CE94 /* MainMenu.xib */; };
-		2D1D67B91518DAAB0039CE94 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D67B81518DAAB0039CE94 /* AsyncNetwork.framework */; };
 		2D1D67BB1518DB3E0039CE94 /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67AB1518D64E0039CE94 /* ClientController.m */; };
 		2D1D67BC1518DB420039CE94 /* ClientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D67B11518D6DD0039CE94 /* ClientController.xib */; };
 		2D1D67BD1518DB480039CE94 /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67AE1518D64E0039CE94 /* ServerController.m */; };
 		2D1D67BE1518DB4B0039CE94 /* ServerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D67B31518D6E20039CE94 /* ServerController.xib */; };
 		2D1D67C01518DBAA0039CE94 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D67BF1518DBAA0039CE94 /* Icon.icns */; };
+		2DFCDF91151FE78A00A28CFD /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D67B81518DAAB0039CE94 /* AsyncNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D1D67B91518DAAB0039CE94 /* AsyncNetwork.framework in Frameworks */,
 				2D1D678E1518D63C0039CE94 /* Cocoa.framework in Frameworks */,
+				2DFCDF91151FE78A00A28CFD /* AsyncNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,7 +37,8 @@ NSData *HeaderToData(AsyncConnectionHeader header);
 AsyncConnectionHeader DataToHeader(NSData *data);
 
 @interface AsyncConnection ()
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block type:(UInt16)type;
+- (void)sendHeader:(AsyncConnectionHeader)header object:(id<NSCoding>)object;
+- (void)sendResponse:(id<NSCoding>)object tag:(UInt32)tag;
 - (void)respondToMessageWithHeader:(AsyncConnectionHeader)header object:(id<NSCoding>)object;
 @end
 
@@ -188,33 +189,41 @@ Synthesize(port)
 // send command and object with response block
 - (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
-	[self sendCommand:command object:object responseBlock:block type:block ? AsyncConnectionTypeRequest : AsyncConnectionTypeMessage];
+	// prepare the header
+	AsyncConnectionHeader header;
+	header.type = block ? AsyncConnectionTypeRequest : AsyncConnectionTypeMessage;
+	header.command = command;
+	
+	// store response block
+	if (block) {
+		header.blockTag = ++_currentBlockTag;
+		[_responseBlocks setObject:block forKey:[NSNumber numberWithInteger:header.blockTag]];
+	} else {
+		header.blockTag = 0;
+	}
+	
+	[self sendHeader:header object:object];
 }
 
 // send command and object without response block
 - (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
 {
-	[self sendCommand:command object:object responseBlock:nil type:AsyncConnectionTypeMessage];
+	[self sendCommand:command object:object responseBlock:nil];
 }
 
 // send object with command or response block
 - (void)sendObject:(id<NSCoding>)object;
 {
-	[self sendCommand:0 object:object responseBlock:nil type:AsyncConnectionTypeMessage];
+	[self sendCommand:0 object:object responseBlock:nil];
 }
 
 
 #pragma mark - Private Methods
 
-// send
-- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block type:(UInt16)type;
+// generic send
+- (void)sendHeader:(AsyncConnectionHeader)header object:(id<NSCoding>)object;
 {
 	NSAssert(self.socket, @"AsyncConnection: attempted to send an object without being connected");
-	
-	// prepare the header
-	AsyncConnectionHeader header;
-	header.type = type;
-	header.command = command;
 	
 	// encode data
 	NSData *bodyData = nil;
@@ -225,20 +234,24 @@ Synthesize(port)
 		header.bodyLength = 0;
 	}
 	
-	// store response block
-	if (block) {
-		header.blockTag = ++_currentBlockTag;
-		[_responseBlocks setObject:block forKey:[NSNumber numberWithInteger:header.blockTag]];
-	} else {
-		header.blockTag = 0;
-	}
-	
 	// send the header
 	NSData *headerData = [NSData dataWithBytes:&header length:AsyncConnectionHeaderSize];
 	[self.socket writeData:headerData withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	
 	// send the body
 	if (header.bodyLength > 0) [self.socket writeData:bodyData withTimeout:self.timeout tag:AsyncConnectionBodyTag];
+}
+
+// send a response
+- (void)sendResponse:(id<NSCoding>)object tag:(UInt32)tag;
+{
+	// prepare the header
+	AsyncConnectionHeader header;
+	header.type = AsyncConnectionTypeResponse;
+	header.command = 0;
+	header.blockTag = tag;
+	
+	[self sendHeader:header object:object];
 }
 
 // get a response from the delegate for the given header and object
@@ -257,13 +270,13 @@ Synthesize(port)
 			if ([self.delegate respondsToSelector:@selector(connection:respondToCommand:object:)]) {
 				response = [self.delegate connection:self respondToCommand:header.command object:object];
 			}
-			[self sendCommand:0 object:response responseBlock:nil type:AsyncConnectionTypeResponse];
+			[self sendResponse:response tag:header.blockTag];
 			break;
 			
 		case AsyncConnectionTypeResponse:
 			// a response to a request does not require a response
 			block = [_responseBlocks objectForKey:[NSNumber numberWithInteger:header.blockTag]];
-			if (block) block(response, nil);
+			if (block) block(object, nil);
 			break;
 	}
 }

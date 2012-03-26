@@ -45,7 +45,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 {
 	// ask the client to send the input string to all connected servers
-    [self.client sendObject:self.input.text tag:0];
+    [self.client sendObject:self.input.text];
 	
 	// display log entry
 	NSString *string = [NSString stringWithFormat:@">> %@\n", self.input.text];
@@ -59,11 +59,6 @@
 
 #pragma mark - AsyncClientDelegate
 
-/**
- @brief The client has successfully established a connection to a server.
- @param theClient The client that established the connection
- @param connection The connection to the client
- */
 - (void)client:(AsyncClient *)theClient didConnect:(AsyncConnection *)connection;
 {
 	// display log entry
@@ -71,11 +66,6 @@
 	[self appendLogMessage:string];
 }
 
-/**
- @brief The client was disconnected from a server.
- @param theClient The client that was disconnected
- @param connection The connection that was disconnected
- */
 - (void)client:(AsyncClient *)theClient didDisconnect:(AsyncConnection *)connection;
 {
 	// display log entry
@@ -83,28 +73,13 @@
 	[self appendLogMessage:string];
 }
 
-/**
- @brief The client did receive an object from a server
- @param theClient The client that received the object
- @param object The object
- @param tag The transaction tag for the object
- @param connection The connection to the server
- */
-- (void)client:(AsyncClient *)theClient didReceiveObject:(id)object tag:(UInt32)tag fromConnection:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
 {
 	// display log entry
     NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
-	[self appendLogMessage:string];
+	[self.output insertText:string];
 }
 
-/**
- @brief The AsyncConnection encountered an error.
- 
- Errors are forwarded from all connection objects.
- @see AsyncConnectionDelegate
- @param theClient The client that encountered the error
- @param error An object describing the error
- */
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;
 {
 	// log the error

@@ -23,69 +23,41 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "AsyncClientDelegate.h"
-#import "AsyncConnectionDelegate.h"
 
-/**
- @brief A client can discover and automatically connect to all servers on the network via Bonjour.
- @details 
- @author Jonathan Diehl
- @date 08.03.11
- */
-@interface AsyncClient : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate, AsyncConnectionDelegate> {
-	
-@private
-	BOOL autoConnect;
-	NSMutableSet *connections;
-	
-	// net service browser for automatic service discovery via Bonjour
-	NSNetServiceBrowser *netServiceBrowser;
-	
-	// netservice configuration
-	NSString *serviceType; // the net service type
-	NSString *serviceDomain; // the domain where bonjour will be published, default: .local
-	
-	// delegate
-	id<AsyncClientDelegate> delegate;
-}
+#import "AsyncConnection.h"
 
-/// The net service type identifier (default: _AsyncNetwork._tcp).
-@property(nonatomic, retain) NSString *serviceType;
+@class AsyncClient;
 
-/// The net service domain (default: local.).
-@property(nonatomic, retain) NSString *serviceDomain;
+/// AsyncClient delegate protocol
+@protocol AsyncClientDelegate <NSObject>
+@optional
 
-/// Configuer whether the client automatically connect to a discovered server (default: YES).
-@property(assign) BOOL autoConnect;
+#pragma mark - AsyncClientDelegate
+- (void)client:(AsyncClient *)theClient didConnect:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didDisconnect:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (id<NSCoding>)client:(AsyncClient *)theClient respondToCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;
 
-/// The delegate.
-@property(assign) id<AsyncClientDelegate> delegate;
+@end
 
-/// All active server connections.
-@property(readonly) NSSet *connections;
+/// A client can discover and automatically connect to all servers on the network via Bonjour.
+@interface AsyncClient : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate, AsyncConnectionDelegate>
 
-/**
- @brief Start the client.
- 
- Sets up the Bonjour net service browser.
- */
+@property (readonly) NSNetServiceBrowser *serviceBrowser;
+@property (readonly) NSMutableSet *services;    // the discovered services, observable, do not change!
+@property (readonly) NSMutableSet *connections; // the discovered connections, observable, do not change!
+
+@property (unsafe_unretained) id<AsyncClientDelegate> delegate;
+@property (strong) NSString *serviceType;   // Bonjour service type
+@property (strong) NSString *serviceDomain; // Bonjour service domain
+@property (assign) BOOL autoConnect;        // should the client automatically connect to discovered servers?
+
 - (void)start;
-
-/**
- @brief Stop the client.
- 
- Closes all active connections and stops the Bonjour net service browser.
- */
 - (void)stop;
 
-/**
- @brief Send an object to all connected servers.
- 
- To send objects to individual servers use the connections property.
- @see connections
- @param object The object to be sent.
- @param tag The transaction tag.
- */
-- (void)sendObject:(id<NSCoding>)object tag:(UInt32)tag;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
+- (void)sendCommand:(UInt32)command object:(id<NSCoding>)object;
+- (void)sendObject:(id<NSCoding>)object;
 
 @end

@@ -17,6 +17,23 @@
 		2D246B2F151806BF00101EAB /* PingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246B2E151806BF00101EAB /* PingServer.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2DFCDF9F151FE80D00A28CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DFCDF96151FE80D00A28CFD /* AsyncNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2467C6151800AB00101EAB;
+			remoteInfo = AsyncNetwork;
+		};
+		2DFCDFA1151FE80D00A28CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DFCDF96151FE80D00A28CFD /* AsyncNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D1F1F1715190A8A00BF5F57;
+			remoteInfo = AsyncNetworkStatic;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2D1D6771151808C10039CE94 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../../../Resources/Icon.icns; sourceTree = "<group>"; };
 		2D1D677C1518D6180039CE94 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../../../../../../../Library/Frameworks/AsyncNetwork.framework; sourceTree = "<group>"; };
@@ -34,6 +51,7 @@
 		2D246B201518026500101EAB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2D246B2D151806BF00101EAB /* PingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingServer.h; sourceTree = "<group>"; };
 		2D246B2E151806BF00101EAB /* PingServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingServer.m; sourceTree = "<group>"; };
+		2DFCDF96151FE80D00A28CFD /* AsyncNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AsyncNetwork.xcodeproj; path = ../../AsyncNetwork.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +70,7 @@
 		2D246AFB1518026500101EAB = {
 			isa = PBXGroup;
 			children = (
+				2DFCDF96151FE80D00A28CFD /* AsyncNetwork.xcodeproj */,
 				2D246B101518026500101EAB /* Request */,
 				2D246B091518026500101EAB /* Frameworks */,
 				2D246B071518026500101EAB /* Products */,
@@ -111,6 +130,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2DFCDF97151FE80D00A28CFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DFCDFA0151FE80D00A28CFD /* AsyncNetwork.framework */,
+				2DFCDFA2151FE80D00A28CFD /* libAsyncNetwork.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,12 +178,35 @@
 			mainGroup = 2D246AFB1518026500101EAB;
 			productRefGroup = 2D246B071518026500101EAB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2DFCDF97151FE80D00A28CFD /* Products */;
+					ProjectRef = 2DFCDF96151FE80D00A28CFD /* AsyncNetwork.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2D246B051518026500101EAB /* Request */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2DFCDFA0151FE80D00A28CFD /* AsyncNetwork.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AsyncNetwork.framework;
+			remoteRef = 2DFCDF9F151FE80D00A28CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2DFCDFA2151FE80D00A28CFD /* libAsyncNetwork.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAsyncNetwork.a;
+			remoteRef = 2DFCDFA1151FE80D00A28CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2D246B041518026500101EAB /* Resources */ = {

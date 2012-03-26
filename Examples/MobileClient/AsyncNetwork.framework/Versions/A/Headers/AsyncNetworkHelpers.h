@@ -22,29 +22,45 @@
  * https://github.com/jdiehl/async-network
  */
 
+#import <Foundation/Foundation.h>
+
 /// The standard network response block
 typedef void (^AsyncNetworkResponseBlock)(id response, NSError *error);
 
 /// The local loopback address
-extern NSString *const AsyncNetworkLocalHost;
+extern NSString * AsyncNetworkLocalHost;
 
 /// Default net service type for the AsyncServer
-extern NSString *const AsyncNetworkDefaultServiceType;
+extern NSString *AsyncNetworkDefaultServiceType;
 
 /// Default net service domain for the AsyncServer
-extern NSString *const AsyncNetworkDefaultServiceDomain;
+extern NSString *AsyncNetworkDefaultServiceDomain;
 
 /// Default connection timeout for the AsyncConnection
-#define AsyncNetworkDefaultConnectionTimeout -1.0
+extern const NSTimeInterval AsyncNetworkDefaultConnectionTimeout;
 
 /// Default net service resolve timeout for the AsyncConnection
-#define AsyncNetworkDefaultResolveTimeout -1.0
+extern const NSTimeInterval AsyncNetworkDefaultResolveTimeout;
 
 /// Default broadcasting address for the AsyncBroadcaster
-extern NSString *const AsyncNetworkBroadcastDefaultSubnet;
+extern NSString *AsyncNetworkBroadcastDefaultSubnet;
 
 /// Default broadcasting timeout for the AsyncBroadcaster
-#define AsyncNetworkBroadcastDefaultTimeout -1.0
+extern const NSTimeInterval AsyncNetworkBroadcastDefaultTimeout;
 
 /// Default timeout for the AsyncRequest
-#define AsyncRequestDefaultTimeout -1.0
+extern const NSTimeInterval AsyncRequestDefaultTimeout;
+
+
+/**
+ @brief Return the IP addresses of all local interfaces.
+ @return Array of all local IP address strings
+ */
+extern NSArray *AsyncNetworkGetLocalIPAddresses(void);
+
+/**
+ @brief Test if a given IP address string is local
+ @param address The IP address string to be tested
+ @return YES if the IP address string is local
+ */
+extern BOOL AsyncNetworkIPAddressIsLocal(NSString *address);

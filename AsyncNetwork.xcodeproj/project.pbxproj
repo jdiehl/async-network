@@ -31,8 +31,8 @@
 		2D1F1F3415190BE500BF5F57 /* AsyncNetworkHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */; };
 		2D1F1F3615190BE500BF5F57 /* AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F41518015D00101EAB /* AsyncRequest.m */; };
 		2D1F1F3815190BE500BF5F57 /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
-		2D1F1F3A15190BE800BF5F57 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A95151801DC00101EAB /* AsyncSocket.m */; };
-		2D1F1F3B15190BE800BF5F57 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A97151801DC00101EAB /* AsyncUdpSocket.m */; };
+		2D1F1F3A15190BE800BF5F57 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A95151801DC00101EAB /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2D1F1F3B15190BE800BF5F57 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246A97151801DC00101EAB /* AsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D1F1F57151943F800BF5F57 /* AsyncSocket.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D246A94151801DC00101EAB /* AsyncSocket.h */; };
 		2D1F1F58151943F800BF5F57 /* AsyncUdpSocket.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D246A96151801DC00101EAB /* AsyncUdpSocket.h */; };
 		2D1F1F59151943F800BF5F57 /* AsyncBroadcaster.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E51518015D00101EAB /* AsyncBroadcaster.h */; };

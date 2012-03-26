@@ -40,22 +40,13 @@
 	// display log entry
 	[self.output insertText:[NSString stringWithFormat:@">> %@\n", message]];
 	
-	// create a request to the ping server with the message as body
-	AsyncRequest *request = [AsyncRequest requestWithHost:AsyncNetworkLocalHost port:kPingServerPort];
-	request.body = message;
-	
-	// fire the request
-	[request fireWithCompletionBlock:^(id response, NSError *error) {
-		
-		// report an error
+	// send a request to the ping server with the message as body
+	[AsyncRequest fireRequestWithHost:AsyncNetworkLocalHost port:kPingServerPort command:0 object:message responseBlock:^(id response, NSError *error) {
 		if(error) {
 			[self.window presentError:error];
 			return;
 		}
-		
-		// display the received message
 		[self.output insertText:[NSString stringWithFormat:@"<< %@\n", response]];
-		
 	}];
 }
 

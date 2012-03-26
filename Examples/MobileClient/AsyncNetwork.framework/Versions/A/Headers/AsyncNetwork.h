@@ -22,8 +22,7 @@
  * https://github.com/jdiehl/async-network
  */
 
-#import "AsyncNetworkConstants.h"
-#import "AsyncNetworkFunctions.h"
+#import "AsyncNetworkHelpers.h"
 #import "AsyncConnection.h"
 #import "AsyncRequest.h"
 #import "AsyncClient.h"

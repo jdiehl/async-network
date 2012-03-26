@@ -62,7 +62,7 @@
 - (IBAction)sendInput:(id)sender;
 {
 	// ask the server to send the input string to all connected clients
-    [self.server sendObject:self.input.stringValue tag:0];
+    [self.server sendObject:self.input.stringValue];
 	
 	// display log entry
     NSString *string = [NSString stringWithFormat:@">> %@\n", self.input.stringValue];
@@ -82,11 +82,6 @@
 
 #pragma mark AsyncServerDelegate
 
-/**
- @brief The server has successfully established a connection to a client.
- @param theServer The server that established the connection
- @param connection The connection to the client
- */
 - (void)server:(AsyncServer *)theServer didConnect:(AsyncConnection *)connection;
 {
 	// display log entry
@@ -97,11 +92,6 @@
     [self updateStatus];
 }
 
-/**
- @brief The server was disconnected from a client.
- @param theServer The server that lost the connection
- @param connection The connection that was disconnected
- */
 - (void)server:(AsyncServer *)theServer didDisconnect:(AsyncConnection *)connection;
 {
 	// display log entry
@@ -112,30 +102,13 @@
     [self updateStatus];
 }
 
-/**
- @brief The server did receive an object from a client.
- @param theServer The server that received the objet
- @param object The object
- @param tag The transaction tag for the object
- @param connection The connection to the client
- */
-- (void)server:(AsyncServer *)theServer didReceiveObject:(id)object tag:(UInt32)tag fromConnection:(AsyncConnection *)connection;
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
 {
 	// display log entry
     NSString *string = [NSString stringWithFormat:@"<< %@\n", object];
 	[self.output insertText:string];
 }
 
-/**
- @brief The AsyncConnection encountered an error.
- 
- Errors can occur in the following situations:
- - In -[AsyncServer start] if the initialization of the AsyncSocket fails
- - Errors are forwarded from all connection objects
- @see AsyncConnectionDelegate
- @param theServer The server that encountered the error
- @param error An object describing the error
- */
 - (void)server:(AsyncServer *)theServer didFailWithError:(NSError *)error;
 {
 	// just display the error

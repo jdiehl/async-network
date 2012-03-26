@@ -34,7 +34,7 @@
 	self.server = [AsyncServer new];
 	self.server.port = kPingServerPort;
 	self.server.delegate = self;
-	self.server.disconnectClientsAfterSend = YES;
+	self.server.autoDisconnect = YES;
 	
 	// start the server
 	[self.server start];
@@ -48,17 +48,9 @@
 
 #pragma mark AsyncServerDelegate
 
-/**
- @brief The server did receive an object from a client.
- @param theServer The server that received the objet
- @param object The object
- @param tag The transaction tag for the object
- @param connection The connection to the client
- */
-- (void)server:(AsyncServer *)theServer didReceiveObject:(id)object tag:(UInt32)tag fromConnection:(AsyncConnection *)connection;
+- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
 {
-	NSString *response = [NSString stringWithFormat:@"Received: %@", object];
-	[connection sendObject:response tag:tag];
+	return [NSString stringWithFormat:@"Received: %@", object];
 }
 
 @end

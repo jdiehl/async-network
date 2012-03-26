@@ -20,7 +20,6 @@
 	// Create and configure the broadcaster
 	self.broadcaster = [AsyncBroadcaster new];
 	self.broadcaster.port = kBroadcastPort;
-	self.broadcaster.ignoreLocalBroadcasts = NO;
 	self.broadcaster.delegate = self;
 	
 	// start the broadcaster
@@ -46,12 +45,6 @@
 
 #pragma mark - AsyncBroadcasterDelegate
 
-/**
- @brief The broadcaster received some data from a host.
- @param theBroadcaster The broadcaster that received data
- @param data The data
- @param host The IP address string of the host that the data was received from
- */
 - (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didReceiveData:(NSData *)data fromHost:(NSString *)host;
 {
 	// decode and display the message
@@ -59,17 +52,6 @@
 	[self.output insertText:[NSString stringWithFormat:@"<< [%@:%d] %@\n", host, theBroadcaster.port, message]];
 }
 
-/**
- @brief The AsyncConnection encountered an error.
- 
- Errors can occur in the following situations:
- - In -[AsyncConnection start] if the initialization of the broadcast socket fails
- - In -[AsyncConnection start] if the initialization of the listening socket fails
- - If the AsyncUdpSocket reports an error
- 
- @param theBroadcaster The broadcaster that encountered the error
- @param error An object describing the error
- */
 - (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didFailWithError:(NSError *)error;
 {
 	// present the error
