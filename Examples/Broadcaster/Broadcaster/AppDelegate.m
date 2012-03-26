@@ -54,8 +54,7 @@
 
 - (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didFailWithError:(NSError *)error;
 {
-	// present the error
-	[NSApp presentError:error];
+	[self.output insertText:[NSString stringWithFormat:@"[error] %@\n", error.localizedDescription]];
 }
 
 @end

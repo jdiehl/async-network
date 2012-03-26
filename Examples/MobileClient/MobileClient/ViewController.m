@@ -82,8 +82,7 @@
 
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;
 {
-	// log the error
-	NSLog(@"Error: %@", error);
+	[self.output insertText:[NSString stringWithFormat:@"[error] %@\n", error.localizedDescription]];
 }
 
 
