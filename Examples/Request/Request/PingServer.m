@@ -34,7 +34,6 @@
 	self.server = [AsyncServer new];
 	self.server.port = kPingServerPort;
 	self.server.delegate = self;
-	self.server.autoDisconnect = YES;
 	
 	// start the server
 	[self.server start];

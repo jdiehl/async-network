@@ -42,7 +42,6 @@ Synthesize(serviceType)
 Synthesize(serviceDomain)
 Synthesize(serviceName)
 Synthesize(port)
-Synthesize(autoDisconnect)
 
 // init
 - (id)init
