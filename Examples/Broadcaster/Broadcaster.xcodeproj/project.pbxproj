@@ -13,32 +13,8 @@
 		2D1D67FF1518F8B90039CE94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D67FE1518F8B90039CE94 /* AppDelegate.m */; };
 		2D1D68021518F8B90039CE94 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68001518F8B90039CE94 /* MainMenu.xib */; };
 		2D1D68291518FA920039CE94 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68281518FA920039CE94 /* Icon.icns */; };
-		2DA008721520EAC5001B2551 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0086E1520EABD001B2551 /* AsyncNetwork.framework */; };
+		2DA0089E152104F4001B2551 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0089D152104F4001B2551 /* AsyncNetwork.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2DA0086D1520EABD001B2551 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2DA008641520EABD001B2551 /* AsyncNetwork.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2467C6151800AB00101EAB;
-			remoteInfo = AsyncNetwork;
-		};
-		2DA0086F1520EABD001B2551 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2DA008641520EABD001B2551 /* AsyncNetwork.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D1F1F1715190A8A00BF5F57;
-			remoteInfo = AsyncNetworkStatic;
-		};
-		2DA008731520EACA001B2551 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2DA008641520EABD001B2551 /* AsyncNetwork.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D2467C5151800AB00101EAB;
-			remoteInfo = AsyncNetwork;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2D1D67E71518F8B90039CE94 /* Broadcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broadcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,8 +30,7 @@
 		2D1D67FE1518F8B90039CE94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D1D68011518F8B90039CE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2D1D68281518FA920039CE94 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../../../Resources/Icon.icns; sourceTree = "<group>"; };
-		2D1F1F0C151908B000BF5F57 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../../../../../../../Library/Frameworks/AsyncNetwork.framework; sourceTree = "<group>"; };
-		2DA008641520EABD001B2551 /* AsyncNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AsyncNetwork.xcodeproj; path = ../../AsyncNetwork.xcodeproj; sourceTree = "<group>"; };
+		2DA0089D152104F4001B2551 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = Library/Frameworks/AsyncNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA008721520EAC5001B2551 /* AsyncNetwork.framework in Frameworks */,
+				2DA0089E152104F4001B2551 /* AsyncNetwork.framework in Frameworks */,
 				2D1D67EC1518F8B90039CE94 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,7 +49,6 @@
 		2D1D67DC1518F8B90039CE94 = {
 			isa = PBXGroup;
 			children = (
-				2DA008641520EABD001B2551 /* AsyncNetwork.xcodeproj */,
 				2D1D67F11518F8B90039CE94 /* Broadcaster */,
 				2D1D67EA1518F8B90039CE94 /* Frameworks */,
 				2D1D67E81518F8B90039CE94 /* Products */,
@@ -92,7 +66,7 @@
 		2D1D67EA1518F8B90039CE94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D1F1F0C151908B000BF5F57 /* AsyncNetwork.framework */,
+				2DA0089D152104F4001B2551 /* AsyncNetwork.framework */,
 				2D1D67EB1518F8B90039CE94 /* Cocoa.framework */,
 				2D1D67ED1518F8B90039CE94 /* Other Frameworks */,
 			);
@@ -132,15 +106,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2DA008651520EABD001B2551 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2DA0086E1520EABD001B2551 /* AsyncNetwork.framework */,
-				2DA008701520EABD001B2551 /* libAsyncNetwork.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,7 +120,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2DA008741520EACA001B2551 /* PBXTargetDependency */,
 			);
 			name = Broadcaster;
 			productName = Broadcaster;
@@ -181,35 +145,12 @@
 			mainGroup = 2D1D67DC1518F8B90039CE94;
 			productRefGroup = 2D1D67E81518F8B90039CE94 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2DA008651520EABD001B2551 /* Products */;
-					ProjectRef = 2DA008641520EABD001B2551 /* AsyncNetwork.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				2D1D67E61518F8B90039CE94 /* Broadcaster */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		2DA0086E1520EABD001B2551 /* AsyncNetwork.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AsyncNetwork.framework;
-			remoteRef = 2DA0086D1520EABD001B2551 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2DA008701520EABD001B2551 /* libAsyncNetwork.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAsyncNetwork.a;
-			remoteRef = 2DA0086F1520EABD001B2551 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2D1D67E51518F8B90039CE94 /* Resources */ = {
@@ -235,14 +176,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2DA008741520EACA001B2551 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AsyncNetwork;
-			targetProxy = 2DA008731520EACA001B2551 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2D1D67F41518F8B90039CE94 /* InfoPlist.strings */ = {
