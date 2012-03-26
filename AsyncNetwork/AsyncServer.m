@@ -23,8 +23,6 @@
  */
 
 #import "AsyncServer.h"
-#import "AsyncSocket.h"
-#import "AsyncConnection.h"
 
 
 // private methods
@@ -153,7 +151,7 @@ Synthesize(autoDisconnect)
 	if(self.listenSocket) return;
 	
 	// set up listening socket
-	_listenSocket = [[AsyncSocket alloc] initWithDelegate:self];
+	_listenSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
 	NSError *error;
 	if (![self.listenSocket acceptOnPort:self.port error:&error]) {
 		CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);
@@ -215,23 +213,20 @@ Synthesize(autoDisconnect)
 #pragma mark - AsyncSocketDelegate
 
 /**
- Called when a socket accepts a connection.  Another socket is spawned to handle it. The new socket will have
- the same delegate and will call "onSocket:didConnectToHost:port:".
+ * Called when a socket accepts a connection.
+ * Another socket is automatically spawned to handle it.
+ * 
+ * You must retain the newSocket if you wish to handle the connection.
+ * Otherwise the newSocket instance will be released and the spawned connection will be closed.
+ * 
+ * By default the new socket will have the same delegate and delegateQueue.
+ * You may, of course, change this at any time.
  **/
-- (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket;
+- (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket;
 {
 	AsyncConnection *connection = [AsyncConnection connectionWithSocket:newSocket];
 	connection.delegate = self;
 	[self.connections addObject:connection];
-}
-
-/**
- Called when a new socket is spawned to handle a connection.  This method should return the run-loop of the
- thread on which the new socket and its delegate should operate. If omitted, [NSRunLoop currentRunLoop] is used.
- **/
-- (NSRunLoop *)onSocket:(AsyncSocket *)sock wantsRunLoopForNewSocket:(AsyncSocket *)newSocket;
-{
-	return [AsyncConnection networkRunLoop];
 }
 
 

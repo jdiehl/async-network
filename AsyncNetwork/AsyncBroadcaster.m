@@ -26,8 +26,8 @@
 
 // private methods
 @interface AsyncBroadcaster ()
-- (void)setupListenSocket;
-- (void)setupBroadcastSocket;
+- (BOOL)setupListenSocket;
+- (BOOL)setupBroadcastSocket;
 @end
 
 
@@ -73,8 +73,8 @@ Synthesize(port)
 	NSAssert(self.port > 0, @"AsyncBroadcaster: invalid port: %d", self.port);
 	
 	// set up the listen and broadcast sockets
-	[self setupListenSocket];
-	[self setupBroadcastSocket];
+	if (![self setupListenSocket]) return;
+	if (![self setupBroadcastSocket]) [self stop];
 }
 
 // close listener and broadcast sockets
@@ -99,121 +99,95 @@ Synthesize(port)
 - (void)broadcast:(NSData *)data;
 {
 	NSAssert(self.broadcastSocket, @"AsyncBroadcaster: socket not set up");
-	if (![self.broadcastSocket sendData:data toHost:self.subnet port:self.port withTimeout:self.timeout tag:0]) {
-		NSLog(@"AsyncBroadcaster: failed to send broadcast");
-	}
+	[self.broadcastSocket sendData:data toHost:self.subnet port:self.port withTimeout:self.timeout tag:0];
 }
 
 
 #pragma mark - Private Methods
 
 // create the udp listening socket on the given port
-- (void)setupListenSocket;
+- (BOOL)setupListenSocket;
 {
-	if (self.listenSocket) return;
+	if (self.listenSocket) return YES;
 	
 	// set up the udp socket
-	_listenSocket = [[AsyncUdpSocket alloc] initIPv4];
-	self.listenSocket.delegate = self;
+	_listenSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	[self.listenSocket setIPv6Enabled:NO];
 	
 	// bind to port
 	NSError *error;
 	if (![self.listenSocket bindToPort:self.port error:&error]) {
 		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
 		_listenSocket = nil;
-		return;
+		return NO;
 	}
 	
 	// start listening
-	[self.listenSocket receiveWithTimeout:-1.0 tag:0];
+	if (![self.listenSocket beginReceiving:&error]) {
+		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+		return NO;
+	}
+	
+	return YES;
 }
 
 // create the udp broadcast socket
-- (void)setupBroadcastSocket;
+- (BOOL)setupBroadcastSocket;
 {
-	if (self.broadcastSocket) return;
+	if (self.broadcastSocket) return YES;
 
 	// set up the udp socket
-	_broadcastSocket = [[AsyncUdpSocket alloc] init];
-	self.broadcastSocket.delegate = self;
+	_broadcastSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	[self.broadcastSocket setIPv6Enabled:NO];
 	
 	// enable broadcasting
 	NSError *error;
 	if (![self.broadcastSocket enableBroadcast:YES error:&error]) {
 		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
-		[self stop];
-		return;
+		return NO;
 	}
+	
+	return YES;
 }
 
 
-#pragma mark - AsyncUDPSocketDelegate
+#pragma mark - GCDAsyncUdpSocketDelegate
 
 /**
- Called when the datagram with the given tag has been sent.
+ * Called when the datagram with the given tag has been sent.
  **/
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag;
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag;
 {
 	CallOptionalDelegateMethod(broadcasterDidSendData:, broadcasterDidSendData:self);
 }
 
 /**
- Called if an error occurs while trying to send a datagram.
- This could be due to a timeout, or something more serious such as the data being too large to fit in a sigle packet.
+ * Called if an error occurs while trying to send a datagram.
+ * This could be due to a timeout, or something more serious such as the data being too large to fit in a sigle packet.
  **/
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error;
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error;
 {
 	CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
 }
 
 /**
- Called when the socket has received the requested datagram.
- 
- Due to the nature of UDP, you may occasionally receive undesired packets.
- These may be rogue UDP packets from unknown hosts,
- or they may be delayed packets arriving after retransmissions have already occurred.
- It's important these packets are properly ignored, while not interfering with the flow of your implementation.
- As an aid, this delegate method has a boolean return value.
- If you ever need to ignore a received packet, simply return NO,
- and AsyncUdpSocket will continue as if the packet never arrived.
- That is, the original receive request will still be queued, and will still timeout as usual if a timeout was set.
- For example, say you requested to receive data, and you set a timeout of 500 milliseconds, using a tag of 15.
- If rogue data arrives after 250 milliseconds, this delegate method would be invoked, and you could simply return NO.
- If the expected data then arrives within the next 250 milliseconds,
- this delegate method will be invoked, with a tag of 15, just as if the rogue data never appeared.
- 
- Under normal circumstances, you simply return YES from this method.
+ * Called when the socket has received the requested datagram.
  **/
-- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port;
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext;
 {
-	// ignore messages from ourselves
-	if (AsyncNetworkIPAddressIsLocal(host)) return NO;
-	
-	// inform delegate
-	CallOptionalDelegateMethod(broadcaster:didReceiveData:fromHost:, broadcaster:self didReceiveData:data fromHost:host);
-	
-	// keep listening
-	[self.listenSocket receiveWithTimeout:-1.0 tag:0];
-
-	return YES;
+	NSString *host = [GCDAsyncUdpSocket hostFromAddress:address];
+	if (AsyncNetworkIPAddressIsLocal(host)) return;
+	CallOptionalDelegateMethod(broadcaster:didReceiveData:fromAddress:, broadcaster:self didReceiveData:data fromHost:host);
 }
 
 /**
- Called if an error occurs while trying to receive a requested datagram.
- This is generally due to a timeout, but could potentially be something else if some kind of OS error occurred.
+ * Called when the socket is closed.
  **/
-- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error;
+- (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error;
 {
-	CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
-}
-
-/**
- Called when the socket is closed.
- A socket is only closed if you explicitly call one of the close methods.
- **/
-- (void)onUdpSocketDidClose:(AsyncUdpSocket *)sock;
-{
-	// nothing
+	if (error) {
+		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+	}
 }
 
 @end

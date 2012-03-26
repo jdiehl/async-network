@@ -23,7 +23,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "AsyncUdpSocket.h"
+#import "GCDAsyncUdpSocket.h"
 
 @class AsyncBroadcaster;
 
@@ -41,10 +41,10 @@
 
 
 /// A broadcaster can send and receive broadcasts to the local network.
-@interface AsyncBroadcaster : NSObject <AsyncUdpSocketDelegate>
+@interface AsyncBroadcaster : NSObject <GCDAsyncUdpSocketDelegate>
 
-@property (readonly) AsyncUdpSocket *listenSocket;
-@property (readonly) AsyncUdpSocket *broadcastSocket;
+@property (readonly) GCDAsyncUdpSocket *listenSocket;
+@property (readonly) GCDAsyncUdpSocket *broadcastSocket;
 
 @property (unsafe_unretained) id<AsyncBroadcasterDelegate> delegate;
 @property (assign) NSTimeInterval timeout;      // timeout for sending broadcasts, 0 = disabled

@@ -1348,7 +1348,7 @@
 											<string key="NSFrameSize">{423, 14}</string>
 											<reference key="NSSuperview" ref="95562387"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="1004973150"/>
+											<reference key="NSNextKeyView" ref="136909187"/>
 											<object class="NSTextContainer" key="NSTextContainer" id="855962441">
 												<object class="NSLayoutManager" key="NSLayoutManager">
 													<object class="NSTextStorage" key="NSTextStorage">
@@ -1478,7 +1478,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{20, 50}, {440, 290}}</string>
 							<reference key="NSSuperview" ref="750490861"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="136909187"/>
+							<reference key="NSNextKeyView" ref="95562387"/>
 							<int key="NSsFlags">133138</int>
 							<reference key="NSVScroller" ref="1004973150"/>
 							<reference key="NSHScroller" ref="136909187"/>
@@ -2257,6 +2257,14 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="destination" ref="594565739"/>
 					</object>
 					<int key="connectionID">580</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">initialFirstResponder</string>
+						<reference key="source" ref="52440574"/>
+						<reference key="destination" ref="138408305"/>
+					</object>
+					<int key="connectionID">581</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3483,7 +3491,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">580</int>
+			<int key="maxID">581</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

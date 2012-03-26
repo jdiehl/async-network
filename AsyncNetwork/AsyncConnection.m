@@ -65,7 +65,7 @@ Synthesize(port)
 }
 
 // create a new connection with a socket
-+ (id)connectionWithSocket:(AsyncSocket *)socket;
++ (id)connectionWithSocket:(GCDAsyncSocket *)socket;
 {
 	return [[self alloc] initWithSocket:socket];
 }
@@ -104,7 +104,7 @@ Synthesize(port)
 }
 
 // Init a connection with a socket
-- (id)initWithSocket:(AsyncSocket *)socket;
+- (id)initWithSocket:(GCDAsyncSocket *)socket;
 {
 	self = [self init];
 	if (self) {
@@ -161,8 +161,7 @@ Synthesize(port)
 	}
 	
 	// create the socket
-	_socket = [AsyncSocket new];
-	self.socket.delegate = self;
+	_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
 	
 	// connect to host and port
 	NSError *error;
@@ -294,13 +293,12 @@ Synthesize(port)
 }
 
 
-#pragma mark - AsycnSocketDelegate
-
+#pragma mark - GCDAsycnSocketDelegate
 /**
- Called when a socket connects and is ready for reading and writing.
- The host parameter will be an IP address, not a DNS name.
+ * Called when a socket connects and is ready for reading and writing.
+ * The host parameter will be an IP address, not a DNS name.
  **/
-- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port;
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port;
 {
 	// start reading length data
 	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
@@ -310,45 +308,24 @@ Synthesize(port)
 }
 
 /**
- In the event of an error, the socket is closed.
- You may call "unreadData" during this call-back to get the last bit of data off the socket.
- When connecting, this delegate method may be called
- before"onSocket:didAcceptNewSocket:" or "onSocket:didConnectToHost:".
+ * Called when a socket disconnects with or without error.
+ * 
+ * If you call the disconnect method, and the socket wasn't already disconnected,
+ * this delegate method will be called before the disconnect method returns.
  **/
-- (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)error;
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)error;
 {
-	// inform delegate of the error
 	if(error) {
 		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
     }
-}
-
-/**
- Called when a socket disconnects with or without error.  If you want to release a socket after it disconnects,
- do so here. It is not safe to do that during "onSocket:willDisconnectWithError:".
- 
- If you call the disconnect method, and the socket wasn't already disconnected,
- this delegate method will be called before the disconnect method returns.
- **/
-- (void)onSocketDidDisconnect:(AsyncSocket *)sock;
-{
 	CallOptionalDelegateMethod(connectionDidDisconnect:, connectionDidDisconnect:self)
 }
 
 /**
- Called when a new socket is spawned to handle a connection.  This method should return the run-loop of the
- thread on which the new socket and its delegate should operate. If omitted, [NSRunLoop currentRunLoop] is used.
+ * Called when a socket has completed reading the requested data into memory.
+ * Not called if there is an error.
  **/
-- (NSRunLoop *)onSocket:(AsyncSocket *)sock wantsRunLoopForNewSocket:(AsyncSocket *)newSocket;
-{
-    return [[self class] networkRunLoop];
-}
-
-/**
- Called when a socket has completed reading the requested data into memory.
- Not called if there is an error.
- **/
-- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
 {
     id object;
 	switch(tag) {

@@ -23,7 +23,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "AsyncSocket.h"
+#import "GCDAsyncSocket.h"
 
 @class  AsyncConnection;
 
@@ -49,14 +49,14 @@ typedef struct {
 @end
 
 /// The AsyncConnection handles a single socket connection to the target host or net service
-@interface AsyncConnection : NSObject <AsyncSocketDelegate, NSNetServiceDelegate> {
+@interface AsyncConnection : NSObject <GCDAsyncSocketDelegate, NSNetServiceDelegate> {
 	@private
 	AsyncConnectionHeader _lastHeader;
     UInt32 _currentBlockTag;
     NSMutableDictionary *_responseBlocks;
 }
 
-@property (readonly) AsyncSocket *socket;
+@property (readonly) GCDAsyncSocket *socket;
 @property (readonly) BOOL connected;
 
 @property (unsafe_unretained) id<AsyncConnectionDelegate> delegate;
@@ -67,11 +67,11 @@ typedef struct {
 
 + (NSRunLoop *)networkRunLoop;
 
-+ (id)connectionWithSocket:(AsyncSocket *)socket;
++ (id)connectionWithSocket:(GCDAsyncSocket *)socket;
 + (id)connectionWithNetService:(NSNetService *)netService;
 + (id)connectionWithHost:(NSString *)host port:(NSUInteger)port;
 
-- (id)initWithSocket:(AsyncSocket *)theSocket;
+- (id)initWithSocket:(GCDAsyncSocket *)theSocket;
 - (id)initWithNetService:(NSNetService *)theNetService;
 - (id)initWithHost:(NSString *)host port:(NSUInteger)port;
 

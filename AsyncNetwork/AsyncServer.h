@@ -23,7 +23,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "AsyncSocket.h"
+#import "GCDAsyncSocket.h"
 #import "AsyncConnection.h"
 
 @class AsyncServer;
@@ -43,9 +43,9 @@
 @end
 
 /// A server can accept connections from AsyncConnection objects.
-@interface AsyncServer : NSObject <NSNetServiceDelegate, AsyncSocketDelegate, AsyncConnectionDelegate>
+@interface AsyncServer : NSObject <NSNetServiceDelegate, GCDAsyncSocketDelegate, AsyncConnectionDelegate>
 
-@property (readonly) AsyncSocket *listenSocket;
+@property (readonly) GCDAsyncSocket *listenSocket;
 @property (readonly) NSNetService *netService;
 @property (readonly) NSMutableSet *connections;
 
