@@ -1,0 +1,29 @@
+#! /bin/bash
+
+DISTROOT=dist/AsyncNetwork
+DISTIMAGE=dist/AsyncNetwork.dmg
+
+rm -Rf $DISTROOT
+mkdir -p $DISTROOT/Static/
+
+# Mac OS
+xcodebuild build -target AsyncNetwork
+mv build/Release/AsyncNetwork.framework $DISTROOT/
+
+# iPhone OS
+cp -Rf $DISTROOT/AsyncNetwork.framework $DISTROOT/Static/
+xcodebuild build -target AsyncNetworkStatic
+xcodebuild build -target AsyncNetworkStatic -sdk iphonesimulator -arch i386
+lipo -o $DISTROOT/Static/AsyncNetwork.framework/Versions/Current/AsyncNetwork\
+ -create build/Release-iphoneos/libAsyncNetwork.a build/Release-iphonesimulator/libAsyncNetwork.a
+
+# Other Files
+ln -s /Library/Frameworks $DISTROOT
+cp -Rf Examples Icon.png License.txt README.md Resources $DISTROOT/
+rm -Rf $DISTROOT/Examples/MobileClient/AsyncNetwork.framework
+ln -s ../../Static/AsyncNetwork.framework $DISTROOT/Examples/MobileClient/AsyncNetwork.framework
+rm -Rf $DISTROOT/Examples/*/*.xcodeproj/project.xcworkspace
+rm -Rf $DISTROOT/Examples/*/*.xcodeproj/xcuserdata
+
+# create disk image
+hdiutil create -srcfolder $DISTROOT -fs HFS+ -volname AsyncNetwork $DISTIMAGE

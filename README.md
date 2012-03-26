@@ -134,22 +134,14 @@ Request demonstrates the use of AsyncRequests to implement request-based
 networking.
 
 
-## Installation for Mac OS X
+## Installation
 
-After compiling the Async Network framework, it can be installed as a shared
-framework or embedded inside the host application.
+To compile and install AsyncNetwork, run `makeImage`. This will compile two
+versions of the AsyncNetwork framework: a dynamic framework to be used on Mac
+OS X and a static framework to be used on iOS or the iOS Simulator. The
+compiled frameworks will be placed into `dist/`
 
-### Compiling the Framework
-
-1. Open AsyncNetwork.xcodeproj with Xcode 4
-2. Select the AsyncNetwork Scheme
-3. Build an Archive: (Menu) Product -> Archive
-4. Extract the Product: (Organizer - Archives) Distribute... -> Save Build
-   Products
-5. Locate AsyncNetwork.framework inside the exported folder under
-   `Library/Frameworks`
-
-### Install as Shared Framework
+### Install as Shared Dynamic Framework (Mac OS X)
 
 1. Copy `AsyncNetwork.framework` to `/Library/Frameworks/`
 2. Add the framework to your project: (Summary of main target) Click "+"" below
@@ -161,53 +153,14 @@ framework or embedded inside the host application.
 Note that AsyncNetwork must be installed as a shared framework on all machines
 that run your application.
 
-### Install as Embedded Framework
+### Install as Embedded Framework (Mac OS X or iOS)
 
 1. Add a "Copy Files" Build Phase to your main target
 2. Change Destination to "Frameworks"
-3. Drag `AsyncNetwork.framework` into the empty list of files
+3. Drag `AsyncNetwork.framework` (dynamic or static version) into the list of files
 
 This method does not rely on an installed version of the framework but instead
 copy AsyncNetwork into the application bundle.
-
-
-## Installation for iOS
-
-The simple way to use AsyncNetwork in an iOS application is to add all source
-files, including AsyncSocket, to your iOS project. Note, that your project
-cannot use Automatic Reference Counting using this approach.
-
-Alternatively, you can compile AsyncNetwork as a static library and include it
-as a static framework embedded in your iOS application.
-
-### Compile as Static Library
-
-1. Open AsyncNetwork.xcodeproj with Xcode 4
-2. Select the AsyncNetworkStatic/iOS Device scheme
-3. Build
-4. Select the AsyncNetworkStatic/iPhone x.x Simulator scheme
-5. Build again
-
-This will create two versions of the compiled library (for simulator and for
-device use) into the Xcode build folder (default is: 
-`~/Library/Developers/Xcode/DerivedData/AsycnNetwork.../Build/Products/`).
-
-### Build Static Framework
-
-1. Open AsyncNetwork.xcodeproj with Xcode 4
-2. Select the AsyncNetworkStaticFramework scheme
-3. Build
-4. Locate the compiled framework inside the Xcode build folder under
-   `Release-static`
-
-### Install as Embedded Static Framework
-
-1. Add CFNetwork to your project: (Summary of main target) Click "+"" below
-   "Linked Frameworks and Libraries" and select `CFNetwork.framework` from the
-   list.
-2. Add a "Copy Files" Build Phase to your main target
-3. Change Destination to "Frameworks"
-4. Drag `AsyncNetwork.framework` from `Release-static` into the empty list
 
 
 ## License (MIT)

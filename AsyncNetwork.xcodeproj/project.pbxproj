@@ -6,23 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		2D1F1F4D1519439D00BF5F57 /* AsyncNetworkStaticFramework */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 2D1F1F4E1519439D00BF5F57 /* Build configuration list for PBXAggregateTarget "AsyncNetworkStaticFramework" */;
-			buildPhases = (
-				2D1F1F52151943C700BF5F57 /* Copy Headers */,
-				2DFEC3E01519586700D78966 /* Copy Resources */,
-				2D1F1F51151943A700BF5F57 /* Generate Framework */,
-			);
-			dependencies = (
-				2D1F1F66151944A300BF5F57 /* PBXTargetDependency */,
-			);
-			name = AsyncNetworkStaticFramework;
-			productName = AsyncNetworkStaticFramework;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		2D1F1F1915190A8A00BF5F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1F1F1815190A8A00BF5F57 /* Foundation.framework */; };
 		2D1F1F2B15190BE500BF5F57 /* AsyncBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467E61518015D00101EAB /* AsyncBroadcaster.m */; };
@@ -31,13 +14,6 @@
 		2D1F1F3415190BE500BF5F57 /* AsyncNetworkHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */; };
 		2D1F1F3615190BE500BF5F57 /* AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F41518015D00101EAB /* AsyncRequest.m */; };
 		2D1F1F3815190BE500BF5F57 /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
-		2D1F1F59151943F800BF5F57 /* AsyncBroadcaster.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E51518015D00101EAB /* AsyncBroadcaster.h */; };
-		2D1F1F5B151943F800BF5F57 /* AsyncClient.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E81518015D00101EAB /* AsyncClient.h */; };
-		2D1F1F5D151943F800BF5F57 /* AsyncConnection.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EB1518015D00101EAB /* AsyncConnection.h */; };
-		2D1F1F5F151943F800BF5F57 /* AsyncNetwork.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467EE1518015D00101EAB /* AsyncNetwork.h */; };
-		2D1F1F61151943F800BF5F57 /* AsyncNetworkHelpers.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F11518015D00101EAB /* AsyncNetworkHelpers.h */; };
-		2D1F1F62151943F800BF5F57 /* AsyncRequest.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F31518015D00101EAB /* AsyncRequest.h */; };
-		2D1F1F63151943F800BF5F57 /* AsyncServer.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F51518015D00101EAB /* AsyncServer.h */; };
 		2D2467CA151800AB00101EAB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2467C9151800AB00101EAB /* Cocoa.framework */; };
 		2D2467F81518015D00101EAB /* AsyncBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467E51518015D00101EAB /* AsyncBroadcaster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2467F91518015D00101EAB /* AsyncBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467E61518015D00101EAB /* AsyncBroadcaster.m */; };
@@ -53,60 +29,14 @@
 		2D2468081518015D00101EAB /* AsyncServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F51518015D00101EAB /* AsyncServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2468091518015D00101EAB /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
 		2DA007831520E088001B2551 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DA007841520E088001B2551 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DA007851520E088001B2551 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2DA007861520E088001B2551 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2DA007871520E088001B2551 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DA007881520E088001B2551 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DA007891520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2DA0078A1520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2DA0082D1520E36A001B2551 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0082C1520E36A001B2551 /* Security.framework */; };
 		2DA0082E1520E376001B2551 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0082C1520E36A001B2551 /* Security.framework */; };
-		2DA008451520E934001B2551 /* GCDAsyncSocket.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; };
-		2DA008461520E937001B2551 /* GCDAsyncUdpSocket.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2D1F1F65151944A300BF5F57 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D2467BC151800AB00101EAB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D1F1F1615190A8A00BF5F57;
-			remoteInfo = AsyncNetworkStatic;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2D1F1F52151943C700BF5F57 /* Copy Headers */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Headers;
-			dstSubfolderSpec = 16;
-			files = (
-				2D1F1F59151943F800BF5F57 /* AsyncBroadcaster.h in Copy Headers */,
-				2D1F1F5B151943F800BF5F57 /* AsyncClient.h in Copy Headers */,
-				2D1F1F5D151943F800BF5F57 /* AsyncConnection.h in Copy Headers */,
-				2D1F1F5F151943F800BF5F57 /* AsyncNetwork.h in Copy Headers */,
-				2D1F1F61151943F800BF5F57 /* AsyncNetworkHelpers.h in Copy Headers */,
-				2D1F1F62151943F800BF5F57 /* AsyncRequest.h in Copy Headers */,
-				2D1F1F63151943F800BF5F57 /* AsyncServer.h in Copy Headers */,
-				2DA008451520E934001B2551 /* GCDAsyncSocket.h in Copy Headers */,
-				2DA008461520E937001B2551 /* GCDAsyncUdpSocket.h in Copy Headers */,
-			);
-			name = "Copy Headers";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2DFEC3E01519586700D78966 /* Copy Resources */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Resources;
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			name = "Copy Resources";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D1D67671518088E0039CE94 /* License.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
@@ -235,15 +165,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2D1F1F1515190A8A00BF5F57 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2DA007841520E088001B2551 /* GCDAsyncSocket.h in Headers */,
-				2DA007881520E088001B2551 /* GCDAsyncUdpSocket.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D2467C3151800AB00101EAB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,7 +190,6 @@
 			buildPhases = (
 				2D1F1F1315190A8A00BF5F57 /* Sources */,
 				2D1F1F1415190A8A00BF5F57 /* Frameworks */,
-				2D1F1F1515190A8A00BF5F57 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -322,7 +242,6 @@
 			targets = (
 				2D2467C5151800AB00101EAB /* AsyncNetwork */,
 				2D1F1F1615190A8A00BF5F57 /* AsyncNetworkStatic */,
-				2D1F1F4D1519439D00BF5F57 /* AsyncNetworkStaticFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -336,24 +255,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2D1F1F51151943A700BF5F57 /* Generate Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Framework";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "FRAMEWORK_PATH=${BUILD_DIR}/${CONFIGURATION}-static/${PRODUCT_NAME}.framework\nFRAMEWORK_VERSION_PATH=${FRAMEWORK_PATH}/Versions/${FRAMEWORK_VERSION}\nIPHONESIMULATOR_LIB=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PRODUCT_NAME}.a\nIPHONEOS_LIB=${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PRODUCT_NAME}.a\n\nrm -Rf \"${FRAMEWORK_PATH}\"\nmkdir -p \"${FRAMEWORK_VERSION_PATH}/Resources/\"\nmv -f \"${CONFIGURATION_BUILD_DIR}/Headers/\" \"${FRAMEWORK_VERSION_PATH}/Headers/\"\n\nlipo -create \\\n\"${IPHONESIMULATOR_LIB}\" \\\n\"${IPHONEOS_LIB}\" \\\n-o \"${FRAMEWORK_VERSION_PATH}/${PRODUCT_NAME}\"\n\nchmod +x \"${FRAMEWORK_VERSION_PATH}/${PRODUCT_NAME}\"\nln -sf \"${FRAMEWORK_VERSION}\" \"${FRAMEWORK_PATH}/Versions/Current\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${FRAMEWORK_PATH}/\"\nln -sf \"Versions/Current/Headers\" \"${FRAMEWORK_PATH}/\"\nln -sf \"Versions/Current/Resources\" \"${FRAMEWORK_PATH}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D1F1F1315190A8A00BF5F57 /* Sources */ = {
@@ -388,14 +289,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		2D1F1F66151944A300BF5F57 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D1F1F1615190A8A00BF5F57 /* AsyncNetworkStatic */;
-			targetProxy = 2D1F1F65151944A300BF5F57 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		2D1F1F2115190A8A00BF5F57 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -404,25 +297,17 @@
 					armv7,
 					armv6,
 				);
-				DSTROOT = /tmp/AsyncNetworkStatic.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncNetwork/AsyncNetwork-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
-				INSTALL_PATH = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ORDER_FILE = /usr/local/lib;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsyncNetwork;
 				PUBLIC_HEADERS_FOLDER_PATH = "${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		2D1F1F501519439D00BF5F57 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = AsyncNetwork;
 			};
 			name = Release;
 		};
@@ -512,14 +397,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D1F1F2115190A8A00BF5F57 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D1F1F4E1519439D00BF5F57 /* Build configuration list for PBXAggregateTarget "AsyncNetworkStaticFramework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D1F1F501519439D00BF5F57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
