@@ -49,11 +49,14 @@
 {
 	// the server id (increasing number)
 	static NSUInteger serverId = 0;
+	static NSString *name = nil;
+	if (!name) name = (__bridge NSString *)CSCopyMachineName();
 	
 	// create and configure the server controller
 	ServerController *serverController = [[ServerController alloc] initWithWindowNibName:@"ServerController"];
 	serverController.serviceType = kDefaultServiceType;
-	serverController.serviceName = [NSString stringWithFormat:@"Server %d", ++serverId];
+
+	serverController.serviceName = [NSString stringWithFormat:@"%@ %d", name, ++serverId];
 	[self.controllers addObject:serverController];
 	
 	// present the controller
