@@ -153,6 +153,7 @@ Synthesize(autoDisconnect)
 	
 	// set up listening socket
 	_listenSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	[self.listenSocket setIPv6Enabled:NO];
 	NSError *error;
 	if (![self.listenSocket acceptOnPort:self.port error:&error]) {
 		CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);

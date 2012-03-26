@@ -165,6 +165,7 @@ Synthesize(port)
 	
 	// create the socket
 	_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	[self.socket setIPv6Enabled:NO];
 	
 	// connect to host and port
 	NSError *error;
