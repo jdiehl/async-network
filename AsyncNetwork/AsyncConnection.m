@@ -196,6 +196,7 @@ Synthesize(port)
 	AsyncConnectionHeader header;
 	header.type = block ? AsyncConnectionTypeRequest : AsyncConnectionTypeMessage;
 	header.command = command;
+	header.bodyLength = 0;
 	
 	// store response block
 	if (block) {
@@ -233,8 +234,6 @@ Synthesize(port)
 	if (object) {
 		bodyData = [NSKeyedArchiver archivedDataWithRootObject:object];
 		header.bodyLength = bodyData.length;
-	} else {
-		header.bodyLength = 0;
 	}
 	
 	// send the header
@@ -252,6 +251,7 @@ Synthesize(port)
 	AsyncConnectionHeader header;
 	header.type = AsyncConnectionTypeResponse;
 	header.command = 0;
+	header.bodyLength = 0;
 	header.blockTag = tag;
 	
 	[self sendHeader:header object:object];
