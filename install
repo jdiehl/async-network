@@ -1,0 +1,4 @@
+#! /bin/bash
+
+rm -Rf /Library/Frameworks/AsyncNetwork.framework
+xcodebuild install -target AsyncNetwork DSTROOT=/
