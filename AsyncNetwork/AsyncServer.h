@@ -36,8 +36,8 @@
 #pragma mark - AsyncServerDelegate
 - (void)server:(AsyncServer *)theServer didConnect:(AsyncConnection *)connection;
 - (void)server:(AsyncServer *)theServer didDisconnect:(AsyncConnection *)connection;
-- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
-- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection responseBlock:(AsyncNetworkResponseBlock)block;
 - (void)server:(AsyncServer *)theServer didFailWithError:(NSError *)error;
 
 @end

@@ -38,13 +38,13 @@
 @property (assign) NSTimeInterval timeout;     // connection timeout
 @property (assign) AsyncCommand command;       // the command
 @property (strong) NSObject<NSCoding> *object; // connection object
-@property (copy) AsyncNetworkResponseBlock responseBlock; // connection response block
+@property (copy) AsyncNetworkRequestBlock responseBlock; // connection response block
 
 
 + (NSMutableSet *)activeRequests;
 
-+ (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
 + (id)requestWithNetService:(NSNetService *)netService;
 + (id)requestWithHost:(NSString *)theHost port:(NSUInteger)thePort;
 - (id)initWithNetService:(NSNetService *)netService;

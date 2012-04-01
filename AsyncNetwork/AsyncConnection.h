@@ -44,7 +44,7 @@ typedef struct {
 - (void)connectionDidConnect:(AsyncConnection *)theConnection;
 - (void)connectionDidDisconnect:(AsyncConnection *)theConnection;
 - (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object;
-- (id<NSCoding>)connection:(AsyncConnection *)theConnection respondToCommand:(AsyncCommand)command object:(id)object;
+- (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object responseBlock:(AsyncNetworkResponseBlock)block;
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 
 @end

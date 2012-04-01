@@ -102,7 +102,7 @@
     [self updateStatus];
 }
 
-- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
 {
 	// display log entry
     NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.host, object];

@@ -163,17 +163,16 @@ Synthesize(autoConnect)
 	CallOptionalDelegateMethod(client:didDisconnect:, client:self didDisconnect:theConnection)
 }
 
-// an object was received over this connection
+// incomding command
 - (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object;
 {
-	CallOptionalDelegateMethod(client:didReceiveCommand:object:fromConnection:, client:self didReceiveCommand:command object:object fromConnection:theConnection)
+	CallOptionalDelegateMethod(client:didReceiveCommand:object:connection:, client:self didReceiveCommand:command object:object connection:theConnection)
 }
 
-// a request was received over this connection
-- (id<NSCoding>)connection:(AsyncConnection *)theConnection respondToCommand:(AsyncCommand)command object:(id)object;
+// incomding request
+- (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
-	CallAndReturnOptionalDelegateMethod(client:respondToCommand:object:fromConnection:, client:self respondToCommand:command object:object fromConnection:theConnection)
-	return nil;
+	CallAndReturnOptionalDelegateMethod(client:didReceiveCommand:object:connection:responseBlock:, client:self didReceiveCommand:command object:object connection:theConnection responseBlock:block)
 }
 
 // the connection reported an error

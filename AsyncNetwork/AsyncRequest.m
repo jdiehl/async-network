@@ -45,7 +45,7 @@ Synthesize(responseBlock)
 # pragma mark - Constructors
 
 // fire a net service request to the given port and call the completion block afterwards
-+ (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
 {
 	AsyncRequest *request = [self requestWithNetService:netService];
 	request.command = command;
@@ -56,7 +56,7 @@ Synthesize(responseBlock)
 }
 
 // fire a request to the given host and port and call the completion block afterwards
-+ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkResponseBlock)block;
++ (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
 {
 	AsyncRequest *request = [self requestWithHost:host port:port];
 	request.object = object;
@@ -115,6 +115,21 @@ Synthesize(responseBlock)
 }
 
 
+#pragma mark - Responding on Main Thread
+
+// respond (on main thread)
+- (void)respondWithObject:(id)response;
+{
+	self.responseBlock(response, nil);
+}
+
+// respond (on main thread)
+- (void)respondWithError:(NSError *)error;
+{
+	self.responseBlock(nil, error);
+}
+
+
 #pragma mark - Control methods
 
 // fire the request and close the connection and call the completion block afterwards
@@ -126,15 +141,15 @@ Synthesize(responseBlock)
 }
 
 
-#pragma mark AsyncClientDelegate
+#pragma mark - AsyncClientDelegate
 
 // a new client has connected to the server
 - (void)connectionDidConnect:(AsyncConnection *)theConnection;
 {
 	if (self.command || self.object || self.responseBlock) {
-		[self.connection sendCommand:self.command object:self.object responseBlock:^(id response, NSError *error) {
+		[self.connection sendCommand:self.command object:self.object responseBlock:^(id response) {
 			[self.connection cancel];
-			if (self.responseBlock) self.responseBlock(response, error);
+			if (self.responseBlock) [self performSelectorOnMainThread:@selector(respondWithObject:) withObject:response waitUntilDone:NO];
 		}];
 	}
 }
@@ -148,8 +163,8 @@ Synthesize(responseBlock)
 // a client failed with an error
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 {
-	if (self.responseBlock) self.responseBlock(nil, error);
 	[self.connection cancel];
+	if (self.responseBlock) [self performSelectorOnMainThread:@selector(respondWithError:) withObject:error waitUntilDone:NO];
 }
 
 

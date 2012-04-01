@@ -47,9 +47,10 @@
 
 #pragma mark AsyncServerDelegate
 
-- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection responseBlock:(AsyncNetworkResponseBlock)block;
 {
-	return [NSString stringWithFormat:@"Received: %@", object];
+	NSString *response = [NSString stringWithFormat:@"Received: %@", object];
+	block(response);
 }
 
 @end

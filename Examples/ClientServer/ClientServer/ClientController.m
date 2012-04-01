@@ -106,7 +106,7 @@
     [self updateStatus];
 }
 
-- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
 {
 	// display log entry
     NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];

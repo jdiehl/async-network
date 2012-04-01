@@ -82,17 +82,18 @@ To send a request call `sendObject:responseHandler:` on a client and provide a
 block that is called with the server's response to the request.
 
 ```objc
-[client sendCommand:command object:message responseHandler:^(id response, NSError *error) {
+[client sendCommand:command object:message responseHandler:^(id<NSCoding> response) {
     // react to the response here
 }];
 ```
 
 On the server, you must implement the delegate method
-`server:respondToCommand:object:`:
+`server:didReceiveCommand:object:connection:responseBlock:`
 
 ```objc
-- (id<NSCoding>)server:(AsyncServer *)theServer respondToCommand:(AsyncCommand)command object:(id)object {
-    // return an appropriate response
+- (void)server:(AsyncServer *)theServer didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection responseBlock:(AsyncNetworkResponseBlock)block;
+	id<NSCoding> yourResponse = ...;
+	block(yourResponse);
 }
 ```
 
@@ -101,7 +102,7 @@ should use `AsyncRequest` instead of `AsyncClient`. `AsyncRequest` will connect
 to a server, send a request, wait for the response, and disconnect in one call.
 
 ```objc
-[AsyncRequest fireRequestWithHost:@"192.168.0.1" port:12345 command:0 object:message responseBlock:^(id response, NSError *error) {
+[AsyncRequest fireRequestWithHost:@"192.168.0.1" port:12345 command:0 object:message responseBlock:^(id<NSCoding> response, NSError *error) {
     // react to the response here
 }];
 ```

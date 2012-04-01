@@ -35,8 +35,8 @@
 #pragma mark - AsyncClientDelegate
 - (void)client:(AsyncClient *)theClient didConnect:(AsyncConnection *)connection;
 - (void)client:(AsyncClient *)theClient didDisconnect:(AsyncConnection *)connection;
-- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
-- (id<NSCoding>)client:(AsyncClient *)theClient respondToCommand:(AsyncCommand)command object:(id)object fromConnection:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
+- (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection responseBlock:(AsyncNetworkResponseBlock)block;
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;
 
 @end

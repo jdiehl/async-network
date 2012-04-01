@@ -260,7 +260,6 @@ Synthesize(port)
 // get a response from the delegate for the given header and object
 - (void)respondToMessageWithHeader:(AsyncConnectionHeader)header object:(id<NSCoding>)object;
 {
-	id<NSCoding> response = nil;
 	AsyncNetworkResponseBlock block;
 	switch (header.type) {
 		case AsyncConnectionTypeMessage:
@@ -270,16 +269,19 @@ Synthesize(port)
 			
 		case AsyncConnectionTypeRequest:
 			// a request requires a response
-			if ([self.delegate respondsToSelector:@selector(connection:respondToCommand:object:)]) {
-				response = [self.delegate connection:self respondToCommand:header.command object:object];
+			if ([self.delegate respondsToSelector:@selector(connection:didReceiveCommand:object:responseBlock:)]) {
+				[self.delegate connection:self didReceiveCommand:header.command object:object responseBlock:^(id<NSCoding> response) {
+					[self sendResponse:response tag:header.blockTag];
+				}];
+			} else {
+				[self sendResponse:nil tag:header.blockTag];
 			}
-			[self sendResponse:response tag:header.blockTag];
 			break;
 			
 		case AsyncConnectionTypeResponse:
 			// a response to a request does not require a response
 			block = [_responseBlocks objectForKey:[NSNumber numberWithInteger:header.blockTag]];
-			if (block) block(object, nil);
+			if (block) block(object);
 			break;
 	}
 }

@@ -29,7 +29,8 @@
 #pragma mark - Public Constants
 
 /// The standard network response block
-typedef void (^AsyncNetworkResponseBlock)(id response, NSError *error);
+typedef void (^AsyncNetworkResponseBlock)(id<NSCoding> response);
+typedef void (^AsyncNetworkRequestBlock)(id<NSCoding> response, NSError *error);
 
 /// The local loopback address
 extern NSString * AsyncNetworkLocalHost;
