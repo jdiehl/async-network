@@ -111,7 +111,7 @@ Synthesize(port)
 	if (self.listenSocket) return YES;
 	
 	// set up the udp socket
-	_listenSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	_listenSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
 	[self.listenSocket setIPv6Enabled:NO];
 	
 	// bind to port
@@ -137,7 +137,7 @@ Synthesize(port)
 	if (self.broadcastSocket) return YES;
 
 	// set up the udp socket
-	_broadcastSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	_broadcastSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
 	[self.broadcastSocket setIPv6Enabled:NO];
 	
 	// enable broadcasting

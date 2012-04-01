@@ -164,7 +164,7 @@ Synthesize(port)
 	}
 	
 	// create the socket
-	_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
 	[self.socket setIPv6Enabled:NO];
 	
 	// connect to host and port

@@ -151,7 +151,7 @@ Synthesize(port)
 	if(self.listenSocket) return;
 	
 	// set up listening socket
-	_listenSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+	_listenSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
 	[self.listenSocket setIPv6Enabled:NO];
 	NSError *error;
 	if (![self.listenSocket acceptOnPort:self.port error:&error]) {

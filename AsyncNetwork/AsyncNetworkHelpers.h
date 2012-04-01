@@ -23,6 +23,10 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <dispatch/dispatch.h>
+
+
+#pragma mark - Public Constants
 
 /// The standard network response block
 typedef void (^AsyncNetworkResponseBlock)(id response, NSError *error);
@@ -52,15 +56,16 @@ extern const NSTimeInterval AsyncNetworkBroadcastDefaultTimeout;
 extern const NSTimeInterval AsyncRequestDefaultTimeout;
 
 
-/**
- @brief Return the IP addresses of all local interfaces.
- @return Array of all local IP address strings
- */
+#pragma mark - Public Functions
+
+/// Return the Dispatch Queue used by AsyncNetwork
+extern dispatch_queue_t AsyncNetworkDispatchQueue();
+
+/// Set the Dispatch Queue used by AsyncNetwork
+extern void SetAsyncNetworkDispatchQueue(dispatch_queue_t queue);
+
+/// Return the IP addresses of all local interfaces.
 extern NSArray *AsyncNetworkGetLocalIPAddresses(void);
 
-/**
- @brief Test if a given IP address string is local
- @param address The IP address string to be tested
- @return YES if the IP address string is local
- */
+/// Test if a given IP address string is local
 extern BOOL AsyncNetworkIPAddressIsLocal(NSString *address);

@@ -21,11 +21,12 @@
  * 
  * https://github.com/jdiehl/async-network
  */
+#import "AsyncNetworkHelpers.h"
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <ifaddrs.h>
+#import <sys/types.h>
+#import <sys/socket.h>
+#import <arpa/inet.h>
+#import <ifaddrs.h>
 
 // The local loopback address
 NSString *AsyncNetworkLocalHost = @"127.0.0.1";
@@ -53,6 +54,20 @@ const NSTimeInterval AsyncRequestDefaultTimeout = -1.0;
 
 
 #pragma mark - Public Functions
+
+/// Return the Dispatch Queue used by AsyncNetwork
+static dispatch_queue_t _queue = NULL;
+extern dispatch_queue_t AsyncNetworkDispatchQueue()
+{
+	if (_queue == NULL)	_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+	return _queue;
+}
+
+/// Set the Dispatch Queue used by AsyncNetwork
+extern void SetAsyncNetworkDispatchQueue(dispatch_queue_t queue)
+{
+    _queue = queue;
+}
 
 // return the local ip addresses
 NSArray *AsyncNetworkGetLocalIPAddresses(void)
