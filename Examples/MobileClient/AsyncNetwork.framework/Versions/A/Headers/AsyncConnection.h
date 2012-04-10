@@ -24,6 +24,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
+#import "AsyncNetworkHelpers.h"
 
 @class  AsyncConnection;
 

@@ -54,7 +54,6 @@
 @property (strong) NSString *serviceDomain;
 @property (strong, nonatomic) NSString *serviceName;
 @property (assign) NSInteger port;
-@property (assign) BOOL autoDisconnect;
 
 - (void)start;
 - (void)stop;
