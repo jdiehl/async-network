@@ -134,6 +134,12 @@ the ClientServer example.
 Request demonstrates the use of AsyncRequests to implement request-based
 networking.
 
+### Notify
+
+Notify demonstrates sending a broadcast from a ruby backend to an iOS client.
+This can be used as a local notification to trigger an update on the mobile
+client.
+
 
 ## Installation
 
