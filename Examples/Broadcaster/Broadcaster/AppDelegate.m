@@ -49,7 +49,7 @@
 {
 	// decode and display the message
 	NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	[self.output insertText:[NSString stringWithFormat:@"<< [%@:%d] %@\n", host, theBroadcaster.port, message]];
+	[self.output insertText:[NSString stringWithFormat:@"<< [%@:%ld] %@\n", host, theBroadcaster.port, message]];
 }
 
 - (void)broadcaster:(AsyncBroadcaster *)theBroadcaster didFailWithError:(NSError *)error;

@@ -58,10 +58,15 @@ Synthesize(autoConnect)
 // debug description
 - (NSString *)description;
 {
+#ifdef __LP64__
+	NSMutableString *string = [NSMutableString stringWithFormat:@"<%s type=%@ services=%ld connections=%ld>", object_getClassName(self), self.serviceType, self.services.count, self.connections.count];
+#else
 	NSMutableString *string = [NSMutableString stringWithFormat:@"<%s type=%@ services=%d connections=%d>", object_getClassName(self), self.serviceType, self.services.count, self.connections.count];
+#endif
+
 	AsyncConnection *connection;
 	for(connection in self.connections) {
-		[string appendFormat:@"\n%\t@", connection.description];
+		[string appendFormat:@"\n%@\t", connection.description];
 	}
 	[string appendFormat:@"\n</%s>", object_getClassName(self)];
 	return string;

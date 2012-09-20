@@ -61,7 +61,11 @@ Synthesize(port)
 // debug description
 - (NSString *)description;
 {
+#ifdef __LP64__
+	return [NSString stringWithFormat:@"<%s port=%ld>", object_getClassName(self), self.port];
+#else
 	return [NSString stringWithFormat:@"<%s port=%d>", object_getClassName(self), self.port];
+#endif
 }
 
 
@@ -70,7 +74,11 @@ Synthesize(port)
 // open listener and broadcast sockets
 - (void)start;
 {
+#ifdef __LP64__
+	NSAssert(self.port > 0, @"AsyncBroadcaster: invalid port: %ld", self.port);
+#else
 	NSAssert(self.port > 0, @"AsyncBroadcaster: invalid port: %d", self.port);
+#endif
 	
 	// set up the listen and broadcast sockets
 	if (![self setupListenSocket]) return;

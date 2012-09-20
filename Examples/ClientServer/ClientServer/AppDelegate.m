@@ -56,7 +56,7 @@
 	ServerController *serverController = [[ServerController alloc] initWithWindowNibName:@"ServerController"];
 	serverController.serviceType = kDefaultServiceType;
 
-	serverController.serviceName = [NSString stringWithFormat:@"%@ %d", name, ++serverId];
+	serverController.serviceName = [NSString stringWithFormat:@"%@ %ld", name, ++serverId];
 	[self.controllers addObject:serverController];
 	
 	// present the controller

@@ -29,11 +29,11 @@
 		2D2468081518015D00101EAB /* AsyncServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2467F51518015D00101EAB /* AsyncServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D2468091518015D00101EAB /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
 		2DA007831520E088001B2551 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DA007851520E088001B2551 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2DA007861520E088001B2551 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2DA007851520E088001B2551 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; };
+		2DA007861520E088001B2551 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; };
 		2DA007871520E088001B2551 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DA007891520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2DA0078A1520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2DA007891520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; };
+		2DA0078A1520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; };
 		2DA0082D1520E36A001B2551 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0082C1520E36A001B2551 /* Security.framework */; };
 		2DA0082E1520E376001B2551 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0082C1520E36A001B2551 /* Security.framework */; };
 /* End PBXBuildFile section */
@@ -224,7 +224,7 @@
 		2D2467BC151800AB00101EAB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = RWTH;
 			};
 			buildConfigurationList = 2D2467BF151800AB00101EAB /* Build configuration list for PBXProject "AsyncNetwork" */;
@@ -293,46 +293,38 @@
 		2D1F1F2115190A8A00BF5F57 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncNetwork/AsyncNetwork-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				ORDER_FILE = /usr/local/lib;
-				OTHER_LDFLAGS = "-ObjC";
+				INSTALL_PATH = /ios/;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = AsyncNetwork;
-				PUBLIC_HEADERS_FOLDER_PATH = "${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers";
+				PUBLIC_HEADERS_FOLDER_PATH = Asyncnetwork.framework/Versions/A/Headers;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};
 		2D2467D9151800AB00101EAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				DSTROOT = dist/;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -341,19 +333,16 @@
 		2D2467DA151800AB00101EAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				DSTROOT = dist/;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -361,13 +350,13 @@
 		2D2467DC151800AB00101EAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncNetwork/AsyncNetwork-Prefix.pch";
 				INFOPLIST_FILE = "AsyncNetwork/AsyncNetwork-Info.plist";
+				INSTALL_PATH = /mac/;
 				LD_DYLIB_INSTALL_NAME = "@loader_path/../Frameworks/$(EXECUTABLE_PATH)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -377,13 +366,13 @@
 		2D2467DD151800AB00101EAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AsyncNetwork/AsyncNetwork-Prefix.pch";
 				INFOPLIST_FILE = "AsyncNetwork/AsyncNetwork-Info.plist";
+				INSTALL_PATH = /mac/;
 				LD_DYLIB_INSTALL_NAME = "@loader_path/../Frameworks/$(EXECUTABLE_PATH)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;

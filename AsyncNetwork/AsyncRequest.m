@@ -111,7 +111,11 @@ Synthesize(responseBlock)
 // debug description
 - (NSString *)description;
 {
-	return [NSString stringWithFormat:@"<%s host=%@ port=%d>", object_getClassName(self), self.connection.host, self.connection.port, object_getClassName(self)];
+#ifdef __LP64__
+	return [NSString stringWithFormat:@"<%s host=%@ port=%ld>", object_getClassName(self), self.connection.host, self.connection.port];
+#else
+	return [NSString stringWithFormat:@"<%s host=%@ port=%d>", object_getClassName(self), self.connection.host, self.connection.port];
+#endif
 }
 
 

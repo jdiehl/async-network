@@ -77,7 +77,7 @@
 {
 	// display log entry
     NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
-	[self.output insertText:string];
+	[self appendLogMessage:string];
 }
 
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;
@@ -90,7 +90,7 @@
 
 - (void)appendLogMessage:(NSString *)text;
 {
-    self.output.text = [self.output.text stringByAppendingString:text];
+	self.output.text = [self.output.text stringByAppendingString:text];
 	
 	// scroll to bottom
 	if (self.output.contentSize.height > self.output.bounds.size.height) {

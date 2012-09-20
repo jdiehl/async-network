@@ -30,7 +30,7 @@
 		2D1D67FE1518F8B90039CE94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D1D68011518F8B90039CE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2D1D68281518FA920039CE94 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../../../Resources/Icon.icns; sourceTree = "<group>"; };
-		2DA0089D152104F4001B2551 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = Library/Frameworks/AsyncNetwork.framework; sourceTree = SDKROOT; };
+		2DA0089D152104F4001B2551 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../dist/mac/AsyncNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,7 @@
 		2D1D67DE1518F8B90039CE94 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = RWTH;
 			};
 			buildConfigurationList = 2D1D67E11518F8B90039CE94 /* Build configuration list for PBXProject "Broadcaster" */;
@@ -247,6 +247,8 @@
 		2D1D68061518F8B90039CE94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ../../dist/mac;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Broadcaster/Broadcaster-Prefix.pch";
 				INFOPLIST_FILE = "Broadcaster/Broadcaster-Info.plist";
@@ -258,6 +260,8 @@
 		2D1D68071518F8B90039CE94 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ../../dist/mac;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Broadcaster/Broadcaster-Prefix.pch";
 				INFOPLIST_FILE = "Broadcaster/Broadcaster-Info.plist";

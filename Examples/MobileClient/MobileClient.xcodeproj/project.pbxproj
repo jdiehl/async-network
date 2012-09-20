@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D067C3815195B8B006AFD2F /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D067C3715195B8B006AFD2F /* AsyncNetwork.framework */; };
 		2D067C3A15195B9D006AFD2F /* AsyncNetwork.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D067C3715195B8B006AFD2F /* AsyncNetwork.framework */; };
-		2D067C3C15195BEC006AFD2F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D067C3B15195BEC006AFD2F /* CFNetwork.framework */; };
 		2D1D684F1518FD230039CE94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D684E1518FD230039CE94 /* UIKit.framework */; };
 		2D1D68511518FD230039CE94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D68501518FD230039CE94 /* Foundation.framework */; };
 		2D1D68531518FD230039CE94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D68521518FD230039CE94 /* CoreGraphics.framework */; };
@@ -19,6 +18,8 @@
 		2D1D68621518FD230039CE94 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D68611518FD230039CE94 /* ViewController.m */; };
 		2D1D68651518FD230039CE94 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68631518FD230039CE94 /* ViewController.xib */; };
 		2D98928615195C8F00628A55 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D98928515195C8F00628A55 /* Icon.png */; };
+		FC61A7F1160B43E60077F6BB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC61A7F0160B43E60077F6BB /* Security.framework */; };
+		FC61A7F3160B44060077F6BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC61A7F2160B44060077F6BB /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,8 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2D067C3715195B8B006AFD2F /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AsyncNetwork.framework; sourceTree = "<group>"; };
-		2D067C3B15195BEC006AFD2F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2D067C3715195B8B006AFD2F /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../dist/ios/AsyncNetwork.framework; sourceTree = "<group>"; };
 		2D1D684A1518FD230039CE94 /* MobileClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1D684E1518FD230039CE94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D1D68501518FD230039CE94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +52,8 @@
 		2D1D68611518FD230039CE94 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2D1D68641518FD230039CE94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		2D98928515195C8F00628A55 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../Icon.png; sourceTree = "<group>"; };
+		FC61A7F0160B43E60077F6BB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FC61A7F2160B44060077F6BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D067C3C15195BEC006AFD2F /* CFNetwork.framework in Frameworks */,
+				FC61A7F3160B44060077F6BB /* CFNetwork.framework in Frameworks */,
+				FC61A7F1160B43E60077F6BB /* Security.framework in Frameworks */,
 				2D1D684F1518FD230039CE94 /* UIKit.framework in Frameworks */,
 				2D1D68511518FD230039CE94 /* Foundation.framework in Frameworks */,
 				2D1D68531518FD230039CE94 /* CoreGraphics.framework in Frameworks */,
@@ -91,7 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				2D067C3715195B8B006AFD2F /* AsyncNetwork.framework */,
-				2D067C3B15195BEC006AFD2F /* CFNetwork.framework */,
+				FC61A7F2160B44060077F6BB /* CFNetwork.framework */,
+				FC61A7F0160B43E60077F6BB /* Security.framework */,
 				2D1D684E1518FD230039CE94 /* UIKit.framework */,
 				2D1D68501518FD230039CE94 /* Foundation.framework */,
 				2D1D68521518FD230039CE94 /* CoreGraphics.framework */,
@@ -224,9 +228,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -234,11 +237,11 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -249,15 +252,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -266,10 +267,7 @@
 		2D1D68691518FD230039CE94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = ../../dist/ios;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileClient/MobileClient-Prefix.pch";
 				INFOPLIST_FILE = "MobileClient/MobileClient-Info.plist";
@@ -281,10 +279,7 @@
 		2D1D686A1518FD230039CE94 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = ../../dist/ios;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileClient/MobileClient-Prefix.pch";
 				INFOPLIST_FILE = "MobileClient/MobileClient-Info.plist";

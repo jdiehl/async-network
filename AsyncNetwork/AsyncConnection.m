@@ -144,7 +144,12 @@ Synthesize(port)
 // debug description
 - (NSString *)description;
 {
+#ifdef __LP64__
+	return [NSString stringWithFormat:@"<%s host=%@ port=%ld requests=%ld>", object_getClassName(self), self.host, self.port, _responseBlocks.count];
+#else
 	return [NSString stringWithFormat:@"<%s host=%@ port=%d requests=%d>", object_getClassName(self), self.host, self.port, _responseBlocks.count];
+#endif
+
 }
 
 
@@ -233,7 +238,7 @@ Synthesize(port)
 	NSData *bodyData = nil;
 	if (object) {
 		bodyData = [NSKeyedArchiver archivedDataWithRootObject:object];
-		header.bodyLength = bodyData.length;
+		header.bodyLength = (UInt32)bodyData.length;
 	}
 	
 	// send the header
@@ -368,18 +373,19 @@ Synthesize(port)
 // convert a header to data
 NSData *HeaderToData(AsyncConnectionHeader header)
 {
-	UInt32 *encodedHeader = malloc(sizeof(AsyncConnectionHeader));
+	static size_t size = 4 * sizeof(UInt32);
+	UInt32 *encodedHeader = malloc(size);
 	encodedHeader[0] = CFSwapInt16LittleToHost(header.type);
 	encodedHeader[1] = CFSwapInt32LittleToHost(header.command);
 	encodedHeader[2] = CFSwapInt32LittleToHost(header.blockTag);
 	encodedHeader[3] = CFSwapInt32LittleToHost(header.bodyLength);
-	return [NSData dataWithBytesNoCopy:encodedHeader length:sizeof(header) freeWhenDone:YES];
+	return [NSData dataWithBytesNoCopy:encodedHeader length:size freeWhenDone:YES];
 }
 
 // convert raw data to a header
 AsyncConnectionHeader DataToHeader(NSData *data)
 {
-	assert(data.length == sizeof(AsyncConnectionHeader));
+	assert(data.length == 4 * sizeof(UInt32));
 	
 	const UInt32 *encodedHeader = (const UInt32 *)data.bytes;
 	AsyncConnectionHeader header;

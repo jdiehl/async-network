@@ -80,7 +80,7 @@
 - (void)updateStatus;
 {
 	// show how many connections we have
-	self.status.stringValue = [NSString stringWithFormat:@"Conntected to %d server(s)", self.client.connections.count];
+	self.status.stringValue = [NSString stringWithFormat:@"Conntected to %ld server(s)", self.client.connections.count];
 }
 
 

@@ -136,9 +136,9 @@ networking.
 
 ### Notify
 
-Notify demonstrates sending a broadcast from a ruby backend to an iOS client.
-This can be used as a local notification to trigger an update on the mobile
-client.
+Notify demonstrates sending a broadcast from a ruby or node server to an iOS
+client. This can be used as a local notification to trigger an update on the
+mobile client.
 
 
 ## Installation

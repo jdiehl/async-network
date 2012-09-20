@@ -121,7 +121,7 @@
 - (void)updateStatus;
 {
 	// display the listening port and connected clients
-	self.status.stringValue = [NSString stringWithFormat:@"Listening on port: %d, %d client(s) connected", self.server.port, self.server.connections.count];
+	self.status.stringValue = [NSString stringWithFormat:@"Listening on port: %ld, %ld client(s) connected", self.server.port, self.server.connections.count];
 }
 
 @end

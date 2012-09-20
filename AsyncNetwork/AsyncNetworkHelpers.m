@@ -59,7 +59,7 @@ const NSTimeInterval AsyncRequestDefaultTimeout = -1.0;
 static dispatch_queue_t _queue = NULL;
 extern dispatch_queue_t AsyncNetworkDispatchQueue()
 {
-	if (_queue == NULL)	_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+	if (_queue == NULL)	_queue = dispatch_get_main_queue();
 	return _queue;
 }
 

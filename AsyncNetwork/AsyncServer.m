@@ -64,7 +64,11 @@ Synthesize(port)
 // debug description
 - (NSString *)description;
 {
+#ifdef __LP64__
+	NSMutableString *string = [NSMutableString stringWithFormat:@"<%s serviceType=%@ serviceName=%@ port=%ld>", object_getClassName(self), self.serviceType, self.serviceName, self.port];
+#else
 	NSMutableString *string = [NSMutableString stringWithFormat:@"<%s serviceType=%@ serviceName=%@ port=%d>", object_getClassName(self), self.serviceType, self.serviceName, self.port];
+#endif
 	for(AsyncConnection *connection in self.connections) {
 		[string appendFormat:@"\n\t%@", connection.description];
 	}
@@ -170,7 +174,8 @@ Synthesize(port)
     if(!self.serviceName || self.netService) return;
 	
     // create and publish net service
-	_netService = [[NSNetService alloc] initWithDomain:self.serviceDomain type:self.serviceType name:self.serviceName port:self.port];
+	_netService = [[NSNetService alloc] initWithDomain:self.serviceDomain type:self.serviceType name:self.serviceName port:(int)self.port];
+
     self.netService.delegate = self;
     [self.netService publish];
 }
