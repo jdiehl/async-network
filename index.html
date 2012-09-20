@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Async-network : Cocoa and iOS Socket Networking Evolved" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Async-network</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jdiehl/async-network">View on GitHub</a>
+
+          <h1 id="project_title">Async-network</h1>
+          <h2 id="project_tagline">Cocoa and iOS Socket Networking Evolved</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jdiehl/async-network/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jdiehl/async-network/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Async Network is a framework for socket networking on COCOA or iOS based on
+<a href="https://github.com/robbiehanson/CocoaAsyncSocket">AsyncSocket</a>.</p>
+
+<h2>Quick Start</h2>
+
+<h3>Client-Server Networking</h3>
+
+<p>In client-server networking, clients connect to servers to exchange messages.
+In AsyncNetwork, every client will automatically connect to every discovered
+server with the same service name. Servers are discovered using
+<a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/NetServices/Articles/about.html">Bonjour</a>.</p>
+
+<p>In the server process, create an AsyncServer instance, define the Bonjour
+service name and start the server.</p>
+
+<div class="highlight"><pre><span class="n">AsyncServer</span> <span class="o">*</span><span class="n">server</span> <span class="o">=</span> <span class="p">[</span><span class="n">AsyncServer</span> <span class="n">new</span><span class="p">];</span>
+<span class="n">server</span><span class="p">.</span><span class="n">serviceName</span> <span class="o">=</span> <span class="s">@"MyServer"</span><span class="p">;</span>
+<span class="p">[</span><span class="n">server</span> <span class="n">start</span><span class="p">];</span>
+</pre></div>
+
+<p>In the client process, create an AsyncClient instance, and start it. It will
+automatically connect to any discovered servers.</p>
+
+<div class="highlight"><pre><span class="n">AsyncClient</span> <span class="o">*</span><span class="n">client</span> <span class="p">[</span><span class="n">AsyncClient</span> <span class="n">new</span><span class="p">];</span>
+<span class="p">[</span><span class="n">client</span> <span class="n">start</span><span class="p">];</span>
+</pre></div>
+
+<p>To receive messages, assign a delegate to the server and/or client, and
+implement <code>server:didReceiveCommand:object:</code>.</p>
+
+<div class="highlight"><pre><span class="n">server</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">myController</span><span class="p">;</span>
+
+<span class="c1">// in MyController.m</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">server:</span><span class="p">(</span><span class="n">AsyncServer</span> <span class="o">*</span><span class="p">)</span><span class="nv">theServer</span> <span class="nf">didReceiveCommand:</span><span class="p">(</span><span class="n">AsyncCommand</span><span class="p">)</span><span class="nv">command</span> <span class="nf">object:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">object</span> <span class="p">{</span>
+    <span class="c1">// respond to incoming messages here</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>To send messages, call <code>sendCommand:object:</code> on the server and/or client. The
+message object is automatically encoded via
+<a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Protocols/NSCoding_Protocol/Reference/Reference.html">NSCoding</a>.</p>
+
+<div class="highlight"><pre><span class="p">[</span><span class="n">client</span> <span class="nl">sendCommand:</span><span class="n">command</span> <span class="nl">object:</span><span class="n">message</span><span class="p">];</span>
+</pre></div>
+
+<p>Command is a 32bit number that can be used to identify the type of message being sent.</p>
+
+<h3>Peer-To-Peer Networking</h3>
+
+<p>In peer-to-peer networking, every peer can exchange messages with every other
+peer on the network. To implement peer-to-peer networking on AsyncNetwork, you
+may either use the <code>AsyncBroadcaster</code> or have every peer instantiate an
+<code>AsyncServer</code> and a <code>AsyncClient</code>.</p>
+
+<p>With the <code>AsyncBroadcaster</code> messages can be send to all peers on the same
+subnet. The broadcaster can only send binary data (NSData) and it is not
+guaranteed that the data arrives in order.</p>
+
+<div class="highlight"><pre><span class="n">AsyncBroadcaster</span> <span class="o">*</span><span class="n">broadcaster</span> <span class="o">=</span> <span class="p">[</span><span class="n">AsyncBroadcaster</span> <span class="n">new</span><span class="p">];</span>
+<span class="p">[</span><span class="n">broadcaster</span> <span class="n">start</span><span class="p">];</span>
+<span class="p">[</span><span class="n">broadcaster</span> <span class="nl">broadcast:</span><span class="n">data</span><span class="p">];</span>
+</pre></div>
+
+<p>If you create many servers and clients on your network to implement
+peer-to-peer networking this way, you may benefit from disabling the
+automatic connection feature of the client. This way, you can initiate a
+network connection only as needed, which is especially beneficial if your
+plan to implement request-based peer-to-peer networking.</p>
+
+<h3>Request-Based Networking</h3>
+
+<p>In request-based networking, a server listens for requests from clients and
+sends a response that is bound to the original request. HTTP servers are
+implemented this way.</p>
+
+<p>To send a request call <code>sendObject:responseHandler:</code> on a client and provide a
+block that is called with the server's response to the request.</p>
+
+<div class="highlight"><pre><span class="p">[</span><span class="n">client</span> <span class="nl">sendCommand:</span><span class="n">command</span> <span class="nl">object:</span><span class="n">message</span> <span class="nl">responseHandler:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">NSCoding</span><span class="o">&gt;</span> <span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// react to the response here</span>
+<span class="p">}];</span>
+</pre></div>
+
+<p>On the server, you must implement the delegate method
+<code>server:didReceiveCommand:object:connection:responseBlock:</code></p>
+
+<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">server:</span><span class="p">(</span><span class="n">AsyncServer</span> <span class="o">*</span><span class="p">)</span><span class="nv">theServer</span> <span class="nf">didReceiveCommand:</span><span class="p">(</span><span class="n">AsyncCommand</span><span class="p">)</span><span class="nv">command</span> <span class="nf">object:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">object</span> <span class="nf">connection:</span><span class="p">(</span><span class="n">AsyncConnection</span> <span class="o">*</span><span class="p">)</span><span class="nv">connection</span> <span class="nf">responseBlock:</span><span class="p">(</span><span class="n">AsyncNetworkResponseBlock</span><span class="p">)</span><span class="nv">block</span><span class="p">;</span>
+    <span class="kt">id</span><span class="o">&lt;</span><span class="n">NSCoding</span><span class="o">&gt;</span> <span class="n">yourResponse</span> <span class="o">=</span> <span class="p">...;</span>
+    <span class="n">block</span><span class="p">(</span><span class="n">yourResponse</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>If you do not want to keep your connections alive longer than necessary, you
+should use <code>AsyncRequest</code> instead of <code>AsyncClient</code>. <code>AsyncRequest</code> will connect
+to a server, send a request, wait for the response, and disconnect in one call.</p>
+
+<div class="highlight"><pre><span class="p">[</span><span class="n">AsyncRequest</span> <span class="nl">fireRequestWithHost:</span><span class="s">@"192.168.0.1"</span> <span class="nl">port:</span><span class="mi">12345</span> <span class="nl">command:</span><span class="mi">0</span> <span class="nl">object:</span><span class="n">message</span> <span class="nl">responseBlock:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">NSCoding</span><span class="o">&gt;</span> <span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// react to the response here</span>
+<span class="p">}];</span>
+</pre></div>
+
+<h2>Examples</h2>
+
+<p>Examples are located in <code>Examples/</code>. Install AsyncNetwork as a shared framework
+before running an example.</p>
+
+<h3>Broadcaster</h3>
+
+<p>Broadcaster demonstrates the use of AsyncBroadcaster to broadcast messages to
+multiple recipients over the local network.</p>
+
+<h3>ClientServer</h3>
+
+<p>ClientServer demonstrates how AsyncClient and AsyncServer are set up to
+automatically connect to each other and exchange messages. You can create
+more servers with CMD-1 and more clients with CMD-2.</p>
+
+<h3>MobileClient</h3>
+
+<p>MobileClient demonstrates how to use AsyncNetwork on iOS. It creates a single
+AsyncClient that automatically connects to any servers created from
+the ClientServer example.</p>
+
+<h3>Request</h3>
+
+<p>Request demonstrates the use of AsyncRequests to implement request-based
+networking.</p>
+
+<h3>Notify</h3>
+
+<p>Notify demonstrates sending a broadcast from a ruby or node server to an iOS
+client. This can be used as a local notification to trigger an update on the
+mobile client.</p>
+
+<h2>Installation</h2>
+
+<p>To compile and install AsyncNetwork, run <code>makeImage</code>. This will compile two
+versions of the AsyncNetwork framework: a dynamic framework to be used on Mac
+OS X and a static framework to be used on iOS or the iOS Simulator. The
+compiled frameworks will be placed into <code>dist/</code></p>
+
+<h3>Install as Shared Dynamic Framework (Mac OS X)</h3>
+
+<ol>
+<li>Copy <code>AsyncNetwork.framework</code> to <code>/Library/Frameworks/</code>
+</li>
+<li>Add the framework to your project: (Summary of main target) Click "+"" below
+"Linked Frameworks and Libraries" and select <code>AsyncNetwork.framework</code> from the
+list.</li>
+<li>Add <code>#import &lt;AsyncNetwork/AsyncNetwork.h&gt;</code> to any file that uses the
+framework.</li>
+</ol><p>Note that AsyncNetwork must be installed as a shared framework on all machines
+that run your application.</p>
+
+<h3>Install as Embedded Framework (Mac OS X or iOS)</h3>
+
+<ol>
+<li>Add a "Copy Files" Build Phase to your main target</li>
+<li>Change Destination to "Frameworks"</li>
+<li>Drag <code>AsyncNetwork.framework</code> (dynamic or static version) into the list of files</li>
+</ol><p>This method does not rely on an installed version of the framework but instead
+copy AsyncNetwork into the application bundle.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Async-network maintained by <a href="https://github.com/jdiehl">jdiehl</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-30655837-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
