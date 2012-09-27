@@ -15,7 +15,22 @@
 		2D246B211518026500101EAB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D246B1F1518026500101EAB /* MainMenu.xib */; };
 		2D246B2F151806BF00101EAB /* PingServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D246B2E151806BF00101EAB /* PingServer.m */; };
 		2DA0088B152104B1001B2551 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0088A152104B1001B2551 /* AsyncNetwork.framework */; };
+		FCE8A4C21614B4C40020AAE6 /* AsyncNetwork.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0088A152104B1001B2551 /* AsyncNetwork.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FCE8A4C01614B4C00020AAE6 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FCE8A4C21614B4C40020AAE6 /* AsyncNetwork.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D1D6771151808C10039CE94 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = ../../../Resources/Icon.icns; sourceTree = "<group>"; };
@@ -121,6 +136,7 @@
 				2D246B021518026500101EAB /* Sources */,
 				2D246B031518026500101EAB /* Frameworks */,
 				2D246B041518026500101EAB /* Resources */,
+				FCE8A4C01614B4C00020AAE6 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);

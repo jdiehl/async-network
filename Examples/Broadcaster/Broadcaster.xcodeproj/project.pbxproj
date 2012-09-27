@@ -14,7 +14,22 @@
 		2D1D68021518F8B90039CE94 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68001518F8B90039CE94 /* MainMenu.xib */; };
 		2D1D68291518FA920039CE94 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2D1D68281518FA920039CE94 /* Icon.icns */; };
 		2DA0089E152104F4001B2551 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0089D152104F4001B2551 /* AsyncNetwork.framework */; };
+		FCE8A4A71614B4270020AAE6 /* AsyncNetwork.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0089D152104F4001B2551 /* AsyncNetwork.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FCE8A4A61614B4220020AAE6 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FCE8A4A71614B4270020AAE6 /* AsyncNetwork.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D1D67E71518F8B90039CE94 /* Broadcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broadcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +131,7 @@
 				2D1D67E31518F8B90039CE94 /* Sources */,
 				2D1D67E41518F8B90039CE94 /* Frameworks */,
 				2D1D67E51518F8B90039CE94 /* Resources */,
+				FCE8A4A61614B4220020AAE6 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
