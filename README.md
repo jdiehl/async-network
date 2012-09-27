@@ -143,31 +143,22 @@ mobile client.
 
 ## Installation
 
-To compile and install AsyncNetwork, run `makeImage`. This will compile two
-versions of the AsyncNetwork framework: a dynamic framework to be used on Mac
-OS X and a static framework to be used on iOS or the iOS Simulator. The
-compiled frameworks will be placed into `dist/`
+Check out the submodules (AsyncSocket):
 
-### Install as Shared Dynamic Framework (Mac OS X)
+    git submodule init
+    git submodule update
 
-1. Copy `AsyncNetwork.framework` to `/Library/Frameworks/`
-2. Add the framework to your project: (Summary of main target) Click "+"" below
-   "Linked Frameworks and Libraries" and select `AsyncNetwork.framework` from the
-   list.
-3. Add `#import <AsyncNetwork/AsyncNetwork.h>` to any file that uses the
-   framework.
+Compile AsyncNetwork (requires Xcode Command Line Tools):
 
-Note that AsyncNetwork must be installed as a shared framework on all machines
-that run your application.
+    run `make`
 
-### Install as Embedded Framework (Mac OS X or iOS)
+This will compile AsyncNetwork for Mac in `dist/mac` and iOS in `dist/ios`.
+The compiled AsyncNetwork Framework can be directly imported into your project:
 
-1. Add a "Copy Files" Build Phase to your main target
-2. Change Destination to "Frameworks"
-3. Drag `AsyncNetwork.framework` (dynamic or static version) into the list of files
-
-This method does not rely on an installed version of the framework but instead
-copy AsyncNetwork into the application bundle.
+1. Drag `AsyncNetwork.framework` from `dist/ios` or `dist/mac` to your project
+2. Add a "Copy Files" Build Phase to your main target
+3. Change Destination to "Frameworks"
+4. Drag `AsyncNetwork.framework` (dynamic or static version) into the list of files
 
 
 ## License (MIT)
