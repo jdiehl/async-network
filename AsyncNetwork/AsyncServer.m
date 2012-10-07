@@ -153,25 +153,34 @@ Synthesize(port)
 - (void)setupListenSocket;
 {
 	if(self.listenSocket) return;
+	NSError *error;
 	
 	// set up listening socket
 	_listenSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
-	[self.listenSocket setIPv6Enabled:NO];
-	NSError *error;
-	if (![self.listenSocket acceptOnPort:self.port error:&error]) {
-		CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);
-		_listenSocket = nil;
-		return;
-	}
 	
-	// update port from socket
-	_port = [self.listenSocket localPort];
+	if (self.url) {
+		if (![self.listenSocket acceptOnUrl:self.url error:&error]) {
+			CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);
+			_listenSocket = nil;
+			return;
+		}
+	} else {
+		[self.listenSocket setIPv6Enabled:NO];
+		if (![self.listenSocket acceptOnPort:self.port error:&error]) {
+			CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);
+			_listenSocket = nil;
+			return;
+		}
+		
+		// update port from socket
+		_port = [self.listenSocket localPort];
+	}
 }
 
 // set up the net service
 - (void)setupNetService;
 {
-    if(!self.serviceName || self.netService) return;
+    if (self.url || !self.serviceName || self.netService) return;
 	
     // create and publish net service
 	_netService = [[NSNetService alloc] initWithDomain:self.serviceDomain type:self.serviceType name:self.serviceName port:(int)self.port];

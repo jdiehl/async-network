@@ -54,6 +54,7 @@
 @property (strong) NSString *serviceDomain;
 @property (strong, nonatomic) NSString *serviceName;
 @property (assign) NSInteger port;
+@property (strong) NSURL *url;
 
 - (void)start;
 - (void)stop;

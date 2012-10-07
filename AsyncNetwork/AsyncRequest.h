@@ -45,10 +45,13 @@
 
 + (id)fireRequestWithNetService:(NSNetService *)netService command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
 + (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
++ (id)fireRequestWithUrl:(NSURL *)url command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
 + (id)requestWithNetService:(NSNetService *)netService;
 + (id)requestWithHost:(NSString *)theHost port:(NSUInteger)thePort;
++ (id)requestWithURL:(NSURL *)url;
 - (id)initWithNetService:(NSNetService *)netService;
 - (id)initWithHost:(NSString *)host port:(NSUInteger)port;
+- (id)initWithURL:(NSURL *)url;
 - (void)fire;
 
 @end

@@ -65,6 +65,17 @@ Synthesize(responseBlock)
 	return request;
 }
 
+// fire a request to the given url and call the completion block afterwards
++ (id)fireRequestWithUrl:(NSURL *)url command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
+{
+	AsyncRequest *request = [self requestWithURL:url];
+	request.object = object;
+	request.responseBlock = block;
+	[request fire];
+	return request;
+}
+
+
 // create a request from a Bonjour discovery
 + (id)requestWithNetService:(NSNetService *)netService;
 {
@@ -75,6 +86,12 @@ Synthesize(responseBlock)
 + (id)requestWithHost:(NSString *)host port:(NSUInteger)port;
 {
 	return [[self alloc] initWithHost:host port:port];
+}
+
+// create a request to the given host and port
++ (id)requestWithURL:(NSURL *)url;
+{
+	return [[self alloc] initWithURL:url];
 }
 
 // init
@@ -104,6 +121,16 @@ Synthesize(responseBlock)
     self = [self init];
     if (self) {
 		_connection = [[AsyncConnection alloc] initWithHost:host port:port];
+    }
+    return self;
+}
+
+// init with url
+- (id)initWithURL:(NSURL *)url;
+{
+    self = [self init];
+    if (self) {
+		_connection = [[AsyncConnection alloc] initWithURL:url];
     }
     return self;
 }

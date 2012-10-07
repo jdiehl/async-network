@@ -50,6 +50,7 @@ Synthesize(timeout)
 Synthesize(netService)
 Synthesize(host)
 Synthesize(port)
+Synthesize(url)
 
 
 // Create and return the run loop used for all network operations
@@ -76,6 +77,11 @@ Synthesize(port)
 	return [[self alloc] initWithHost:theHost port:thePort];
 }
 
+// create a new connection to a unix domain socket
++ (id)connectionWithURL:(NSURL *)url;
+{
+	return [[self alloc] initWithURL:url];
+}
 
 #pragma mark init & clean up
 
@@ -119,13 +125,23 @@ Synthesize(port)
 	return self;
 }
 
-// Init a connection with to a host and port
+// Init a connection with a host and port
 - (id)initWithHost:(NSString *)host port:(NSUInteger)port;
 {
 	self = [self init];
 	if (self) {
 		_host = host;
 		_port = port;
+	}
+	return self;
+}
+
+// Init a connection to a unix domain socket
+- (id)initWithURL:(NSURL *)url;
+{
+	self = [self init];
+	if (self) {
+		_url = url;
 	}
 	return self;
 }
@@ -170,14 +186,23 @@ Synthesize(port)
 	
 	// create the socket
 	_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
-	[self.socket setIPv6Enabled:NO];
-	
-	// connect to host and port
 	NSError *error;
-	if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&error]) {
-		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
-		_socket = nil;
-		return;
+	
+	if (self.url) {
+		if (![self.socket connectToUrl:self.url withTimeout:self.timeout error:&error]) {
+			CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+			_socket = nil;
+			return;
+		}
+	} else {
+		[self.socket setIPv6Enabled:NO];
+		
+		// connect to host and port
+		if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&error]) {
+			CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+			_socket = nil;
+			return;
+		}
 	}
 }
 
@@ -310,6 +335,19 @@ Synthesize(port)
  * The host parameter will be an IP address, not a DNS name.
  **/
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port;
+{
+	// start reading length data
+	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
+	
+	// inform delegate that we are connected
+	CallOptionalDelegateMethod(connectionDidConnect:, connectionDidConnect:self)
+}
+
+/**
+ * Called when a socket connects and is ready for reading and writing.
+ * The host parameter will be an IP address, not a DNS name.
+ **/
+- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url;
 {
 	// start reading length data
 	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];

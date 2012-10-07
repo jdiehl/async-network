@@ -64,6 +64,7 @@ typedef struct {
 @property (readonly) NSNetService *netService; // the target net service (host & port are ignored if set)
 @property (readonly) NSString *host;           // the target host
 @property (readonly) NSUInteger port;          // the target port
+@property (readonly) NSURL *url;               // the url of the unix domain socket
 @property (assign) NSTimeInterval timeout;     // connection timeout
 
 + (NSRunLoop *)networkRunLoop;
@@ -71,10 +72,12 @@ typedef struct {
 + (id)connectionWithSocket:(GCDAsyncSocket *)socket;
 + (id)connectionWithNetService:(NSNetService *)netService;
 + (id)connectionWithHost:(NSString *)host port:(NSUInteger)port;
++ (id)connectionWithURL:(NSURL *)url;
 
 - (id)initWithSocket:(GCDAsyncSocket *)theSocket;
 - (id)initWithNetService:(NSNetService *)theNetService;
 - (id)initWithHost:(NSString *)host port:(NSUInteger)port;
+- (id)initWithURL:(NSURL *)url;
 
 - (void)start;
 - (void)cancel;
