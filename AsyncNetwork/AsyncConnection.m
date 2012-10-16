@@ -44,13 +44,13 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 
 @implementation AsyncConnection
 
-Synthesize(socket)
-Synthesize(delegate)
-Synthesize(timeout)
-Synthesize(netService)
-Synthesize(host)
-Synthesize(port)
-Synthesize(url)
+@synthesize socket = _socket;
+@synthesize delegate = _delegate;
+@synthesize timeout = _timeout;
+@synthesize netService = _netService;
+@synthesize host = _host;
+@synthesize port = _port;
+@synthesize url = _url;
 
 
 // Create and return the run loop used for all network operations
@@ -190,7 +190,9 @@ Synthesize(url)
 	
 	if (self.url) {
 		if (![self.socket connectToUrl:self.url withTimeout:self.timeout error:&error]) {
-			CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+			if ([self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+				[self.delegate connection:self didFailWithError:error];
+			}
 			_socket = nil;
 			return;
 		}
@@ -199,7 +201,9 @@ Synthesize(url)
 		
 		// connect to host and port
 		if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&error]) {
-			CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+			if ([self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+				[self.delegate connection:self didFailWithError:error];
+			}
 			_socket = nil;
 			return;
 		}
@@ -294,7 +298,9 @@ Synthesize(url)
 	switch (header.type) {
 		case AsyncConnectionTypeMessage:
 			// a message requires no response
-			CallOptionalDelegateMethod(connection:didReceiveCommand:object:, connection:self didReceiveCommand:header.command object:object)
+			if ([self.delegate respondsToSelector:@selector(connection:didReceiveCommand:object:)]) {
+				[self.delegate connection:self didReceiveCommand:header.command object:object];
+			}
 			break;
 			
 		case AsyncConnectionTypeRequest:
@@ -340,7 +346,9 @@ Synthesize(url)
 	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	
 	// inform delegate that we are connected
-	CallOptionalDelegateMethod(connectionDidConnect:, connectionDidConnect:self)
+	if ([self.delegate respondsToSelector:@selector(connectionDidConnect:)]) {
+		[self.delegate connectionDidConnect:self];
+	}
 }
 
 /**
@@ -353,7 +361,9 @@ Synthesize(url)
 	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	
 	// inform delegate that we are connected
-	CallOptionalDelegateMethod(connectionDidConnect:, connectionDidConnect:self)
+	if ([self.delegate respondsToSelector:@selector(connectionDidDisconnect:)]) {
+		[self.delegate connectionDidDisconnect:self];
+	}
 }
 
 /**
@@ -364,10 +374,14 @@ Synthesize(url)
  **/
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)error;
 {
-	if(error) {
-		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+	if (error) {
+		if ([self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+			[self.delegate connection:self didFailWithError:error];
+		}
     }
-	CallOptionalDelegateMethod(connectionDidDisconnect:, connectionDidDisconnect:self)
+	if ([self.delegate respondsToSelector:@selector(connectionDidDisconnect:)]) {
+		[self.delegate connectionDidDisconnect:self];
+	}
 }
 
 /**

@@ -23,6 +23,7 @@
  */
 
 #import "AsyncBroadcaster.h"
+#import "AsyncNetworkHelpers.h"
 
 // private methods
 @interface AsyncBroadcaster ()
@@ -33,12 +34,12 @@
 
 @implementation AsyncBroadcaster
 
-Synthesize(listenSocket)
-Synthesize(broadcastSocket)
-Synthesize(delegate)
-Synthesize(timeout)
-Synthesize(subnet)
-Synthesize(port)
+@synthesize listenSocket = _listenSocket;
+@synthesize broadcastSocket = _broadcastSocket;
+@synthesize delegate = _delegate;
+@synthesize timeout = _timeout;
+@synthesize subnet = _subnet;
+@synthesize port = _port;
 
 
 // init
@@ -125,14 +126,18 @@ Synthesize(port)
 	// bind to port
 	NSError *error;
 	if (![self.listenSocket bindToPort:self.port error:&error]) {
-		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+		if ([self.delegate respondsToSelector:@selector(broadcaster:didFailWithError:)]) {
+			[self.delegate broadcaster:self didFailWithError:error];
+		}
 		_listenSocket = nil;
 		return NO;
 	}
 	
 	// start listening
 	if (![self.listenSocket beginReceiving:&error]) {
-		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+		if ([self.delegate respondsToSelector:@selector(broadcaster:didFailWithError:)]) {
+			[self.delegate broadcaster:self didFailWithError:error];
+		}
 		return NO;
 	}
 	
@@ -151,7 +156,9 @@ Synthesize(port)
 	// enable broadcasting
 	NSError *error;
 	if (![self.broadcastSocket enableBroadcast:YES error:&error]) {
-		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+		if ([self.delegate respondsToSelector:@selector(broadcaster:didFailWithError:)]) {
+			[self.delegate broadcaster:self didFailWithError:error];
+		}
 		return NO;
 	}
 	
@@ -166,7 +173,9 @@ Synthesize(port)
  **/
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag;
 {
-	CallOptionalDelegateMethod(broadcasterDidSendData:, broadcasterDidSendData:self);
+	if ([self.delegate respondsToSelector:@selector(broadcasterDidSenddata:)]) {
+		[self.delegate broadcasterDidSendData:self];
+	}
 }
 
 /**
@@ -175,7 +184,9 @@ Synthesize(port)
  **/
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error;
 {
-	CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+	if ([self.delegate respondsToSelector:@selector(broadcaster:didFailWithError:)]) {
+		[self.delegate broadcaster:self didFailWithError:error];
+	}
 }
 
 /**
@@ -185,7 +196,9 @@ Synthesize(port)
 {
 	NSString *host = [GCDAsyncUdpSocket hostFromAddress:address];
 	if (AsyncNetworkIPAddressIsLocal(host)) return;
-	CallOptionalDelegateMethod(broadcaster:didReceiveData:fromHost:, broadcaster:self didReceiveData:data fromHost:host);
+	if ([self.delegate respondsToSelector:@selector(broadcaster:didReceiveData:fromHost:)]) {
+		[self.delegate broadcaster:self didReceiveData:data fromHost:host];
+	}
 }
 
 /**
@@ -194,7 +207,9 @@ Synthesize(port)
 - (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error;
 {
 	if (error) {
-		CallOptionalDelegateMethod(broadcaster:didFailWithError:, broadcaster:self didFailWithError:error);
+		if ([self.delegate respondsToSelector:@selector(broadcaster:didFailWithError:)]) {
+			[self.delegate broadcaster:self didFailWithError:error];
+		}
 	}
 }
 
