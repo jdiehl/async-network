@@ -23,16 +23,17 @@
  */
 
 #import "AsyncClient.h"
+#import "AsyncNetworkHelpers.h"
 
 @implementation AsyncClient
 
-Synthesize(serviceBrowser)
-Synthesize(services)
-Synthesize(connections)
-Synthesize(delegate)
-Synthesize(serviceType)
-Synthesize(serviceDomain)
-Synthesize(autoConnect)
+@synthesize serviceBrowser = _serviceBrowser;
+@synthesize services = _services;
+@synthesize connections = _connections;
+@synthesize delegate = _delegate;
+@synthesize serviceType = _serviceType;
+@synthesize serviceDomain = _serviceDomain;
+@synthesize autoConnect = _autoConnect;
 
 
 // init
@@ -158,32 +159,42 @@ Synthesize(autoConnect)
 // the connection was successfully connected
 - (void)connectionDidConnect:(AsyncConnection *)theConnection;
 {
-	CallOptionalDelegateMethod(client:didConnect:, client:self didConnect:theConnection)
+	if ([self.delegate respondsToSelector:@selector(client:didConnect:)]) {
+		[self.delegate client:self didConnect:theConnection];
+	}
 }
 
 // the connection was disconnected
 - (void)connectionDidDisconnect:(AsyncConnection *)theConnection;
 {
 	[self.connections removeObject:theConnection];
-	CallOptionalDelegateMethod(client:didDisconnect:, client:self didDisconnect:theConnection)
+	if ([self.delegate respondsToSelector:@selector(client:didDisconnect:)]) {
+		[self.delegate client:self didDisconnect:theConnection];
+	}
 }
 
 // incomding command
 - (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object;
 {
-	CallOptionalDelegateMethod(client:didReceiveCommand:object:connection:, client:self didReceiveCommand:command object:object connection:theConnection)
+	if ([self.delegate respondsToSelector:@selector(client:didReceiveCommand:object:connection:)]) {
+		[self.delegate client:self didReceiveCommand:command object:object connection:theConnection];
+	}
 }
 
 // incomding request
 - (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
-	CallAndReturnOptionalDelegateMethod(client:didReceiveCommand:object:connection:responseBlock:, client:self didReceiveCommand:command object:object connection:theConnection responseBlock:block)
+	if ([self.delegate respondsToSelector:@selector(client:didReceiveCommand:object:connection:responseBlock:)]) {
+		[self.delegate client:self didReceiveCommand:command object:object connection:theConnection responseBlock:block];
+	}
 }
 
 // the connection reported an error
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 {
-	CallOptionalDelegateMethod(client:didFailWithError:, client:self didFailWithError:error)
+	if ([self.delegate respondsToSelector:@selector(client:didFailWithError:)]) {
+		[self.delegate client:self didFailWithError:error];
+	}
 }
 
 

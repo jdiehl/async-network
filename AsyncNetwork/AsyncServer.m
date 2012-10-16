@@ -34,14 +34,14 @@
 
 @implementation AsyncServer
 
-Synthesize(listenSocket)
-Synthesize(netService)
-Synthesize(connections)
-Synthesize(delegate)
-Synthesize(serviceType)
-Synthesize(serviceDomain)
-Synthesize(serviceName)
-Synthesize(port)
+@synthesize listenSocket = _listenSocket;
+@synthesize netService = _netService;
+@synthesize connections = _connections;
+@synthesize delegate = _delegate;
+@synthesize serviceType = _serviceType;
+@synthesize serviceDomain = _serviceDomain;
+@synthesize serviceName = _serviceName;
+@synthesize port = _port;
 
 // init
 - (id)init
@@ -159,7 +159,9 @@ Synthesize(port)
 	[self.listenSocket setIPv6Enabled:NO];
 	NSError *error;
 	if (![self.listenSocket acceptOnPort:self.port error:&error]) {
-		CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error);
+			if ([self.delegate respondsToSelector:@selector(server:didFailWithError:)]) {
+				[self.delegate server:self didFailWithError:error];
+			}
 		_listenSocket = nil;
 		return;
 	}
@@ -187,25 +189,33 @@ Synthesize(port)
 - (void)connectionDidDisconnect:(AsyncConnection *)theConnection;
 {
 	[self.connections removeObject:theConnection];
-	CallOptionalDelegateMethod(server:didDisconnect:, server:self didDisconnect:theConnection)
+	if ([self.delegate respondsToSelector:@selector(server:didDisconnect:)]) {
+		[self.delegate server:self didDisconnect:theConnection];
+	}
 }
 
 // incoming command
 - (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object;
 {
-	CallOptionalDelegateMethod(server:didReceiveCommand:object:connection:, server:self didReceiveCommand:command object:object connection:theConnection)
+	if ([self.delegate respondsToSelector:@selector(server:didReceiveCommand:object:connection:)]) {
+		[self.delegate server:self didReceiveCommand:command object:object connection:theConnection];
+	}
 }
 
 // incoming request
 - (void)connection:(AsyncConnection *)theConnection didReceiveCommand:(AsyncCommand)command object:(id)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
-	CallOptionalDelegateMethod(server:didReceiveCommand:object:connection:responseBlock:, server:self didReceiveCommand:command object:object connection:theConnection responseBlock:block)
+	if ([self.delegate respondsToSelector:@selector(server:didReceiveCommand:object:connection:responseBlock:)]) {
+		[self.delegate server:self didReceiveCommand:command object:object connection:theConnection responseBlock:block];
+	}
 }
 
 // the connection reported an error
 - (void)connection:(AsyncConnection *)theConnection didFailWithError:(NSError *)error;
 {
-	CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error)
+	if ([self.delegate respondsToSelector:@selector(server:didFailWithError:)]) {
+		[self.delegate server:self didFailWithError:error];
+	}
 }
 
 
@@ -226,7 +236,9 @@ Synthesize(port)
 	AsyncConnection *connection = [AsyncConnection connectionWithSocket:newSocket];
 	connection.delegate = self;
 	[self.connections addObject:connection];
-	CallOptionalDelegateMethod(server:didConnect:, server:self didConnect:connection)
+	if ([self.delegate respondsToSelector:@selector(server:didConnect:)]) {
+		[self.delegate server:self didConnect:connection];
+	}
 }
 
 
@@ -236,7 +248,9 @@ Synthesize(port)
 - (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict;
 {
 	NSError *error = [NSError errorWithDomain:@"NSNetService" code:-1 userInfo:errorDict];
-	CallOptionalDelegateMethod(server:didFailWithError:, server:self didFailWithError:error)
+	if ([self.delegate respondsToSelector:@selector(server:didFailWithError:)]) {
+		[self.delegate server:self didFailWithError:error];
+	}
 }
 
 

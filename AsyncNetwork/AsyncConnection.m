@@ -44,12 +44,12 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 
 @implementation AsyncConnection
 
-Synthesize(socket)
-Synthesize(delegate)
-Synthesize(timeout)
-Synthesize(netService)
-Synthesize(host)
-Synthesize(port)
+@synthesize socket = _socket;
+@synthesize delegate = _delegate;
+@synthesize timeout = _timeout;
+@synthesize netService = _netService;
+@synthesize host = _host;
+@synthesize port = _port;
 
 
 // Create and return the run loop used for all network operations
@@ -175,7 +175,9 @@ Synthesize(port)
 	// connect to host and port
 	NSError *error;
 	if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&error]) {
-		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+		if ([self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+			[self.delegate connection:self didFailWithError:error];
+		}
 		_socket = nil;
 		return;
 	}
@@ -269,7 +271,9 @@ Synthesize(port)
 	switch (header.type) {
 		case AsyncConnectionTypeMessage:
 			// a message requires no response
-			CallOptionalDelegateMethod(connection:didReceiveCommand:object:, connection:self didReceiveCommand:header.command object:object)
+			if ([self.delegate respondsToSelector:@selector(connection:didReceiveCommand:object:)]) {
+				[self.delegate connection:self didReceiveCommand:header.command object:object];
+			}
 			break;
 			
 		case AsyncConnectionTypeRequest:
@@ -315,21 +319,26 @@ Synthesize(port)
 	[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 	
 	// inform delegate that we are connected
-	CallOptionalDelegateMethod(connectionDidConnect:, connectionDidConnect:self)
+	if ([self.delegate respondsToSelector:@selector(connectionDidConnect:)]) {
+		[self.delegate connectionDidConnect:self];
+	}
 }
 
 /**
- * Called when a socket disconnects with or without error.
  * 
  * If you call the disconnect method, and the socket wasn't already disconnected,
  * this delegate method will be called before the disconnect method returns.
  **/
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)error;
 {
-	if(error) {
-		CallOptionalDelegateMethod(connection:didFailWithError:, connection:self didFailWithError:error)
+	if (error) {
+		if ([self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+			[self.delegate connection:self didFailWithError:error];
+		}
     }
-	CallOptionalDelegateMethod(connectionDidDisconnect:, connectionDidDisconnect:self)
+	if ([self.delegate respondsToSelector:@selector(connectionDidDisconnect:)]) {
+		[self.delegate connectionDidDisconnect:self];
+	}
 }
 
 /**

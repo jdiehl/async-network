@@ -26,11 +26,11 @@
 
 @implementation AsyncRequest
 
-Synthesize(connection)
-Synthesize(timeout)
-Synthesize(command)
-Synthesize(object)
-Synthesize(responseBlock)
+@synthesize connection = _connection;
+@synthesize timeout = _timeout;
+@synthesize command = _command;
+@synthesize object = _object;
+@synthesize responseBlock = _responseBlock;
 
 
 // active requests
