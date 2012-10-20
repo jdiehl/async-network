@@ -135,8 +135,16 @@
 {
 	[self.services addObject:netService];
 	
+	// call delegate
+	BOOL connect;
+	if ([self.delegate respondsToSelector:@selector(client:didFindService:moreComing:)]) {
+		connect = [self.delegate client:self didFindService:netService moreComing:moreComing];
+	} else {
+		connect = self.autoConnect;
+	}
+	
 	// connect to the net service
-	if(self.autoConnect) {
+	if (connect) {
 		
 		// create and configure a connection
 		// the connection takes care of resovling the net service
@@ -151,6 +159,9 @@
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)netService moreComing:(BOOL)moreComing;
 {
 	[self.services removeObject:netService];
+	if ([self.delegate respondsToSelector:@selector(client:didRemoveService:)]) {
+		[self.delegate client:self didRemoveService:netService];
+	}
 }
 
 

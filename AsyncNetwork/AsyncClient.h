@@ -33,6 +33,8 @@
 @optional
 
 #pragma mark - AsyncClientDelegate
+- (BOOL)client:(AsyncClient *)theClient didFindService:(NSNetService *)service moreComing:(BOOL)moreComing;
+- (void)client:(AsyncClient *)theClient didRemoveService:(NSNetService *)service;
 - (void)client:(AsyncClient *)theClient didConnect:(AsyncConnection *)connection;
 - (void)client:(AsyncClient *)theClient didDisconnect:(AsyncConnection *)connection;
 - (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
