@@ -36,7 +36,7 @@
 		2DA0078A1520E088001B2551 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; };
 		2DA0082D1520E36A001B2551 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0082C1520E36A001B2551 /* Security.framework */; };
 		2DA0082E1520E376001B2551 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0082C1520E36A001B2551 /* Security.framework */; };
-		FC698FC91632B3AC006418D6 /* NSNetService+AsyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = FC698FC71632B3AC006418D6 /* NSNetService+AsyncRequest.h */; };
+		FC698FC91632B3AC006418D6 /* NSNetService+AsyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = FC698FC71632B3AC006418D6 /* NSNetService+AsyncRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC698FCA1632B3AC006418D6 /* NSNetService+AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC698FC81632B3AC006418D6 /* NSNetService+AsyncRequest.m */; };
 		FC698FCB1632B3AC006418D6 /* NSNetService+AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC698FC81632B3AC006418D6 /* NSNetService+AsyncRequest.m */; };
 /* End PBXBuildFile section */
