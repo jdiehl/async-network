@@ -59,6 +59,7 @@
 + (id)fireRequestWithHost:(NSString *)host port:(NSUInteger)port command:(AsyncCommand)command object:(NSObject<NSCoding> *)object responseBlock:(AsyncNetworkRequestBlock)block;
 {
 	AsyncRequest *request = [self requestWithHost:host port:port];
+	request.command = command;
 	request.object = object;
 	request.responseBlock = block;
 	[request fire];
