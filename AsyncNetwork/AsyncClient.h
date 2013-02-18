@@ -58,6 +58,8 @@
 - (void)start;
 - (void)stop;
 
+- (void)connectToService:(NSNetService *)service;
+
 - (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 - (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object;
 - (void)sendObject:(id<NSCoding>)object;
