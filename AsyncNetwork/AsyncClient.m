@@ -105,6 +105,16 @@
 	[self.services removeAllObjects];
 }
 
+- (void)connectToService:(NSNetService *)service
+{
+	// create and configure a connection
+	// the connection takes care of resovling the net service
+	AsyncConnection *connection = [AsyncConnection connectionWithNetService:service];
+	connection.delegate = self;
+	[connection start];
+	[self.connections addObject:connection];
+}
+
 // send object to all servers
 - (void)sendCommand:(AsyncCommand)command object:(id<NSCoding>)object responseBlock:(AsyncNetworkResponseBlock)block;
 {
@@ -145,13 +155,7 @@
 	
 	// connect to the net service
 	if (connect) {
-		
-		// create and configure a connection
-		// the connection takes care of resovling the net service
-		AsyncConnection *connection = [AsyncConnection connectionWithNetService:netService];
-		connection.delegate = self;
-		[connection start];
-		[self.connections addObject:connection];
+		[self connectToService:netService];
 	}	
 }
 
