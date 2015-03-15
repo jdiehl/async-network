@@ -1,12 +1,10 @@
 .DS_Store
-build/
-dist/
-*.pbxuser
-*.mode1v3
-*.mode2v3
-*.perspective
-*.perspectivev3
 project.xcworkspace/
 xcuserdata/
 
+*.dmg
+*.framework
+*.dSYM
+
+build/
 docs/

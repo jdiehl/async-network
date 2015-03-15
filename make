@@ -1,12 +1,29 @@
 #! /bin/bash
 
-DISTROOT=dist
 BUILDROOT=build
+TEMPROOT=temp
 
-xcodebuild install -target AsyncNetwork | egrep "^(===|\*\*)"
-mkdir -p $DISTROOT/ios/
-cp -Rf $DISTROOT/mac/AsyncNetwork.framework $DISTROOT/ios/AsyncNetwork.framework
-xcodebuild build -target AsyncNetworkStatic | egrep "^(===|\*\*)"
-xcodebuild build -target AsyncNetworkStatic -sdk iphonesimulator -arch i386 | egrep "^(===|\*\*)"
-lipo -o $DISTROOT/ios/AsyncNetwork.framework/Versions/Current/AsyncNetwork\
- -create $BUILDROOT/Release-iphoneos/libAsyncNetwork.a build/Release-iphonesimulator/libAsyncNetwork.a
+# build
+xcodebuild build -target AsyncNetwork | egrep "^(===|\*\*)"
+xcodebuild build -target AsyncNetworkIOS -sdk iphoneos | egrep "^(===|\*\*)"
+xcodebuild build -target AsyncNetworkIOS -sdk iphonesimulator | egrep "^(===|\*\*)"
+
+# make distribution copy
+mkdir -p $TEMPROOT
+cp -rf Examples Icon.png License.txt README.md $BUILDROOT/Release/* $BUILDROOT/Release-iphoneos/*\
+ $TEMPROOT
+lipo -o $TEMPROOT/AsyncNetworkIOS.framework/AsyncNetworkIOS -create\
+ $BUILDROOT/Release-iphoneos/AsyncNetworkIOS.framework/AsyncNetworkIOS\
+ $BUILDROOT/Release-iphonesimulator/AsyncNetworkIOS.framework/AsyncNetworkIOS
+rm -rf $TEMPROOT/Examples/*/*.xcodeproj/project.xcworkspace
+rm -rf $TEMPROOT/Examples/*/*.xcodeproj/xcuserdata
+
+# create disk image
+rm -f AsyncNetwork.dmg
+hdiutil create -srcfolder $TEMPROOT -fs HFS+ -volname AsyncNetwork AsyncNetwork.dmg
+
+# move frameworks
+cp -rf $TEMPROOT/AsyncNetwork* .
+
+# clean up
+rm -rf $TEMPROOT

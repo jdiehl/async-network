@@ -173,7 +173,7 @@
  **/
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag;
 {
-	if ([self.delegate respondsToSelector:@selector(broadcasterDidSenddata:)]) {
+	if ([self.delegate respondsToSelector:@selector(broadcasterDidSendData:)]) {
 		[self.delegate broadcasterDidSendData:self];
 	}
 }
