@@ -152,13 +152,13 @@ Compile AsyncNetwork (requires Xcode Command Line Tools):
 
     run `make`
 
-This will compile AsyncNetwork for Mac in `dist/mac` and iOS in `dist/ios`.
+This will compile AsyncNetwork for Mac and iOS.
 The compiled AsyncNetwork Framework can be directly imported into your project:
 
-1. Drag `AsyncNetwork.framework` from `dist/ios` or `dist/mac` to your project
+1. Drag `AsyncNetwork.framework` or `AsyncNetworkIOS.framework` to your project
 2. Add a "Copy Files" Build Phase to your main target
 3. Change Destination to "Frameworks"
-4. Drag `AsyncNetwork.framework` (dynamic or static version) into the list of files
+4. Drag the included framework into the list of files
 
 
 ## License (MIT)
