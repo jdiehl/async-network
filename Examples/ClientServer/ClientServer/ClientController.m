@@ -31,12 +31,6 @@
 
 @implementation ClientController
 
-@synthesize client = _client;
-@synthesize serviceType = _serviceType;
-@synthesize input = _input;
-@synthesize output = _output;
-@synthesize status = _status;
-
 // Initialize
 - (void)windowDidLoad;
 {

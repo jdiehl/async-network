@@ -31,15 +31,6 @@
 
 @implementation ServerController
 
-@synthesize server = _server;
-@synthesize serviceName = _serviceName;
-@synthesize serviceType = _serviceType;
-@synthesize listenPort = _listenPort;
-@synthesize input = _input;
-@synthesize output = _output;
-@synthesize status = _status;
-
-
 // Initialize
 - (void)windowDidLoad;
 {

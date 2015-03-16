@@ -28,9 +28,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize controllers = _controllers;
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	self.controllers = [NSMutableSet new];
@@ -49,12 +46,11 @@
 {
 	// the server id (increasing number)
 	static NSUInteger serverId = 0;
-	static NSString *name = nil;
-	if (!name) name = (__bridge NSString *)CSCopyMachineName();
+	static NSString *name = @"AsyncServer";
 	
 	// create and configure the server controller
 	ServerController *serverController = [[ServerController alloc] initWithWindowNibName:@"ServerController"];
-	serverController.serviceType = kDefaultServiceType;
+	serverController.serviceType = @"_ClientServer._tcp";
 
 	serverController.serviceName = [NSString stringWithFormat:@"%@ %ld", name, ++serverId];
 	[self.controllers addObject:serverController];
@@ -68,7 +64,7 @@
 {
 	// create and configure the client controller
 	ClientController *clientController = [[ClientController alloc] initWithWindowNibName:@"ClientController"];
-	clientController.serviceType = kDefaultServiceType;
+	clientController.serviceType = @"_ClientServer._tcp";
 	[self.controllers addObject:clientController];
 	
 	// present the controller
