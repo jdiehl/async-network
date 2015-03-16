@@ -49,6 +49,7 @@
     if (self) {
         self.subnet = AsyncNetworkBroadcastDefaultSubnet;
 		self.timeout = AsyncNetworkBroadcastDefaultTimeout;
+		self.ignoreSelf = YES;
     }
     return self;
 }
@@ -195,7 +196,7 @@
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext;
 {
 	NSString *host = [GCDAsyncUdpSocket hostFromAddress:address];
-	if (AsyncNetworkIPAddressIsLocal(host)) return;
+	if (self.ignoreSelf && AsyncNetworkIPAddressIsLocal(host)) return;
 	if ([self.delegate respondsToSelector:@selector(broadcaster:didReceiveData:fromHost:)]) {
 		[self.delegate broadcaster:self didReceiveData:data fromHost:host];
 	}

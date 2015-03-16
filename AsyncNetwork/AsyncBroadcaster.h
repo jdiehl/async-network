@@ -50,6 +50,7 @@
 @property (assign) NSTimeInterval timeout;      // timeout for sending broadcasts, 0 = disabled
 @property (strong, nonatomic) NSString *subnet; // default: 255.255.255.255
 @property (assign) NSUInteger port;             // must be set to a number > 0
+@property (assign) BOOL ignoreSelf;
 
 - (void)start;
 - (void)stop;
