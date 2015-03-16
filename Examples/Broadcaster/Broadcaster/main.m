@@ -2,13 +2,12 @@
 //  main.m
 //  Broadcaster
 //
-//  Created by Jonathan Diehl on 3/20/12.
-//  Copyright (c) 2012 RWTH. All rights reserved.
+//  Created by Jonathan Diehl on 15/03/15.
+//  Copyright (c) 2015 Jonathan Diehl. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, char *argv[])
-{
-	return NSApplicationMain(argc, (const char **)argv);
+int main(int argc, const char * argv[]) {
+	return NSApplicationMain(argc, argv);
 }
