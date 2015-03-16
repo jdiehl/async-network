@@ -41,7 +41,7 @@
 	[self.output insertText:[NSString stringWithFormat:@">> %@\n", message]];
 	
 	// send a request to the ping server with the message as body
-	[AsyncRequest fireRequestWithHost:AsyncNetworkLocalHost port:kPingServerPort command:0 object:message responseBlock:^(id response, NSError *error) {
+	[AsyncRequest fireRequestWithHost:AsyncNetworkLocalHost port:50001 command:0 object:message responseBlock:^(id response, NSError *error) {
 		if (error) {
 			[self.output insertText:[NSString stringWithFormat:@"[error] %@\n", error.localizedDescription]];
 			return;

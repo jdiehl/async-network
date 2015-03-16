@@ -32,7 +32,7 @@
 {
 	// create and configure the server
 	self.server = [AsyncServer new];
-	self.server.port = kPingServerPort;
+	self.server.port = 50001;
 	self.server.delegate = self;
 	
 	// start the server
