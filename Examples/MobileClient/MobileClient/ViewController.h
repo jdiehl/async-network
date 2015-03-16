@@ -2,18 +2,19 @@
 //  ViewController.h
 //  MobileClient
 //
-//  Created by Jonathan Diehl on 3/20/12.
-//  Copyright (c) 2012 RWTH. All rights reserved.
+//  Created by Jonathan Diehl on 16/03/15.
+//  Copyright (c) 2015 Jonathan Diehl. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <AsyncNetwork/AsyncNetwork.h>
+#import <AsyncNetworkIOS/AsyncNetwork.h>
 
-@interface ViewController : UIViewController <UITextFieldDelegate, AsyncClientDelegate>
+@interface ViewController : UIViewController <AsyncClientDelegate>
 
 @property (retain) AsyncClient *client;
 
-@property (retain, nonatomic) IBOutlet UITextView *output;
-@property (retain, nonatomic) IBOutlet UITextField *input;
+@property (weak, nonatomic) IBOutlet UITextView *output;
+@property (weak, nonatomic) IBOutlet UITextField *input;
 
 @end
+

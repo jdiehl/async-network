@@ -2,29 +2,24 @@
 //  ViewController.m
 //  MobileClient
 //
-//  Created by Jonathan Diehl on 3/20/12.
-//  Copyright (c) 2012 RWTH. All rights reserved.
+//  Created by Jonathan Diehl on 16/03/15.
+//  Copyright (c) 2015 Jonathan Diehl. All rights reserved.
 //
 
 #import "ViewController.h"
 
 @interface ViewController ()
-- (void)appendLogMessage:(NSString *)text;
+
 @end
 
 @implementation ViewController
 
-@synthesize client = _client;
-@synthesize output = _output;
-@synthesize input = _input;
+- (void)viewDidLoad {
+	[super viewDidLoad];
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	
 	// create and configure the client
 	self.client = [AsyncClient new];
-	self.client.serviceType = kDefaultServiceType;
+	self.client.serviceType = @"_ClientServer._tcp";
 	self.client.delegate = self;
 	
 	// start the client
@@ -33,8 +28,7 @@
 	[self.input becomeFirstResponder];
 }
 
-- (void)dealloc;
-{
+- (void)dealloc {
 	[self.client stop];
 	self.client.delegate = nil;
 }
@@ -45,7 +39,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 {
 	// ask the client to send the input string to all connected servers
-    [self.client sendObject:self.input.text];
+	[self.client sendObject:self.input.text];
 	
 	// display log entry
 	NSString *string = [NSString stringWithFormat:@">> %@\n", self.input.text];
@@ -62,21 +56,21 @@
 - (void)client:(AsyncClient *)theClient didConnect:(AsyncConnection *)connection;
 {
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"[connected to %@]\n", connection.netService.name];
+	NSString *string = [NSString stringWithFormat:@"[connected to %@]\n", connection.netService.name];
 	[self appendLogMessage:string];
 }
 
 - (void)client:(AsyncClient *)theClient didDisconnect:(AsyncConnection *)connection;
 {
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"[disconnected from %@]\n", connection.netService.name];
+	NSString *string = [NSString stringWithFormat:@"[disconnected from %@]\n", connection.netService.name];
 	[self appendLogMessage:string];
 }
 
 - (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
 {
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
+	NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
 	[self appendLogMessage:string];
 }
 
@@ -97,6 +91,5 @@
 		[self.output setContentOffset:CGPointMake(0, self.output.contentSize.height - self.output.bounds.size.height) animated:YES];
 	}
 }
-
 
 @end
