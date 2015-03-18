@@ -45,6 +45,8 @@
 		2D30BFC01AB6020F007799AF /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D30BFC11AB6020F007799AF /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D30BFC21AB6020F007799AF /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DF1E3A11AB9DF780072166F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF1E3A01AB9DF780072166F /* CFNetwork.framework */; };
+		2DF1E3A31AB9DF7D0072166F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF1E3A21AB9DF7D0072166F /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		2DA5F1351AB5FAF300A8A65F /* AsyncNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5F1451AB5FAF300A8A65F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DA5F1461AB5FAF300A8A65F /* AsyncNetworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncNetworkTests.m; sourceTree = "<group>"; };
+		2DF1E3A01AB9DF780072166F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2DF1E3A21AB9DF7D0072166F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		FC698FC71632B3AC006418D6 /* NSNetService+AsyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+AsyncRequest.h"; sourceTree = "<group>"; };
 		FC698FC81632B3AC006418D6 /* NSNetService+AsyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+AsyncRequest.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF1E3A31AB9DF7D0072166F /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF1E3A11AB9DF780072166F /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +129,8 @@
 		2D2467C8151800AB00101EAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DF1E3A21AB9DF7D0072166F /* CFNetwork.framework */,
+				2DF1E3A01AB9DF780072166F /* CFNetwork.framework */,
 				2D2467C9151800AB00101EAB /* Cocoa.framework */,
 				2D1F1F1815190A8A00BF5F57 /* Foundation.framework */,
 				2DA0082C1520E36A001B2551 /* Security.framework */,
