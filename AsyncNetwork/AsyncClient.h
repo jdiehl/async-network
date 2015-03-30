@@ -54,6 +54,7 @@
 @property (strong) NSString *serviceType;   // Bonjour service type
 @property (strong) NSString *serviceDomain; // Bonjour service domain
 @property (assign) BOOL autoConnect;        // should the client automatically connect to discovered servers?
+@property (assign) BOOL includesPeerToPeer; // should bluetooth peers be included?
 
 - (void)start;
 - (void)stop;

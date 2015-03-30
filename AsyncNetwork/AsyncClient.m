@@ -34,6 +34,7 @@
 @synthesize serviceType = _serviceType;
 @synthesize serviceDomain = _serviceDomain;
 @synthesize autoConnect = _autoConnect;
+@synthesize includesPeerToPeer = _includesPeerToPeer;
 
 
 // init
@@ -41,6 +42,7 @@
 {
 	self = [super init];
 	if (self != nil) {
+		self.includesPeerToPeer = NO;
 		self.autoConnect = YES;
 		self.serviceType = AsyncNetworkDefaultServiceType;
 		self.serviceDomain = AsyncNetworkDefaultServiceDomain;
@@ -81,6 +83,7 @@
 {
 	if (!self.serviceBrowser) {
 		_serviceBrowser = [NSNetServiceBrowser new];
+		self.serviceBrowser.includesPeerToPeer = self.includesPeerToPeer;
 		[self.serviceBrowser setDelegate:self];
 		[self.serviceBrowser searchForServicesOfType:self.serviceType inDomain:self.serviceDomain];
 	}

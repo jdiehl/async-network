@@ -42,6 +42,7 @@
 @synthesize serviceDomain = _serviceDomain;
 @synthesize serviceName = _serviceName;
 @synthesize port = _port;
+@synthesize includesPeerToPeer = _includesPeerToPeer;
 
 // init
 - (id)init
@@ -49,6 +50,7 @@
 	self = [super init];
 	if (self != nil) {
 		_connections = [NSMutableSet new];
+		self.includesPeerToPeer = NO;
 		self.serviceType = AsyncNetworkDefaultServiceType;
 		self.serviceDomain = AsyncNetworkDefaultServiceDomain;
 	}
@@ -178,6 +180,7 @@
     // create and publish net service
 	_netService = [[NSNetService alloc] initWithDomain:self.serviceDomain type:self.serviceType name:self.serviceName port:(int)self.port];
 
+	self.netService.includesPeerToPeer = self.includesPeerToPeer;
     self.netService.delegate = self;
     [self.netService publish];
 }
