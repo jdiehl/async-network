@@ -37,17 +37,17 @@
 		2D30BFB81AB60208007799AF /* AsyncNetworkHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F21518015D00101EAB /* AsyncNetworkHelpers.m */; };
 		2D30BFB91AB60208007799AF /* AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F41518015D00101EAB /* AsyncRequest.m */; };
 		2D30BFBA1AB60208007799AF /* AsyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2467F61518015D00101EAB /* AsyncServer.m */; };
-		2D30BFBB1AB6020C007799AF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; };
-		2D30BFBC1AB6020C007799AF /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; };
-		2D30BFBD1AB6020C007799AF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006B81520E087001B2551 /* GCDAsyncSocket.m */; };
-		2D30BFBE1AB6020C007799AF /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */; };
-		2D30BFBF1AB6020F007799AF /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D30BFC01AB6020F007799AF /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D30BFC11AB6020F007799AF /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B71520E087001B2551 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D30BFC21AB6020F007799AF /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DB62DDF1ABAA848002B3866 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB62DDE1ABAA848002B3866 /* Security.framework */; };
 		2DF1E3A11AB9DF780072166F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF1E3A01AB9DF780072166F /* CFNetwork.framework */; };
 		2DF1E3A31AB9DF7D0072166F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF1E3A21AB9DF7D0072166F /* CFNetwork.framework */; };
+		9651B78B1AE53AAF005515B4 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9651B7871AE53AAF005515B4 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9651B78C1AE53AAF005515B4 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9651B7881AE53AAF005515B4 /* GCDAsyncSocket.m */; };
+		9651B78D1AE53AAF005515B4 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9651B7891AE53AAF005515B4 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9651B78E1AE53AAF005515B4 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9651B78A1AE53AAF005515B4 /* GCDAsyncUdpSocket.m */; };
+		9651B7911AE53C2E005515B4 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9651B7871AE53AAF005515B4 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9651B7921AE53C36005515B4 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9651B7881AE53AAF005515B4 /* GCDAsyncSocket.m */; };
+		9651B7931AE53C3A005515B4 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9651B7891AE53AAF005515B4 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9651B7941AE53C40005515B4 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9651B78A1AE53AAF005515B4 /* GCDAsyncUdpSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,10 +70,6 @@
 		2D2467F41518015D00101EAB /* AsyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncRequest.m; sourceTree = "<group>"; };
 		2D2467F51518015D00101EAB /* AsyncServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncServer.h; sourceTree = "<group>"; };
 		2D2467F61518015D00101EAB /* AsyncServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncServer.m; sourceTree = "<group>"; };
-		2DA006B71520E087001B2551 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		2DA006B81520E087001B2551 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		2DA0082C1520E36A001B2551 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2DA5F1171AB5FABE00A8A65F /* AsyncNetworkIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncNetworkIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5F1351AB5FAF300A8A65F /* AsyncNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +78,10 @@
 		2DB62DDE1ABAA848002B3866 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		2DF1E3A01AB9DF780072166F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2DF1E3A21AB9DF7D0072166F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		9651B7871AE53AAF005515B4 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = ThirdParty/CocoaAsyncSocket/CocoaAsyncSocket/GCD/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
+		9651B7881AE53AAF005515B4 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = ThirdParty/CocoaAsyncSocket/CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
+		9651B7891AE53AAF005515B4 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = ThirdParty/CocoaAsyncSocket/CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
+		9651B78A1AE53AAF005515B4 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = ThirdParty/CocoaAsyncSocket/CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
 		FC698FC71632B3AC006418D6 /* NSNetService+AsyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+AsyncRequest.h"; sourceTree = "<group>"; };
 		FC698FC81632B3AC006418D6 /* NSNetService+AsyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+AsyncRequest.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,10 +177,10 @@
 		2DA006B51520E087001B2551 /* AsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
-				2DA006B71520E087001B2551 /* GCDAsyncSocket.h */,
-				2DA006B81520E087001B2551 /* GCDAsyncSocket.m */,
-				2DA006B91520E087001B2551 /* GCDAsyncUdpSocket.h */,
-				2DA006BA1520E087001B2551 /* GCDAsyncUdpSocket.m */,
+				9651B7871AE53AAF005515B4 /* GCDAsyncSocket.h */,
+				9651B7881AE53AAF005515B4 /* GCDAsyncSocket.m */,
+				9651B7891AE53AAF005515B4 /* GCDAsyncUdpSocket.h */,
+				9651B78A1AE53AAF005515B4 /* GCDAsyncUdpSocket.m */,
 			);
 			name = AsyncSocket;
 			path = ThirdParty/CocoaAsyncSocket/GCD;
@@ -211,9 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D30BFAC1AB601FC007799AF /* AsyncServer.h in Headers */,
-				2D30BFC21AB6020F007799AF /* GCDAsyncUdpSocket.h in Headers */,
+				9651B7931AE53C3A005515B4 /* GCDAsyncUdpSocket.h in Headers */,
 				2D30BFA61AB601FC007799AF /* AsyncBroadcaster.h in Headers */,
-				2D30BFC11AB6020F007799AF /* GCDAsyncSocket.h in Headers */,
+				9651B7911AE53C2E005515B4 /* GCDAsyncSocket.h in Headers */,
 				2D30BFA81AB601FC007799AF /* AsyncConnection.h in Headers */,
 				2D30BFAA1AB601FC007799AF /* AsyncNetworkHelpers.h in Headers */,
 				2D30BFA51AB601FC007799AF /* NSNetService+AsyncRequest.h in Headers */,
@@ -228,11 +228,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D30BFA41AB601FB007799AF /* AsyncServer.h in Headers */,
-				2D30BFC01AB6020F007799AF /* GCDAsyncUdpSocket.h in Headers */,
 				2D30BF9E1AB601FB007799AF /* AsyncBroadcaster.h in Headers */,
-				2D30BFBF1AB6020F007799AF /* GCDAsyncSocket.h in Headers */,
+				9651B78B1AE53AAF005515B4 /* GCDAsyncSocket.h in Headers */,
 				2D30BFA01AB601FB007799AF /* AsyncConnection.h in Headers */,
 				2D30BFA21AB601FB007799AF /* AsyncNetworkHelpers.h in Headers */,
+				9651B78D1AE53AAF005515B4 /* GCDAsyncUdpSocket.h in Headers */,
 				2D30BF9D1AB601FB007799AF /* NSNetService+AsyncRequest.h in Headers */,
 				2D30BFA11AB601FB007799AF /* AsyncNetwork.h in Headers */,
 				2D30BF9F1AB601FB007799AF /* AsyncClient.h in Headers */,
@@ -337,8 +337,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D30BFBD1AB6020C007799AF /* GCDAsyncSocket.m in Sources */,
-				2D30BFBE1AB6020C007799AF /* GCDAsyncUdpSocket.m in Sources */,
+				9651B7921AE53C36005515B4 /* GCDAsyncSocket.m in Sources */,
+				9651B7941AE53C40005515B4 /* GCDAsyncUdpSocket.m in Sources */,
 				2D30BFB91AB60208007799AF /* AsyncRequest.m in Sources */,
 				2D30BFB81AB60208007799AF /* AsyncNetworkHelpers.m in Sources */,
 				2D30BFB41AB60208007799AF /* NSNetService+AsyncRequest.m in Sources */,
@@ -353,12 +353,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D30BFBB1AB6020C007799AF /* GCDAsyncSocket.m in Sources */,
-				2D30BFBC1AB6020C007799AF /* GCDAsyncUdpSocket.m in Sources */,
+				9651B78E1AE53AAF005515B4 /* GCDAsyncUdpSocket.m in Sources */,
 				2D30BFB21AB60208007799AF /* AsyncRequest.m in Sources */,
 				2D30BFB11AB60208007799AF /* AsyncNetworkHelpers.m in Sources */,
 				2D30BFAD1AB60208007799AF /* NSNetService+AsyncRequest.m in Sources */,
 				2D30BFAE1AB60208007799AF /* AsyncBroadcaster.m in Sources */,
+				9651B78C1AE53AAF005515B4 /* GCDAsyncSocket.m in Sources */,
 				2D30BFB01AB60208007799AF /* AsyncConnection.m in Sources */,
 				2D30BFAF1AB60208007799AF /* AsyncClient.m in Sources */,
 				2D30BFB31AB60208007799AF /* AsyncServer.m in Sources */,

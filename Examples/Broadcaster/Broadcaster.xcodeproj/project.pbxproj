@@ -10,10 +10,10 @@
 		2D30BFFE1AB60445007799AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30BFFD1AB60445007799AF /* AppDelegate.m */; };
 		2D30C0001AB60445007799AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30BFFF1AB60445007799AF /* main.m */; };
 		2D30C0021AB60445007799AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C0011AB60445007799AF /* Images.xcassets */; };
-		2D30C01B1AB604F7007799AF /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D30C01A1AB604F7007799AF /* AsyncNetwork.framework */; };
 		2D30C01E1AB6055C007799AF /* BroadcasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C01D1AB6055C007799AF /* BroadcasterController.m */; };
 		2D30C0201AB60901007799AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C0031AB60445007799AF /* MainMenu.xib */; };
-		2D30C0221AB60913007799AF /* AsyncNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D30C01A1AB604F7007799AF /* AsyncNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9651B79A1AE53DC4005515B4 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651B7991AE53DC4005515B4 /* AsyncNetwork.framework */; };
+		9651B79B1AE53DC4005515B4 /* AsyncNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9651B7991AE53DC4005515B4 /* AsyncNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D30C0221AB60913007799AF /* AsyncNetwork.framework in CopyFiles */,
+				9651B79B1AE53DC4005515B4 /* AsyncNetwork.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,9 +37,9 @@
 		2D30BFFF1AB60445007799AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D30C0011AB60445007799AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D30C0041AB60445007799AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2D30C01A1AB604F7007799AF /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../AsyncNetwork.framework; sourceTree = "<group>"; };
 		2D30C01C1AB6055C007799AF /* BroadcasterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcasterController.h; sourceTree = "<group>"; };
 		2D30C01D1AB6055C007799AF /* BroadcasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcasterController.m; sourceTree = "<group>"; };
+		9651B7991AE53DC4005515B4 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AsyncNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D30C01B1AB604F7007799AF /* AsyncNetwork.framework in Frameworks */,
+				9651B79A1AE53DC4005515B4 /* AsyncNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 		2D30BFEE1AB60444007799AF = {
 			isa = PBXGroup;
 			children = (
-				2D30C01A1AB604F7007799AF /* AsyncNetwork.framework */,
+				9651B7991AE53DC4005515B4 /* AsyncNetwork.framework */,
 				2D30BFF91AB60445007799AF /* Broadcaster */,
 				2D30BFF81AB60445007799AF /* Products */,
 			);
@@ -268,6 +268,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jdiehl/Documents/Coding/lib/async-network",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Broadcaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -283,6 +284,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jdiehl/Documents/Coding/lib/async-network",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Broadcaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -309,6 +311,7 @@
 				2D30C0161AB60445007799AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

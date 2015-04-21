@@ -12,11 +12,11 @@
 		2D30C03C1AB771BB007799AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C03B1AB771BB007799AF /* Images.xcassets */; };
 		2D30C0581AB7722E007799AF /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C0551AB7722E007799AF /* ClientController.m */; };
 		2D30C0591AB7722E007799AF /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C0571AB7722E007799AF /* ServerController.m */; };
-		2D30C0611AB7724A007799AF /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D30C0601AB7724A007799AF /* AsyncNetwork.framework */; };
-		2D30C0631AB7725B007799AF /* AsyncNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D30C0601AB7724A007799AF /* AsyncNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D30C08B1AB77381007799AF /* ClientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C0881AB77381007799AF /* ClientController.xib */; };
 		2D30C08C1AB77381007799AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C0891AB77381007799AF /* MainMenu.xib */; };
 		2D30C08D1AB77381007799AF /* ServerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C08A1AB77381007799AF /* ServerController.xib */; };
+		9651B7971AE53CFC005515B4 /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9651B7951AE53CAF005515B4 /* AsyncNetwork.framework */; };
+		9651B7981AE53CFC005515B4 /* AsyncNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9651B7951AE53CAF005515B4 /* AsyncNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D30C0631AB7725B007799AF /* AsyncNetwork.framework in CopyFiles */,
+				9651B7981AE53CFC005515B4 /* AsyncNetwork.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,10 +43,10 @@
 		2D30C0551AB7722E007799AF /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
 		2D30C0561AB7722E007799AF /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerController.h; sourceTree = "<group>"; };
 		2D30C0571AB7722E007799AF /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerController.m; sourceTree = "<group>"; };
-		2D30C0601AB7724A007799AF /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../AsyncNetwork.framework; sourceTree = "<group>"; };
 		2D30C0881AB77381007799AF /* ClientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientController.xib; sourceTree = "<group>"; };
 		2D30C0891AB77381007799AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		2D30C08A1AB77381007799AF /* ServerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerController.xib; sourceTree = "<group>"; };
+		9651B7951AE53CAF005515B4 /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../AsyncNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D30C0611AB7724A007799AF /* AsyncNetwork.framework in Frameworks */,
+				9651B7971AE53CFC005515B4 /* AsyncNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,7 @@
 		2D30C0281AB771BB007799AF = {
 			isa = PBXGroup;
 			children = (
-				2D30C0601AB7724A007799AF /* AsyncNetwork.framework */,
+				9651B7951AE53CAF005515B4 /* AsyncNetwork.framework */,
 				2D30C0331AB771BB007799AF /* ClientServer */,
 				2D30C0321AB771BB007799AF /* Products */,
 			);
@@ -271,6 +271,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jdiehl/Documents/Coding/lib/async-network",
+					"/Users/jason/Dropbox/Private/CodeSpace/labs/networking/async-network/build/Release",
+					"/Users/jason/Dropbox/Private/CodeSpace/labs/networking/async-network",
 				);
 				INFOPLIST_FILE = ClientServer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -286,6 +288,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/jdiehl/Documents/Coding/lib/async-network",
+					"/Users/jason/Dropbox/Private/CodeSpace/labs/networking/async-network/build/Release",
+					"/Users/jason/Dropbox/Private/CodeSpace/labs/networking/async-network",
 				);
 				INFOPLIST_FILE = ClientServer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

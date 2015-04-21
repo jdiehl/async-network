@@ -35,5 +35,6 @@
 @property (assign) IBOutlet NSTextField *status;
 
 - (IBAction)sendInput:(id)sender;
+- (IBAction)clear:(id)sender;
 
 @end
