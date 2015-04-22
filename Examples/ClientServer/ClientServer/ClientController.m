@@ -118,8 +118,13 @@
     else if ([object isKindOfClass:[NSImage class]]) {
         msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, [object class]];
     }
+    else {
+        msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
+    }
 	// display log entry
-	[self.output insertText:msg];
+    if (msg) {
+        [self.output insertText:msg];
+    }
 }
 
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;

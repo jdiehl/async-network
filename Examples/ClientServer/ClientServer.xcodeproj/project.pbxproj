@@ -307,7 +307,7 @@
 				2D30C04D1AB771BB007799AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D30C04E1AB771BB007799AF /* Build configuration list for PBXNativeTarget "ClientServer" */ = {
 			isa = XCConfigurationList;
@@ -316,7 +316,7 @@
 				2D30C0501AB771BB007799AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
