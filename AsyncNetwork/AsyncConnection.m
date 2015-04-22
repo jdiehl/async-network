@@ -24,6 +24,7 @@
 
 #import "AsyncConnection.h"
 #import "AsyncRequest.h"
+#import "ASKeyedArchiver.h"
 
 #define AsyncConnectionHeaderSize sizeof(AsyncConnectionHeader)
 const NSUInteger AsyncConnectionHeaderTag = 1;
@@ -37,6 +38,7 @@ NSData *HeaderToData(AsyncConnectionHeader header);
 AsyncConnectionHeader DataToHeader(NSData *data);
 
 @interface AsyncConnection ()
+
 - (void)sendHeader:(AsyncConnectionHeader)header object:(id<NSCoding>)object;
 - (void)sendResponse:(id<NSCoding>)object tag:(UInt32)tag;
 - (void)respondToMessageWithHeader:(AsyncConnectionHeader)header object:(id<NSCoding>)object;
@@ -212,7 +214,8 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 	} else {
 		header.blockTag = 0;
 	}
-	
+    NSLog (@"JMJ %@", object);
+
 	[self sendHeader:header object:object];
 }
 
@@ -228,7 +231,6 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 	[self sendCommand:0 object:object responseBlock:nil];
 }
 
-
 #pragma mark - Private Methods
 
 // generic send
@@ -238,8 +240,9 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 	
 	// encode data
 	NSData *bodyData = nil;
+    NSLog (@"JMJ %@", object);
 	if (object) {
-		bodyData = [NSKeyedArchiver archivedDataWithRootObject:object];
+        bodyData = [ASKeyedArchiver archivedDataWithRootObject:object];
 		header.bodyLength = (UInt32)bodyData.length;
 	}
 	
@@ -365,7 +368,7 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 
 		// body
 		case AsyncConnectionBodyTag:
-            object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            object = [ASKeyedUnarchiver unarchiveObjectWithData:data];
 			[self respondToMessageWithHeader:_lastHeader object:object];
 			[self.socket readDataToLength:AsyncConnectionHeaderSize withTimeout:self.timeout tag:AsyncConnectionHeaderTag];
 			break;

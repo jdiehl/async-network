@@ -26,8 +26,13 @@
 
 // private methods
 @interface ClientController ()
+
+@property (weak, nonatomic) IBOutlet NSImageView *imageView;
+
 - (void)updateStatus;
+
 @end
+
 
 @implementation ClientController
 
@@ -60,6 +65,12 @@
 	self.input.stringValue = @"";
 }
 
+- (IBAction)sendImage:(id)sender;
+{
+    [self.client sendObject:[(NSImageView*)sender image]];
+    [self.output insertText:@">> Image"];
+}
+
 // Teardown
 - (void)dealloc;
 {
@@ -77,6 +88,10 @@
 	self.status.stringValue = [NSString stringWithFormat:@"Conntected to %ld server(s)", self.client.connections.count];
 }
 
+- (IBAction)clear:(id)sender;
+{
+    [self.output setString:@""];
+}
 
 #pragma mark - AsyncClientDelegate
 
@@ -102,9 +117,21 @@
 
 - (void)client:(AsyncClient *)theClient didReceiveCommand:(AsyncCommand)command object:(id)object connection:(AsyncConnection *)connection;
 {
+    NSString *msg;
+    if ([object isKindOfClass:[NSString class]]) {
+        msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
+    }
+    else if ([object isKindOfClass:[NSImage class]]) {
+        msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, [object class]];
+        self.imageView.image = object;
+    }
+    else {
+        msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
+    }
 	// display log entry
-    NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
-	[self.output insertText:string];
+    if (msg) {
+        [self.output insertText:msg];
+    }
 }
 
 - (void)client:(AsyncClient *)theClient didFailWithError:(NSError *)error;

@@ -26,6 +26,7 @@
 
 // private methods
 @interface ServerController ()
+@property (weak) IBOutlet NSImageView *imageView;
 - (void)updateStatus;
 @end
 
@@ -63,6 +64,18 @@
 	self.input.stringValue = @"";
 }
 
+- (IBAction)sendImage:(id)sender;
+{
+    [self.server sendObject:[(NSImageView*)sender image]];
+    [self.output insertText:@">> Image"];
+}
+
+
+- (IBAction)clear:(id)sender;
+{
+    [self.output setString:@""];
+}
+
 // Teardown
 - (void)dealloc;
 {
@@ -98,6 +111,10 @@
 	// display log entry
     NSString *string = [NSString stringWithFormat:@"<< [%@] %@\n", connection.host, object];
 	[self.output insertText:string];
+    
+    if ([object isKindOfClass:[NSImage class]]) {
+        self.imageView.image = object;
+    }
 }
 
 - (void)server:(AsyncServer *)theServer didFailWithError:(NSError *)error;
