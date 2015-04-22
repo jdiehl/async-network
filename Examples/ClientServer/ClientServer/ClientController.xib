@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">14D136</string>
-		<string key="IBDocument.InterfaceBuilderVersion">7531</string>
+		<string key="IBDocument.SystemVersion">14E7f</string>
+		<string key="IBDocument.InterfaceBuilderVersion">7702</string>
 		<string key="IBDocument.AppKitVersion">1347.57</string>
 		<string key="IBDocument.HIToolboxVersion">758.70</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">7531</string>
+			<string key="NS.object.0">7702</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSButton</string>
@@ -46,7 +46,7 @@
 			<object class="NSWindowTemplate" id="575472236">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{806, 773}, {590, 404}}</string>
+				<string key="NSWindowRect">{{300, 378}, {590, 404}}</string>
 				<int key="NSWTFlags">880279552</int>
 				<string key="NSWindowTitle">Client</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -104,7 +104,6 @@
 							<string key="NSFrame">{{447, 12}, {129, 32}}</string>
 							<reference key="NSSuperview" ref="13506765"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="715611958">
 								<int key="NSCellFlags">67108864</int>
@@ -186,13 +185,13 @@
 							<string key="NSFrame">{{-7, 64}, {604, 336}}</string>
 							<reference key="NSSuperview" ref="13506765"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="622535350"/>
+							<reference key="NSNextKeyView" ref="796850809"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="145278297">
 									<string key="NSIdentifier">1</string>
 									<object class="NSView" key="NSView" id="796850809">
-										<nil key="NSNextResponder"/>
+										<reference key="NSNextResponder" ref="173705281"/>
 										<int key="NSvFlags">274</int>
 										<array class="NSMutableArray" key="NSSubviews">
 											<object class="NSScrollView" id="254222830">
@@ -206,8 +205,28 @@
 															<object class="NSTextView" id="477838996">
 																<reference key="NSNextResponder" ref="333447959"/>
 																<int key="NSvFlags">2322</int>
-																<string key="NSFrameSize">{533, 288}</string>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<string>Apple HTML pasteboard type</string>
+																	<string>Apple PDF pasteboard type</string>
+																	<string>Apple PICT pasteboard type</string>
+																	<string>Apple PNG pasteboard type</string>
+																	<string>Apple URL pasteboard type</string>
+																	<string>CorePasteboardFlavorType 0x6D6F6F76</string>
+																	<string>NSColor pasteboard type</string>
+																	<string>NSFilenamesPboardType</string>
+																	<string>NSStringPboardType</string>
+																	<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
+																	<string>NeXT RTFD pasteboard type</string>
+																	<string>NeXT Rich Text Format v1.0 pasteboard type</string>
+																	<string>NeXT TIFF v4.0 pasteboard type</string>
+																	<string>NeXT font pasteboard type</string>
+																	<string>NeXT ruler pasteboard type</string>
+																	<string>WebURLsWithTitlesPboardType</string>
+																	<string>public.url</string>
+																</set>
+																<string key="NSFrameSize">{533, 268}</string>
 																<reference key="NSSuperview" ref="333447959"/>
+																<reference key="NSWindow"/>
 																<reference key="NSNextKeyView" ref="431914727"/>
 																<object class="NSTextContainer" key="NSTextContainer" id="29845973">
 																	<object class="NSLayoutManager" key="NSLayoutManager">
@@ -267,8 +286,9 @@
 																<nil key="NSDelegate"/>
 															</object>
 														</array>
-														<string key="NSFrame">{{1, 1}, {533, 288}}</string>
+														<string key="NSFrame">{{1, 1}, {533, 268}}</string>
 														<reference key="NSSuperview" ref="254222830"/>
+														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="477838996"/>
 														<reference key="NSDocView" ref="477838996"/>
 														<reference key="NSBGColor" ref="914584269"/>
@@ -302,9 +322,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 													<object class="NSScroller" id="431914727">
 														<reference key="NSNextResponder" ref="254222830"/>
 														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{534, 1}, {15, 288}}</string>
+														<string key="NSFrame">{{534, 1}, {15, 268}}</string>
 														<reference key="NSSuperview" ref="254222830"/>
-														<reference key="NSNextKeyView" ref="614813624"/>
+														<reference key="NSWindow"/>
+														<reference key="NSNextKeyView" ref="173705281"/>
 														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 														<string key="NSControlAction">_doScroller:</string>
 														<reference key="NSControlTarget" ref="254222830"/>
@@ -318,6 +339,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 														<int key="NSvFlags">-2147483392</int>
 														<string key="NSFrame">{{-100, -100}, {87, 18}}</string>
 														<reference key="NSSuperview" ref="254222830"/>
+														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="333447959"/>
 														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 														<string key="NSControlAction">_doScroller:</string>
@@ -329,8 +351,9 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 														<double key="NSPercent">0.94565218687057495</double>
 													</object>
 												</array>
-												<string key="NSFrame">{{17, 17}, {550, 290}}</string>
+												<string key="NSFrame">{{17, 17}, {550, 270}}</string>
 												<reference key="NSSuperview" ref="796850809"/>
+												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="401207288"/>
 												<int key="NSsFlags">133138</int>
 												<reference key="NSVScroller" ref="431914727"/>
@@ -341,7 +364,9 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<double key="NSMagnification">1</double>
 											</object>
 										</array>
-										<string key="NSFrame">{{10, 33}, {584, 310}}</string>
+										<string key="NSFrame">{{10, 33}, {584, 290}}</string>
+										<reference key="NSSuperview" ref="173705281"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="254222830"/>
 										<string key="NSReuseIdentifierKey">_NS:11</string>
 									</object>
@@ -352,7 +377,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								<object class="NSTabViewItem" id="683412130">
 									<string key="NSIdentifier">2</string>
 									<object class="NSView" key="NSView" id="622535350">
-										<reference key="NSNextResponder" ref="173705281"/>
+										<nil key="NSNextResponder"/>
 										<int key="NSvFlags">274</int>
 										<array class="NSMutableArray" key="NSSubviews">
 											<object class="NSImageView" id="310789965">
@@ -368,7 +393,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												</set>
 												<string key="NSFrame">{{6, -23}, {569, 321}}</string>
 												<reference key="NSSuperview" ref="622535350"/>
-												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="614813624"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSHuggingPriority">{251, 251}</string>
@@ -387,8 +411,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 											</object>
 										</array>
 										<string key="NSFrame">{{10, 33}, {584, 290}}</string>
-										<reference key="NSSuperview" ref="173705281"/>
-										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="310789965"/>
 										<string key="NSReuseIdentifierKey">_NS:28</string>
 									</object>
@@ -397,13 +419,13 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<reference key="NSTabView" ref="173705281"/>
 								</object>
 							</array>
-							<reference key="NSSelectedTabViewItem" ref="683412130"/>
+							<reference key="NSSelectedTabViewItem" ref="145278297"/>
 							<reference key="NSFont" ref="790969103"/>
 							<int key="NSTvFlags">0</int>
 							<bool key="NSAllowTruncatedLabels">YES</bool>
 							<bool key="NSDrawsBackground">YES</bool>
 							<array class="NSMutableArray" key="NSSubviews">
-								<reference ref="622535350"/>
+								<reference ref="796850809"/>
 							</array>
 						</object>
 					</array>
@@ -412,7 +434,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="173705281"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 877}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1057}}</string>
 				<string key="NSMinSize">{480, 342}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
@@ -679,6 +701,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3.IBPersistedLastKnownCanvasPosition">{-208, 494}</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3.IBWindowTemplateEditedContentRect">{{658, 773}, {590, 404}}</string>
 				<integer value="1" key="3.NSWindowTemplate.visibleAtLaunch"/>
