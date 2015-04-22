@@ -1,5 +1,5 @@
 //
-//  ASKeyedUnarchiver.h
+//  ASKeyedArchiver.h
 //  ClientServer
 //
 //  Created by Jason Jobe on 4/22/15.
@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ASKeyedUnarchiver : NSKeyedUnarchiver
 
+@interface ASKeyedArchiver : NSKeyedArchiver
+@end
+
+
+@interface ASKeyedUnarchiver : NSKeyedUnarchiver
 @end

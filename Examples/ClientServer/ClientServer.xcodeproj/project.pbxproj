@@ -25,7 +25,8 @@
 		962B3B621AE7D98B005E24BD /* NSNetService+AsyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B3B5A1AE7D98B005E24BD /* NSNetService+AsyncRequest.m */; };
 		962B3B681AE7D9B5005E24BD /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B3B651AE7D9B5005E24BD /* GCDAsyncSocket.m */; };
 		962B3B691AE7D9B5005E24BD /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B3B671AE7D9B5005E24BD /* GCDAsyncUdpSocket.m */; };
-		962B3B6D1AE7EE64005E24BD /* ASKeyedUnarchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B3B6C1AE7EE64005E24BD /* ASKeyedUnarchiver.m */; };
+		962B3B6D1AE7EE64005E24BD /* ASKeyedArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B3B6C1AE7EE64005E24BD /* ASKeyedArchiver.m */; };
+		962B3B701AE8018D005E24BD /* iOSXData.m in Sources */ = {isa = PBXBuildFile; fileRef = 962B3B6F1AE8018D005E24BD /* iOSXData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,8 +76,10 @@
 		962B3B651AE7D9B5005E24BD /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = ../../ThirdParty/CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
 		962B3B661AE7D9B5005E24BD /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = ../../ThirdParty/CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		962B3B671AE7D9B5005E24BD /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = ../../ThirdParty/CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		962B3B6B1AE7EE64005E24BD /* ASKeyedUnarchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASKeyedUnarchiver.h; path = ../../AsyncNetwork/ASKeyedUnarchiver.h; sourceTree = "<group>"; };
-		962B3B6C1AE7EE64005E24BD /* ASKeyedUnarchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASKeyedUnarchiver.m; path = ../../AsyncNetwork/ASKeyedUnarchiver.m; sourceTree = "<group>"; };
+		962B3B6B1AE7EE64005E24BD /* ASKeyedArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASKeyedArchiver.h; path = ../../AsyncNetwork/ASKeyedArchiver.h; sourceTree = "<group>"; };
+		962B3B6C1AE7EE64005E24BD /* ASKeyedArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASKeyedArchiver.m; path = ../../AsyncNetwork/ASKeyedArchiver.m; sourceTree = "<group>"; };
+		962B3B6E1AE8018D005E24BD /* iOSXData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iOSXData.h; path = ../../AsyncNetwork/iOSXData.h; sourceTree = "<group>"; };
+		962B3B6F1AE8018D005E24BD /* iOSXData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iOSXData.m; path = ../../AsyncNetwork/iOSXData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 		962B3B631AE7D995005E24BD /* AsyncNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				962B3B6E1AE8018D005E24BD /* iOSXData.h */,
+				962B3B6F1AE8018D005E24BD /* iOSXData.m */,
 				962B3B4A1AE7D98B005E24BD /* AsyncBroadcaster.h */,
 				962B3B4B1AE7D98B005E24BD /* AsyncBroadcaster.m */,
 				962B3B4C1AE7D98B005E24BD /* AsyncClient.h */,
@@ -155,8 +160,8 @@
 				962B3B581AE7D98B005E24BD /* AsyncServer.m */,
 				962B3B591AE7D98B005E24BD /* NSNetService+AsyncRequest.h */,
 				962B3B5A1AE7D98B005E24BD /* NSNetService+AsyncRequest.m */,
-				962B3B6B1AE7EE64005E24BD /* ASKeyedUnarchiver.h */,
-				962B3B6C1AE7EE64005E24BD /* ASKeyedUnarchiver.m */,
+				962B3B6B1AE7EE64005E24BD /* ASKeyedArchiver.h */,
+				962B3B6C1AE7EE64005E24BD /* ASKeyedArchiver.m */,
 			);
 			name = AsyncNetwork;
 			sourceTree = "<group>";
@@ -248,9 +253,10 @@
 				962B3B681AE7D9B5005E24BD /* GCDAsyncSocket.m in Sources */,
 				2D30C0591AB7722E007799AF /* ServerController.m in Sources */,
 				962B3B621AE7D98B005E24BD /* NSNetService+AsyncRequest.m in Sources */,
+				962B3B701AE8018D005E24BD /* iOSXData.m in Sources */,
 				2D30C03A1AB771BB007799AF /* main.m in Sources */,
 				962B3B5B1AE7D98B005E24BD /* AsyncBroadcaster.m in Sources */,
-				962B3B6D1AE7EE64005E24BD /* ASKeyedUnarchiver.m in Sources */,
+				962B3B6D1AE7EE64005E24BD /* ASKeyedArchiver.m in Sources */,
 				962B3B5F1AE7D98B005E24BD /* AsyncNetworkHelpers.m in Sources */,
 				962B3B5D1AE7D98B005E24BD /* AsyncConnection.m in Sources */,
 				962B3B611AE7D98B005E24BD /* AsyncServer.m in Sources */,

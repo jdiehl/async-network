@@ -65,6 +65,12 @@
 	self.input.stringValue = @"";
 }
 
+- (IBAction)sendImage:(id)sender;
+{
+    [self.client sendObject:[(NSImageView*)sender image]];
+    [self.output insertText:@">> Image"];
+}
+
 // Teardown
 - (void)dealloc;
 {
@@ -117,6 +123,7 @@
     }
     else if ([object isKindOfClass:[NSImage class]]) {
         msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, [object class]];
+        self.imageView.image = object;
     }
     else {
         msg = [NSString stringWithFormat:@"<< [%@] %@\n", connection.netService.name, object];
