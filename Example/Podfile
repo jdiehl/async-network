@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'AsyncNetwork', :exclusive => true do
+  pod "AsyncNetwork", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "AsyncNetwork", :path => "../"
+
+  
+end
