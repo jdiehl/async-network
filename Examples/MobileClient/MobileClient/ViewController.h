@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AsyncNetworkIOS/AsyncNetwork.h>
+#import <AsyncNetwork/AsyncNetwork.h>
 
 @interface ViewController : UIViewController <AsyncClientDelegate>
 

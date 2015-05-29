@@ -9,30 +9,26 @@
 
 Pod::Spec.new do |s|
   s.name             = "AsyncNetwork"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of AsyncNetwork."
+  s.version          = "1.1"
+  s.summary          = "Cocoa and iOS Socket Networking Evolved. "
   s.description      = <<-DESC
-                       An optional longer description of AsyncNetwork
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       Async Network is a framework for socket networking on Cocoa or Cocoa Touch based on [AsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket).
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/AsyncNetwork"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "http://jdiehl.github.com/async-network"
   s.license          = 'MIT'
-  s.author           = { "Schemetrical" => "Schemetrical@icloud.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/AsyncNetwork.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = 'Jonathan Diehl'
+  s.source           = { :git => "https://github.com/jdiehl/async-network.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.osx.platform     = :osx, '10.7'
+  s.ios.platform     = :ios, '6.0'
+  s.ios.deployment_target = "6.0"
+  s.osx.deployment_target = "10.7"
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'AsyncNetwork' => ['Pod/Assets/*.png']
-  }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.ios.frameworks = 'Foundation', 'Security', 'CFNetwork'
+  s.osx.frameworks = 'Foundation', 'CFNetwork'
+  s.dependency 'CocoaAsyncSocket'
 end

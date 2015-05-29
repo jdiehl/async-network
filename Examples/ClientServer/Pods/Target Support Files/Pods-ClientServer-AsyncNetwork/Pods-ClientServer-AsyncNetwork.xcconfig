@@ -1,0 +1,1 @@
+PODS_CLIENTSERVER_ASYNCNETWORK_OTHER_LDFLAGS = -framework "CFNetwork" -framework "Foundation"

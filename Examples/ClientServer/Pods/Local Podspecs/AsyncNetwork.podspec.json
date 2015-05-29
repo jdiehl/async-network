@@ -1,0 +1,34 @@
+{
+  "name": "AsyncNetwork",
+  "version": "1.1",
+  "summary": "Cocoa and iOS Socket Networking Evolved. ",
+  "description": "                       Async Network is a framework for socket networking on Cocoa or Cocoa Touch based on [AsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket).\n",
+  "homepage": "http://jdiehl.github.com/async-network",
+  "license": "MIT",
+  "authors": "Jonathan Diehl",
+  "source": {
+    "git": "https://github.com/jdiehl/async-network.git",
+    "tag": "1.1"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "public_header_files": "Pod/Classes/**/*.h",
+  "ios": {
+    "frameworks": [
+      "Foundation",
+      "Security",
+      "CFNetwork"
+    ]
+  },
+  "osx": {
+    "frameworks": [
+      "Foundation",
+      "CFNetwork"
+    ]
+  },
+  "dependencies": {
+    "CocoaAsyncSocket": [
+
+    ]
+  }
+}
