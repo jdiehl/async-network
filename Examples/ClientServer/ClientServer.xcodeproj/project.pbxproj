@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D30C0381AB771BB007799AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C0371AB771BB007799AF /* AppDelegate.m */; };
+		2D30C03A1AB771BB007799AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C0391AB771BB007799AF /* main.m */; };
+		2D30C03C1AB771BB007799AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C03B1AB771BB007799AF /* Images.xcassets */; };
+		2D30C0581AB7722E007799AF /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C0551AB7722E007799AF /* ClientController.m */; };
+		2D30C0591AB7722E007799AF /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D30C0571AB7722E007799AF /* ServerController.m */; };
+		2D30C0611AB7724A007799AF /* AsyncNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D30C0601AB7724A007799AF /* AsyncNetwork.framework */; };
+		2D30C0631AB7725B007799AF /* AsyncNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D30C0601AB7724A007799AF /* AsyncNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D30C08B1AB77381007799AF /* ClientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C0881AB77381007799AF /* ClientController.xib */; };
+		2D30C08C1AB77381007799AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C0891AB77381007799AF /* MainMenu.xib */; };
+		2D30C08D1AB77381007799AF /* ServerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D30C08A1AB77381007799AF /* ServerController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D30C0621AB77256007799AF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D30C0631AB7725B007799AF /* AsyncNetwork.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2D30C0311AB771BB007799AF /* ClientServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D30C0351AB771BB007799AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D30C0361AB771BB007799AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2D30C0371AB771BB007799AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2D30C0391AB771BB007799AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2D30C03B1AB771BB007799AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2D30C0541AB7722E007799AF /* ClientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientController.h; sourceTree = "<group>"; };
+		2D30C0551AB7722E007799AF /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
+		2D30C0561AB7722E007799AF /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerController.h; sourceTree = "<group>"; };
+		2D30C0571AB7722E007799AF /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerController.m; sourceTree = "<group>"; };
+		2D30C0601AB7724A007799AF /* AsyncNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetwork.framework; path = ../../AsyncNetwork.framework; sourceTree = "<group>"; };
+		2D30C0881AB77381007799AF /* ClientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientController.xib; sourceTree = "<group>"; };
+		2D30C0891AB77381007799AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		2D30C08A1AB77381007799AF /* ServerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D30C02E1AB771BB007799AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D30C0611AB7724A007799AF /* AsyncNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D30C0281AB771BB007799AF = {
+			isa = PBXGroup;
+			children = (
+				2D30C0601AB7724A007799AF /* AsyncNetwork.framework */,
+				2D30C0331AB771BB007799AF /* ClientServer */,
+				2D30C0321AB771BB007799AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2D30C0321AB771BB007799AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D30C0311AB771BB007799AF /* ClientServer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D30C0331AB771BB007799AF /* ClientServer */ = {
+			isa = PBXGroup;
+			children = (
+				2D30C0361AB771BB007799AF /* AppDelegate.h */,
+				2D30C0371AB771BB007799AF /* AppDelegate.m */,
+				2D30C0541AB7722E007799AF /* ClientController.h */,
+				2D30C0551AB7722E007799AF /* ClientController.m */,
+				2D30C0561AB7722E007799AF /* ServerController.h */,
+				2D30C0571AB7722E007799AF /* ServerController.m */,
+				2D30C03B1AB771BB007799AF /* Images.xcassets */,
+				2D30C0891AB77381007799AF /* MainMenu.xib */,
+				2D30C0881AB77381007799AF /* ClientController.xib */,
+				2D30C08A1AB77381007799AF /* ServerController.xib */,
+				2D30C0341AB771BB007799AF /* Supporting Files */,
+			);
+			path = ClientServer;
+			sourceTree = "<group>";
+		};
+		2D30C0341AB771BB007799AF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D30C0351AB771BB007799AF /* Info.plist */,
+				2D30C0391AB771BB007799AF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D30C0301AB771BB007799AF /* ClientServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D30C04E1AB771BB007799AF /* Build configuration list for PBXNativeTarget "ClientServer" */;
+			buildPhases = (
+				2D30C02D1AB771BB007799AF /* Sources */,
+				2D30C02E1AB771BB007799AF /* Frameworks */,
+				2D30C02F1AB771BB007799AF /* Resources */,
+				2D30C0621AB77256007799AF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClientServer;
+			productName = ClientServer;
+			productReference = 2D30C0311AB771BB007799AF /* ClientServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D30C0291AB771BB007799AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Jonathan Diehl";
+				TargetAttributes = {
+					2D30C0301AB771BB007799AF = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 2D30C02C1AB771BB007799AF /* Build configuration list for PBXProject "ClientServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2D30C0281AB771BB007799AF;
+			productRefGroup = 2D30C0321AB771BB007799AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D30C0301AB771BB007799AF /* ClientServer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D30C02F1AB771BB007799AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D30C08D1AB77381007799AF /* ServerController.xib in Resources */,
+				2D30C08B1AB77381007799AF /* ClientController.xib in Resources */,
+				2D30C03C1AB771BB007799AF /* Images.xcassets in Resources */,
+				2D30C08C1AB77381007799AF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D30C02D1AB771BB007799AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D30C0591AB7722E007799AF /* ServerController.m in Sources */,
+				2D30C03A1AB771BB007799AF /* main.m in Sources */,
+				2D30C0381AB771BB007799AF /* AppDelegate.m in Sources */,
+				2D30C0581AB7722E007799AF /* ClientController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2D30C04C1AB771BB007799AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2D30C04D1AB771BB007799AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2D30C04F1AB771BB007799AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jdiehl/Documents/Coding/lib/async-network",
+				);
+				INFOPLIST_FILE = ClientServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2D30C0501AB771BB007799AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jdiehl/Documents/Coding/lib/async-network",
+				);
+				INFOPLIST_FILE = ClientServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D30C02C1AB771BB007799AF /* Build configuration list for PBXProject "ClientServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D30C04C1AB771BB007799AF /* Debug */,
+				2D30C04D1AB771BB007799AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D30C04E1AB771BB007799AF /* Build configuration list for PBXNativeTarget "ClientServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D30C04F1AB771BB007799AF /* Debug */,
+				2D30C0501AB771BB007799AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D30C0291AB771BB007799AF /* Project object */;
+}
