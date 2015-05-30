@@ -13,8 +13,7 @@
 		2DDCC56E1AB77770007D0C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDCC56C1AB77770007D0C9A /* Main.storyboard */; };
 		2DDCC5701AB77770007D0C9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DDCC56F1AB77770007D0C9A /* Images.xcassets */; };
 		2DDCC5731AB77770007D0C9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDCC5711AB77770007D0C9A /* LaunchScreen.xib */; };
-		2DDCC5891AB777A8007D0C9A /* AsyncNetworkIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDCC5881AB777A8007D0C9A /* AsyncNetworkIOS.framework */; };
-		2DDCC58B1AB777B5007D0C9A /* AsyncNetworkIOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2DDCC5881AB777A8007D0C9A /* AsyncNetworkIOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E0BD73B0AE728A924023743 /* libPods-Notify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 533A75E93AA99233DEB7FC9E /* libPods-Notify.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2DDCC58B1AB777B5007D0C9A /* AsyncNetworkIOS.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +41,9 @@
 		2DDCC5721AB77770007D0C9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2DDCC57D1AB77770007D0C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DDCC57E1AB77770007D0C9A /* NotifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyTests.m; sourceTree = "<group>"; };
-		2DDCC5881AB777A8007D0C9A /* AsyncNetworkIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncNetworkIOS.framework; path = ../../AsyncNetworkIOS.framework; sourceTree = "<group>"; };
+		5332DA9A6A106C389E64B0AE /* Pods-Notify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notify/Pods-Notify.release.xcconfig"; sourceTree = "<group>"; };
+		533A75E93AA99233DEB7FC9E /* libPods-Notify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A5F72A7349EC9DFE4D8BC9 /* Pods-Notify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notify/Pods-Notify.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DDCC5891AB777A8007D0C9A /* AsyncNetworkIOS.framework in Frameworks */,
+				6E0BD73B0AE728A924023743 /* libPods-Notify.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,10 +61,11 @@
 		2DDCC5561AB77770007D0C9A = {
 			isa = PBXGroup;
 			children = (
-				2DDCC5881AB777A8007D0C9A /* AsyncNetworkIOS.framework */,
 				2DDCC5611AB77770007D0C9A /* Notify */,
 				2DDCC57B1AB77770007D0C9A /* NotifyTests */,
 				2DDCC5601AB77770007D0C9A /* Products */,
+				897C5A6BB4083B9ED3C453E5 /* Pods */,
+				7722E0B0C627E12D5C71B977 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +118,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7722E0B0C627E12D5C71B977 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				533A75E93AA99233DEB7FC9E /* libPods-Notify.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		897C5A6BB4083B9ED3C453E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4A5F72A7349EC9DFE4D8BC9 /* Pods-Notify.debug.xcconfig */,
+				5332DA9A6A106C389E64B0AE /* Pods-Notify.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,10 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DDCC5821AB77770007D0C9A /* Build configuration list for PBXNativeTarget "Notify" */;
 			buildPhases = (
+				210B76487758EA697079D9CD /* Check Pods Manifest.lock */,
 				2DDCC55B1AB77770007D0C9A /* Sources */,
 				2DDCC55C1AB77770007D0C9A /* Frameworks */,
 				2DDCC55D1AB77770007D0C9A /* Resources */,
 				2DDCC58A1AB777B0007D0C9A /* CopyFiles */,
+				AEE388EBA9578957756BFBC1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,6 +202,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		210B76487758EA697079D9CD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AEE388EBA9578957756BFBC1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Notify/Pods-Notify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2DDCC55B1AB77770007D0C9A /* Sources */ = {
@@ -294,12 +347,9 @@
 		};
 		2DDCC5831AB77770007D0C9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4A5F72A7349EC9DFE4D8BC9 /* Pods-Notify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/jdiehl/Documents/Coding/lib/async-network",
-				);
 				INFOPLIST_FILE = Notify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,12 +358,9 @@
 		};
 		2DDCC5841AB77770007D0C9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5332DA9A6A106C389E64B0AE /* Pods-Notify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/jdiehl/Documents/Coding/lib/async-network",
-				);
 				INFOPLIST_FILE = Notify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

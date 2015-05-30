@@ -1,5 +1,10 @@
-Async Network is a framework for socket networking on COCOA or iOS based on
+# AsyncNetwork
+Async Network is a framework for socket networking on Cocoa or Cocoa Touch based on
 [AsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket).
+
+[![Version](https://img.shields.io/cocoapods/v/AsyncNetwork.svg?style=flat)](http://cocoapods.org/pods/AsyncNetwork)
+[![License](https://img.shields.io/cocoapods/l/AsyncNetwork.svg?style=flat)](http://cocoapods.org/pods/AsyncNetwork)
+[![Platform](https://img.shields.io/cocoapods/p/AsyncNetwork.svg?style=flat)](http://cocoapods.org/pods/AsyncNetwork)
 
 ## Quick Start
 
@@ -109,8 +114,7 @@ to a server, send a request, wait for the response, and disconnect in one call.
 
 ## Examples
 
-Examples are located in `Examples/`. Install AsyncNetwork as a shared framework
-before running an example.
+Examples are located in `Examples/`. Run `pod install` on each of the demo directories to install dependencies.
 
 ### Broadcaster
 
@@ -143,42 +147,9 @@ mobile client.
 
 ## Installation
 
-Check out the submodules (AsyncSocket):
+AsyncNetwork is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
-    git submodule init
-    git submodule update
-
-Compile AsyncNetwork (requires Xcode Command Line Tools):
-
-    run `make`
-
-This will compile AsyncNetwork for Mac and iOS.
-The compiled AsyncNetwork Framework can be directly imported into your project:
-
-1. Drag `AsyncNetwork.framework` or `AsyncNetworkIOS.framework` to your project
-2. Add a "Copy Files" Build Phase to your main target
-3. Change Destination to "Frameworks"
-4. Drag the included framework into the list of files
-
-
-## License (MIT)
-
-Copyright (C) 2012 Jonathan Diehl. RWTH Aachen University.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+```ruby
+pod "AsyncNetwork"
+```
