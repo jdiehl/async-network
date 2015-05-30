@@ -1,1 +1,0 @@
-PODS_MOBILECLIENT_ASYNCNETWORK_OTHER_LDFLAGS = -framework "CFNetwork" -framework "Foundation" -framework "Security"

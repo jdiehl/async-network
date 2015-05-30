@@ -6,10 +6,6 @@ Async Network is a framework for socket networking on Cocoa or Cocoa Touch based
 [![License](https://img.shields.io/cocoapods/l/AsyncNetwork.svg?style=flat)](http://cocoapods.org/pods/AsyncNetwork)
 [![Platform](https://img.shields.io/cocoapods/p/AsyncNetwork.svg?style=flat)](http://cocoapods.org/pods/AsyncNetwork)
 
-## Usage
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Quick Start
 
 ### Client-Server Networking
@@ -118,8 +114,7 @@ to a server, send a request, wait for the response, and disconnect in one call.
 
 ## Examples
 
-Examples are located in `Examples/`. Install AsyncNetwork as a shared framework
-before running an example.
+Examples are located in `Examples/`. Run `pod install` on each of the demo directories to install dependencies.
 
 ### Broadcaster
 

@@ -1,1 +1,0 @@
-PODS_BROADCASTER_ASYNCNETWORK_OTHER_LDFLAGS = -framework "CFNetwork" -framework "Foundation"

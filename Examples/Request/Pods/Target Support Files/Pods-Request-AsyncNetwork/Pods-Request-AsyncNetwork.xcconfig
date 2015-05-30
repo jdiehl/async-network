@@ -1,1 +1,0 @@
-PODS_REQUEST_ASYNCNETWORK_OTHER_LDFLAGS = -framework "CFNetwork" -framework "Foundation"
