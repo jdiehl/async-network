@@ -3,6 +3,10 @@
 BUILDROOT=build
 TEMPROOT=temp
 
+# check out
+git submodule init
+git submodule update
+
 # build
 xcodebuild build -target AsyncNetwork | egrep "^(===|\*\*)"
 xcodebuild build -target AsyncNetworkIOS -sdk iphoneos | egrep "^(===|\*\*)"
