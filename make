@@ -14,7 +14,7 @@ xcodebuild build -target AsyncNetworkIOS -sdk iphonesimulator | egrep "^(===|\*\
 
 # make distribution copy
 mkdir -p $TEMPROOT
-cp -rf Examples Icon.png License.txt README.md $BUILDROOT/Release/* $BUILDROOT/Release-iphoneos/*\
+cp -rf Examples Icon.png LICENSE README.md $BUILDROOT/Release/* $BUILDROOT/Release-iphoneos/*\
  $TEMPROOT
 lipo -o $TEMPROOT/AsyncNetworkIOS.framework/AsyncNetworkIOS -create\
  $BUILDROOT/Release-iphoneos/AsyncNetworkIOS.framework/AsyncNetworkIOS\

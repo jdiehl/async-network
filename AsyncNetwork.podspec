@@ -1,0 +1,22 @@
+#
+# Be sure to run `pod lib lint AsyncNetwork.podspec' to ensure this is a
+# valid spec before submitting.
+
+Pod::Spec.new do |s|
+  s.name             = "AsyncNetwork"
+  s.version          = "1.1.0"
+  s.summary          = "Simple Socket Networking"
+  s.description      = "iOS / Cocoa Framework for socket networking based on CocoaAsyncSocket"
+  s.homepage         = "https://github.com/jdiehl/async-network"
+  s.license          = 'MIT'
+  s.author           = "Jonathan Diehl"
+  s.source           = { :git => "https://github.com/jdiehl/AsyncNetwork.git", :tag => s.version.to_s }
+
+  s.platform     = :ios, "7.0", :osx, "10.7"
+  s.requires_arc = true
+
+  s.source_files = 'AsyncNetwork/*.[mh]'
+  s.public_header_files = 'AsyncNetwork/*.h'
+  s.frameworks = 'CFNetwork'
+  s.dependency 'CocoaAsyncSocket', '>= 1.0'
+end
