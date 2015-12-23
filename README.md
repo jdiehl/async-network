@@ -1,3 +1,5 @@
+![Pod Version](https://img.shields.io/cocoapods/v/AsyncNetwork.svg?style=flat)
+
 Async Network is a framework for socket networking on COCOA or iOS based on
 [AsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket).
 
