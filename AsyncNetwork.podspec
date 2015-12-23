@@ -12,11 +12,8 @@ Pod::Spec.new do |s|
   s.author           = "Jonathan Diehl"
   s.source           = { :git => "https://github.com/jdiehl/AsyncNetwork.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, "7.0", :osx, "10.7"
-  s.requires_arc = true
-
-  s.source_files = 'AsyncNetwork/*.[mh]'
-  s.public_header_files = 'AsyncNetwork/*.h'
-  s.frameworks = 'CFNetwork'
-  s.dependency 'CocoaAsyncSocket', '>= 1.0'
+  s.requires_arc        = true
+  s.source_files        = 'AsyncNetwork/**/*.[mh]'
+  s.public_header_files = 'AsyncNetwork/**/*.h'
+  s.frameworks          = 'CFNetwork'
 end
