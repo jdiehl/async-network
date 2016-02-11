@@ -162,7 +162,7 @@ The compiled AsyncNetwork Framework can be directly imported into your project:
 3. Change Destination to "Frameworks"
 4. Drag the included framework into the list of files
 
-### Cocoapods
+### CocoaPods
 
 Add this to your podfile:
 
