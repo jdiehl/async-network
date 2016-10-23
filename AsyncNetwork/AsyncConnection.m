@@ -170,7 +170,7 @@ AsyncConnectionHeader DataToHeader(NSData *data);
 	
 	// create the socket
 	_socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
-	[self.socket setIPv6Enabled:NO];
+	[self.socket setIPv6Enabled:YES];
 	
 	// connect to host and port
 	NSError *error;

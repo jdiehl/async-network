@@ -158,7 +158,7 @@
 	
 	// set up listening socket
 	_listenSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:AsyncNetworkDispatchQueue()];
-	[self.listenSocket setIPv6Enabled:NO];
+	[self.listenSocket setIPv6Enabled:YES];
 	NSError *error;
 	if (![self.listenSocket acceptOnPort:self.port error:&error]) {
 			if ([self.delegate respondsToSelector:@selector(server:didFailWithError:)]) {
