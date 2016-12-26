@@ -82,9 +82,11 @@
 - (void)start
 {
 	if (!self.serviceBrowser) {
-		_serviceBrowser = [NSNetServiceBrowser new];
-		self.serviceBrowser.includesPeerToPeer = self.includesPeerToPeer;
-		[self.serviceBrowser setDelegate:self];
+        @autoreleasepool {
+            _serviceBrowser = [NSNetServiceBrowser new];
+            self.serviceBrowser.includesPeerToPeer = self.includesPeerToPeer;
+            [self.serviceBrowser setDelegate:self];
+        }
 		[self.serviceBrowser searchForServicesOfType:self.serviceType inDomain:self.serviceDomain];
 	}
 }
