@@ -40,12 +40,12 @@
 		2DB62DDF1ABAA848002B3866 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB62DDE1ABAA848002B3866 /* Security.framework */; };
 		2DF1E3A11AB9DF780072166F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF1E3A01AB9DF780072166F /* CFNetwork.framework */; };
 		2DF1E3A31AB9DF7D0072166F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF1E3A21AB9DF7D0072166F /* CFNetwork.framework */; };
-		5C568BF31C2CE598002632CE /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BEE1C2CE597002632CE /* GCDAsyncSocket.h */; };
-		5C568BF41C2CE598002632CE /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BEE1C2CE597002632CE /* GCDAsyncSocket.h */; };
+		5C568BF31C2CE598002632CE /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BEE1C2CE597002632CE /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C568BF41C2CE598002632CE /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BEE1C2CE597002632CE /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C568BF51C2CE598002632CE /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C568BEF1C2CE598002632CE /* GCDAsyncSocket.m */; };
 		5C568BF61C2CE598002632CE /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C568BEF1C2CE598002632CE /* GCDAsyncSocket.m */; };
-		5C568BF71C2CE598002632CE /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BF01C2CE598002632CE /* GCDAsyncUdpSocket.h */; };
-		5C568BF81C2CE598002632CE /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BF01C2CE598002632CE /* GCDAsyncUdpSocket.h */; };
+		5C568BF71C2CE598002632CE /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BF01C2CE598002632CE /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C568BF81C2CE598002632CE /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C568BF01C2CE598002632CE /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C568BF91C2CE598002632CE /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C568BF11C2CE598002632CE /* GCDAsyncUdpSocket.m */; };
 		5C568BFA1C2CE598002632CE /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C568BF11C2CE598002632CE /* GCDAsyncUdpSocket.m */; };
 		5C568BFB1C2CE598002632CE /* README.markdown in Sources */ = {isa = PBXBuildFile; fileRef = 5C568BF21C2CE598002632CE /* README.markdown */; };
